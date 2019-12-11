@@ -1,7 +1,10 @@
 {
   "name": "goals",
   "nativescript": {
-    "id": "org.nativescript.goals"
+    "id": "org.nativescript.goals",
+    "tns-android": {
+      "version": "6.2.0"
+    }
   },
   "version": "0.0.0",
   "scripts": {
@@ -33,6 +36,7 @@
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.4.0",
+    "rxjs-compat": "^6.5.3",
     "tns-core-modules": "~6.2.0",
     "tslib": "1.10.0",
     "zone.js": "~0.9.1"
