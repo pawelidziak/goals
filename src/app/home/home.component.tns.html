@@ -1,49 +1,31 @@
 <BottomNavigation>
+  <!-- The bottom tab UI is created via TabStrip (the containier) and TabStripItem (for each tab)-->
   <TabStrip>
-    <TabStripItem>
-      <image src="font://&#xf015;" class="fas"></image>
-      <label text="Home"></label>
+    <TabStripItem class="navigation__item">
+      <image src="res://icon"> </image>
+      <label text="Test"></label>
     </TabStripItem>
-    <TabStripItem>
-      <image src="font://&#xf004;" class="fas"></image>
-      <label text="Favs"></label>
+    <TabStripItem class="navigation__item">
+      <image src="res://icon"> </image>
+      <label text="Another"></label>
     </TabStripItem>
-    <TabStripItem>
-      <image src="font://&#xf001;" class="fas"></image>
-      <label text="Music"></label>
+    <TabStripItem class="navigation__item">
+      <image src="res://icon"> </image>
+      <label text="Another 2"></label>
     </TabStripItem>
   </TabStrip>
 
+  <!-- The number of TabContentItem components should corespond to the number of TabStripItem components -->
   <TabContentItem>
-    <TabView>
-      <page-router-outlet
-        *tabItem="{ title: 'Players Tab' }"
-        name="playerTab"
-        actionBarVisibility="never"
-      >
-      </page-router-outlet>
-      <page-router-outlet
-        *tabItem="{ title: 'Teams Tab' }"
-        name="teamTab"
-        actionBarVisibility="never"
-      >
-      </page-router-outlet>
-      <page-router-outlet
-        *tabItem="{ title: 'Welcome Tab' }"
-        name="welcomeTab"
-        actionBarVisibility="never"
-      >
-      </page-router-outlet>
-    </TabView>
+    <router-outlet name="goalsTab"></router-outlet>
+    <!-- <label text="11111 Label"></label> -->
   </TabContentItem>
-
   <TabContentItem>
-    <page-router-outlet name="teamTab"></page-router-outlet>
+    <!-- <label text="Label 22222"></label> -->
+    <page-router-outlet name="goalsTab"></page-router-outlet> 
   </TabContentItem>
-
   <TabContentItem>
-    <StackLayout>
-      <page-router-outlet name="welcomeTab"></page-router-outlet>
-    </StackLayout>
+    <label text="Label 33333"></label>
+    <!-- <router-outlet name="anotherTab"></router-outlet> -->
   </TabContentItem>
 </BottomNavigation>

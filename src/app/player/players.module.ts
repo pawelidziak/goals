@@ -1,4 +1,3 @@
-
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { PlayerComponent } from './players.component';
