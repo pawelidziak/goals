@@ -6,7 +6,6 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
-import { ListMoviesComponent } from '@src/app/list-movies/list-movies.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -18,7 +17,6 @@ import { ListMoviesComponent } from '@src/app/list-movies/list-movies.component'
 @NgModule({
   declarations: [
     AppComponent,
-    ListMoviesComponent,
     LoginComponent,
     WelcomeComponent
   ],

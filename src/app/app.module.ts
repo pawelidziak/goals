@@ -5,13 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
-import { ListMoviesComponent } from '@src/app/list-movies/list-movies.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListMoviesComponent,
     LoginComponent,
     WelcomeComponent
   ],

@@ -1,31 +1,7 @@
-<BottomNavigation>
-  <!-- The bottom tab UI is created via TabStrip (the containier) and TabStripItem (for each tab)-->
-  <TabStrip>
-    <TabStripItem class="navigation__item">
-      <image src="res://icon"> </image>
-      <label text="Test"></label>
-    </TabStripItem>
-    <TabStripItem class="navigation__item">
-      <image src="res://icon"> </image>
-      <label text="Another"></label>
-    </TabStripItem>
-    <TabStripItem class="navigation__item">
-      <image src="res://icon"> </image>
-      <label text="Another 2"></label>
-    </TabStripItem>
-  </TabStrip>
+<GridLayout rows="*, auto" class="page" tkMainContent>
+  <StackLayout row="0">
+    <page-router-outlet></page-router-outlet>
+  </StackLayout>
 
-  <!-- The number of TabContentItem components should corespond to the number of TabStripItem components -->
-  <TabContentItem>
-    <router-outlet name="goalsTab"></router-outlet>
-    <!-- <label text="11111 Label"></label> -->
-  </TabContentItem>
-  <TabContentItem>
-    <!-- <label text="Label 22222"></label> -->
-    <page-router-outlet name="goalsTab"></page-router-outlet> 
-  </TabContentItem>
-  <TabContentItem>
-    <label text="Label 33333"></label>
-    <!-- <router-outlet name="anotherTab"></router-outlet> -->
-  </TabContentItem>
-</BottomNavigation>
+  <app-bottom-navigation row="1"></app-bottom-navigation>
+</GridLayout>
