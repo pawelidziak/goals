@@ -3,7 +3,6 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
-import { HomeComponent } from '@src/app/home/home.component';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 
 
@@ -15,8 +14,7 @@ import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
+    AppComponent
   ],
   imports: [
     NativeScriptModule,

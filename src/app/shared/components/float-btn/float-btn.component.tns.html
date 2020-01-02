@@ -1,0 +1,11 @@
+<StackLayout
+  ripple
+  class="float-btn"
+  (tap)="onTap($event)"
+  [style.background-color]="bgColor"
+  [style.width]="size"
+  [style.height]="size"
+  [style.color]="fontColor"
+>
+  <ng-content></ng-content>
+</StackLayout>
