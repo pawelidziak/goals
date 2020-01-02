@@ -13,22 +13,22 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('../../modules/goals/goals.module').then(m => m.GoalsModule)
+          import('@modules/goals/goals.module').then(m => m.GoalsModule)
       },
       {
         path: '',
         loadChildren: () =>
-          import('../../modules/team/teams.module').then(m => m.TeamsModule)
+          import('@modules/team/teams.module').then(m => m.TeamsModule)
       },
       {
         path: '',
         loadChildren: () =>
-          import('../../modules/player/players.module').then(m => m.PlayersModule)
+          import('@modules/player/players.module').then(m => m.PlayersModule)
       },
       {
         path: '',
         loadChildren: () =>
-          import('../../modules/list-movies/list-movies.module').then(m => m.ListMoviesModule)
+          import('@modules/list-movies/list-movies.module').then(m => m.ListMoviesModule)
       },
     ]
   }
