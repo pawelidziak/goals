@@ -1,0 +1,38 @@
+<GridLayout rows="*, auto">
+  <ListView row="0" [items]="items" class="list-group">
+    <ng-template let-item="item">
+      <Label
+        ripple
+        rippleColor="#00ff00"
+        [nsRouterLink]="['../player', item.id]"
+        [text]="item.name"
+        class="list-group-item"
+      ></Label>
+    </ng-template>
+  </ListView>
+  <!-- <AbsoluteLayout row="1">
+    <app-float-btn [text]="'+'" [size]="58"></app-float-btn>
+  </AbsoluteLayout> -->
+</GridLayout>
+
+<!-- <AbsoluteLayout>
+    <ScrollView class="sv">
+        <GridLayout>
+        <ListView [items]="items" class="list-group">
+            <ng-template let-item="item">
+              <Label
+                ripple
+                rippleColor="#00ff00"
+                [nsRouterLink]="['../player', item.id]"
+                [text]="item.name"
+                class="list-group-item"
+              ></Label>
+            </ng-template>
+          </ListView>
+        </GridLayout>
+    </ScrollView>
+</AbsoluteLayout> -->
+
+<!-- <AbsoluteLayout width="210" height="210">
+  <app-float-btn left="10" top="10" width="90" height="90"></app-float-btn>
+</AbsoluteLayout> -->

@@ -1,0 +1,21 @@
+<ListView [items]="movies" (itemTap)="onItemTap($event)">
+  <ng-template let-item="item">
+    <GridLayout columns="auto, *, auto">
+      <StackLayout col="0" class="mr-10" height="36" width="36">
+        <label [text]="getBadgeIcon(item.category)"></label>
+      </StackLayout>
+
+      <StackLayout col="1" verticalAlignment="center">
+        <label [text]="getCompany(item.id).name"></label>
+        <label [text]="item.category"></label>
+      </StackLayout>
+
+      <label col="2" horizontal="right">
+        <FormattedString>
+          <span [text]="item.done"></span>
+          <!-- <span [text]="'mdi-bluetooth' | fonticon" class="mdi icon"></span> -->
+        </FormattedString>
+      </label>
+    </GridLayout>
+  </ng-template>
+</ListView>

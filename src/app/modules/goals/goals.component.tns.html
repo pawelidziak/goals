@@ -1,0 +1,22 @@
+<GridLayout rows="*, auto">
+  <TabView row="0">
+    <page-router-outlet
+      *tabItem="{title: 'Today'}"
+      name="playerTab"
+      actionBarVisibility="never"
+    >
+    </page-router-outlet>
+
+    <page-router-outlet
+      *tabItem="{title: 'Long-term'}"
+      name="teamTab"
+      actionBarVisibility="never"
+    >
+    </page-router-outlet>
+  </TabView>
+  <AbsoluteLayout row="0" class="float-btn-container ">
+    <app-float-btn [size]="58">
+      <label [text]="'+'"></label>
+    </app-float-btn>
+  </AbsoluteLayout>
+</GridLayout>

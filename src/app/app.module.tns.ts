@@ -1,5 +1,3 @@
-import { WelcomeComponent } from '@src/app/welcome/welcome.component';
-import { LoginComponent } from '@src/app/login/login.component';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 
@@ -16,9 +14,7 @@ import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    WelcomeComponent
+    AppComponent
   ],
   imports: [
     NativeScriptModule,

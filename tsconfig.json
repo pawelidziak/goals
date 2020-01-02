@@ -27,7 +27,10 @@
               "src/*.tns.ts",
               "src/*.web.ts",
               "src/*.ts"
-          ]
+          ],
+          "@core/*": ["src/app/core/*"],
+          "@modules/*": ["src/app/modules/*"],
+          "@shared/*": ["src/app/shared/*"],
       }
   }
 }
