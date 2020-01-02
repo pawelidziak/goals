@@ -2,7 +2,7 @@ import { ListMoviesComponent } from '@modules/list-movies/list-movies.component'
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import { APP_ROUTES } from '@src/app/core/routes';
+import { APP_ROUTES } from '@core/routes';
 
 @NgModule({
   imports: [

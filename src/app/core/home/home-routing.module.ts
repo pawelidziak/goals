@@ -1,10 +1,11 @@
+import { APP_ROUTES } from '@core/routes';
 import { HomeComponent } from '@core/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/goals', pathMatch: 'full'},
+  {path: '', redirectTo: APP_ROUTES.GOALS, pathMatch: 'full'},
   {
     path: '',
     component: HomeComponent,

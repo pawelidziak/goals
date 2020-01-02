@@ -1,3 +1,4 @@
+import { APP_ROUTES } from '@core/routes';
 import { Component, OnInit } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page';
 import { RouterExtensions } from 'nativescript-angular/router';
@@ -17,7 +18,14 @@ export class GoalsComponent implements OnInit {
   ngOnInit() {
     this.page.actionBarHidden = true;
     this.routerExtension.navigate(
-      [{ outlets: { playerTab: ['players'], teamTab: ['teams'] } }],
+      [
+        {
+          outlets: {
+            playerTab: [APP_ROUTES.PLAYERS],
+            teamTab: [APP_ROUTES.TEAMS]
+          }
+        }
+      ],
       { relativeTo: this.activeRoute }
     );
   }
