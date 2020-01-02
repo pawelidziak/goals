@@ -11,10 +11,9 @@ import { filter } from 'rxjs/operators';
 })
 export class BottomNavigationComponent implements OnInit {
   public tabs = [
-    { label: 'Goals', path: '/goals', icon: 'mdi-bluetooth' },
-    { label: 'Teams', path: '/teams', icon: 'mdi-bluetooth' },
-    { label: 'Players', path: '/players', icon: 'mdi-bluetooth' },
-    { label: 'Movies', path: '/movies', icon: 'mdi-bluetooth' }
+    { label: 'Progress', path: '/teams', icon: 'mdi-trending-up' },
+    { label: 'Goals', path: '/goals', icon: 'mdi-stars' },
+    { label: 'Settings', path: '/movies', icon: 'mdi-settings' }
   ];
   private _activatedUrl: string;
 

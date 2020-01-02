@@ -1,14 +1,13 @@
-<GridLayout columns="*, *, *, *" row="1" class="bottom-navigation">
+<GridLayout columns="*, *, *" row="1" class="bottom-navigation">
   <StackLayout
     ripple
-    rippleColor="#00ff00"
     *ngFor="let tab of tabs; let i=index"
     [col]="i"
     padding="5 0"
     [class.selected]="isComponentSelected(tab.path)"
     (tap)="onNavItemTap(tab.path)"
   >
-    <label [text]="'mdi-bluetooth' | fonticon" class="mdi icon"></label>
+    <label [text]="tab.icon | fonticon" class="mdi icon"></label>
     <label [text]="tab.label" class="label"></label>
   </StackLayout>
 </GridLayout>
