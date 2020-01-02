@@ -5,15 +5,16 @@ import { PlayerComponent } from './players.component';
 import { PlayerDetailComponent } from './player-detail.component';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NgRippleModule } from 'nativescript-ng-ripple';
+import { APP_ROUTES } from '@core/routes';
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
     NativeScriptRouterModule,
     NativeScriptRouterModule.forChild([
-      { path: '', redirectTo: 'players' },
-      { path: 'players', component: PlayerComponent },
-      { path: 'player/:id', component: PlayerDetailComponent }
+      { path: '', redirectTo: `${APP_ROUTES.PLAYERS}` },
+      { path: `${APP_ROUTES.PLAYERS}`, component: PlayerComponent },
+      { path: `${APP_ROUTES.PLAYER_DETAIL}`, component: PlayerDetailComponent }
     ]),
     NgRippleModule,
     FloatBtnModule

@@ -1,3 +1,4 @@
+import { APP_ROUTES } from '@core/routes';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
@@ -11,9 +12,9 @@ import { filter } from 'rxjs/operators';
 })
 export class BottomNavigationComponent implements OnInit {
   public tabs = [
-    { label: 'Progress', path: '/teams', icon: 'mdi-trending-up' },
-    { label: 'Goals', path: '/goals', icon: 'mdi-stars' },
-    { label: 'Settings', path: '/movies', icon: 'mdi-settings' }
+    { label: 'Progress', path: APP_ROUTES.TEAMS, icon: 'mdi-trending-up' },
+    { label: 'Goals', path: APP_ROUTES.GOALS, icon: 'mdi-stars' },
+    { label: 'Settings', path: APP_ROUTES.SETTINGS, icon: 'mdi-settings' }
   ];
   private _activatedUrl: string;
 
@@ -23,12 +24,12 @@ export class BottomNavigationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this._activatedUrl = '/goals';
+    this._activatedUrl = APP_ROUTES.GOALS;
     this.router.events
-      .pipe(
-        filter((event: any) => event instanceof NavigationEnd)
-      )
-      .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
+      .pipe(filter((event: any) => event instanceof NavigationEnd))
+      .subscribe(
+        (event: NavigationEnd) => (this._activatedUrl = event.urlAfterRedirects)
+      );
   }
 
   onNavItemTap(navItemRoute: string) {
@@ -40,6 +41,5 @@ export class BottomNavigationComponent implements OnInit {
     });
   }
 
-  isComponentSelected = (url: string): boolean => this._activatedUrl.split('/')[1] === url.split('/')[1];
-
+  isComponentSelected = (url: string): boolean => this._activatedUrl.split('/')[1] === url;
 }

@@ -2,14 +2,15 @@ import { ListMoviesComponent } from '@modules/list-movies/list-movies.component'
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
+import { APP_ROUTES } from '@src/app/core/routes';
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
     NativeScriptRouterModule,
     NativeScriptRouterModule.forChild([
-      { path: '', redirectTo: 'movies' },
-      { path: 'movies', component: ListMoviesComponent },
+      { path: '', redirectTo: APP_ROUTES.SETTINGS },
+      { path: APP_ROUTES.SETTINGS, component: ListMoviesComponent },
     ])
   ],
   declarations: [ListMoviesComponent],
