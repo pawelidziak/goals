@@ -1,5 +1,17 @@
 <ActionBar title="New goal" class="action-bar">
-    <NavigationButton text="123" icon="res://ic_arrow_back_black_24dp" (tap)="goBack()"></NavigationButton>
+  <NavigationButton
+    text="123"
+    icon="res://ic_arrow_back_black_24dp"
+    (tap)="goBack()"
+  ></NavigationButton>
 </ActionBar>
 
-<Button text="new-goal works!" class="btn btn-primary"></Button>
+<!-- <Button text="new-goal works!" class="btn btn-primary"></Button> -->
+<!-- <StackLayout> -->
+  <app-dynamic-form
+    (updateForm)="updateForm($event)"
+    [data$]="data$"
+    [structure$]="structure$"
+  >
+  </app-dynamic-form>
+<!-- </StackLayout> -->

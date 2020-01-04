@@ -1,0 +1,16 @@
+<!-- <StackLayout >
+  <StackLayout>
+    <TextField
+      
+    ></TextField>
+  </StackLayout>
+</StackLayout> -->
+<!-- <button text="haha!" class="btn btn-primary"></button> -->
+
+<StackLayout [formGroup]="group" [ngStyle]="getStyles()">
+  <TextField
+    [formControlName]="field?.name"
+    [hint]="field?.placeholder"
+    [type]="field?.attrs?.type || 'text'"
+  ></TextField>
+</StackLayout>
