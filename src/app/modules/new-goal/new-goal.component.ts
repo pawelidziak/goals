@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterExtensions } from 'nativescript-angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-goal',
@@ -7,10 +7,10 @@ import { RouterExtensions } from 'nativescript-angular/router';
   styleUrls: ['./new-goal.component.scss']
 })
 export class NewGoalComponent implements OnInit {
-  constructor(private routerExtensions: RouterExtensions) {}
+  constructor(private location: Location) {}
   ngOnInit() {}
 
   goBack() {
-    this.routerExtensions.back();
+    this.location.back();
   }
 }
