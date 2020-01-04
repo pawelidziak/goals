@@ -11,13 +11,13 @@ import { ActivatedRoute } from '@angular/router';
 export class GoalsComponent implements OnInit {
   constructor(
     private page: Page,
-    private routerExtension: RouterExtensions,
+    private routerExtensions: RouterExtensions,
     private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.page.actionBarHidden = true;
-    this.routerExtension.navigate(
+    this.routerExtensions.navigate(
       [
         {
           outlets: {
@@ -28,5 +28,13 @@ export class GoalsComponent implements OnInit {
       ],
       { relativeTo: this.activeRoute }
     );
+  }
+
+  onTap() {
+    this.routerExtensions.navigate(['new-goal'], {
+      transition: {
+        name: 'fade'
+      }
+    });
   }
 }
