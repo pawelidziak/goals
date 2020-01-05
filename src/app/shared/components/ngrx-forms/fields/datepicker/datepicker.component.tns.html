@@ -1,0 +1,16 @@
+<FlexboxLayout
+  [formGroup]="group"
+  [ngStyle]="getStyles()"
+  alignItems="center"
+  justifyContent="space-between"
+>
+  <label [text]="field?.name"></label>
+
+  <TextField
+    #textField
+    [formControlName]="field?.name"
+    hint="Open calendar"
+    [text]="date"
+    (tap)="pickDate()"
+  ></TextField>
+</FlexboxLayout>

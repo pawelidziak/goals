@@ -4,7 +4,7 @@
   [formGroup]="group"
   [ngStyle]="getStyles()"
 >
-  <label [text]="field?.name" fontSize="18" col="0" colSpan="2"></label>
+  <label [text]="field?.name" col="0" colSpan="2"></label>
   <DropDown
     [formControlName]="field?.name"
     col="2"
@@ -12,7 +12,7 @@
     itemsTextAlignment="center"
     [items]="field?.attrs?.selectOptions"
     itemsPadding="8"
-    selectedIndex="0"
+    selectedIndex="1"
     (selectedIndexChanged)="onchange($event)"
     (opened)="onopen()"
     (closed)="onclose()"

@@ -22,13 +22,13 @@ export const structure: Field[] = [
       width: '100%'
     }
   },
-//   {
-//     type: 'DATEPICKER',
-//     name: 'Deadline',
-//     styles: {
-//       width: '100%'
-//     }
-//   },
+  {
+    type: 'DATEPICKER',
+    name: 'Deadline',
+    styles: {
+      width: '100%'
+    }
+  },
   {
     type: 'TEXTAREA',
     name: 'Description',

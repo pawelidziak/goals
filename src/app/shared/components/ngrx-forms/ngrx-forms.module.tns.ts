@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -15,6 +14,7 @@ import { DatepickerComponent } from '@shared/components/ngrx-forms/fields/datepi
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { DropDownModule } from 'nativescript-drop-down/angular';
+import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 
 @NgModule({
   imports: [
@@ -22,6 +22,7 @@ import { DropDownModule } from 'nativescript-drop-down/angular';
     NativeScriptFormsModule,
     ReactiveFormsModule,
     DropDownModule,
+    TNSFontIconModule,
     StoreModule.forFeature(
       fromNgrxForms.NGRXFORMS_FEATURE_KEY,
       fromNgrxForms.reducer
