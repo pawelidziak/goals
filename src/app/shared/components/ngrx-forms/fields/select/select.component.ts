@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BaseDynamicField } from '../base-dynamic-field';
-import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 
 @Component({
   templateUrl: './select.component.html',
@@ -10,7 +9,7 @@ import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 export class SelectComponent extends BaseDynamicField {
   public selectedIndex = 1;
 
-  public onchange(args: SelectedIndexChangedEventData) {
+  public onchange(args: any) {
     console.log(
       `Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`
     );
