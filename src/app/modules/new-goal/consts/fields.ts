@@ -30,7 +30,7 @@ export const structure: Field[] = [
 //     }
 //   },
   {
-    type: 'INPUT',
+    type: 'TEXTAREA',
     name: 'Description',
     placeholder: 'Description',
     validator: [],
