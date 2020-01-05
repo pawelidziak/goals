@@ -6,6 +6,7 @@
 >
   <label [text]="field?.name" fontSize="18" col="0" colSpan="2"></label>
   <DropDown
+    [formControlName]="field?.name"
     col="2"
     backroundColor="red"
     itemsTextAlignment="center"
