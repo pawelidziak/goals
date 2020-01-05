@@ -11,17 +11,17 @@ export const structure: Field[] = [
       width: '100%'
     }
   },
-//   {
-//     type: 'SELECT',
-//     name: 'Priority',
-//     validator: [Validators.required],
-//     attrs: {
-//       selectOptions: ['A', 'B', 'C', 'D']
-//     },
-//     styles: {
-//       width: '100%'
-//     }
-//   },
+  {
+    type: 'SELECT',
+    name: 'Priority',
+    validator: [Validators.required],
+    attrs: {
+      selectOptions: ['A', 'B', 'C', 'D']
+    },
+    styles: {
+      width: '100%'
+    }
+  },
 //   {
 //     type: 'DATEPICKER',
 //     name: 'Deadline',

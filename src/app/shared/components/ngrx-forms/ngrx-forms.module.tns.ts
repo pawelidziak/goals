@@ -13,14 +13,15 @@ import { TextareaComponent } from '@shared/components/ngrx-forms/fields/textarea
 import { SelectComponent } from '@shared/components/ngrx-forms/fields/select/select.component';
 import { DatepickerComponent } from '@shared/components/ngrx-forms/fields/datepicker/datepicker.component';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+import { DropDownModule } from 'nativescript-drop-down/angular';
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
     NativeScriptFormsModule,
     ReactiveFormsModule,
-
+    DropDownModule,
     StoreModule.forFeature(
       fromNgrxForms.NGRXFORMS_FEATURE_KEY,
       fromNgrxForms.reducer
