@@ -2,7 +2,7 @@
   <TextView
     [formControlName]="field?.name"
     [hint]="field?.placeholder"
-    lineHiehgt="5"
+    [lineHiehgt]="field?.attrs?.rows || 5"
     height="auto"
   ></TextView>
 </StackLayout>
