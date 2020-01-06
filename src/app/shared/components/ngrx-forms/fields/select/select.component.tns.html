@@ -1,20 +1,19 @@
-<GridLayout
-  columns="*, *, *"
-  rows="auto"
+<StackLayout
+  margin="5 0"
+  verticalAlignment="center"
   [formGroup]="group"
   [ngStyle]="getStyles()"
 >
-  <label [text]="field?.name" col="0" colSpan="2"></label>
   <DropDown
-    [formControlName]="field?.name"
-    col="2"
     backroundColor="red"
     itemsTextAlignment="center"
-    [items]="field?.attrs?.selectOptions"
     itemsPadding="8"
     selectedIndex="1"
+    [items]="field?.attrs?.selectOptions"
+    [hint]="field?.name"
+    [formControlName]="field?.name"
     (selectedIndexChanged)="onchange($event)"
     (opened)="onopen()"
     (closed)="onclose()"
   ></DropDown>
-</GridLayout>
+</StackLayout>

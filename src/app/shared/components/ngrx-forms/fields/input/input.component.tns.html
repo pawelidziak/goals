@@ -1,4 +1,9 @@
-<StackLayout [formGroup]="group" [ngStyle]="getStyles()">
+<StackLayout
+  margin="5 0"
+  verticalAlignment="center"
+  [formGroup]="group"
+  [ngStyle]="getStyles()"
+>
   <TextField
     [formControlName]="field?.name"
     [hint]="field?.placeholder"

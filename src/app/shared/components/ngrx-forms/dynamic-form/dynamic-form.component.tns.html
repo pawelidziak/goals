@@ -1,4 +1,4 @@
-<StackLayout class="dynamic-form" [formGroup]="form" autocomplete="off">
+<WrapLayout [formGroup]="form" autocomplete="off">
   <ng-container
     *ngFor="let field of (structure$ | async)"
     appDynamicField
@@ -6,5 +6,5 @@
     [group]="form"
   >
   </ng-container>
-</StackLayout>
+</WrapLayout>
 
