@@ -5,8 +5,11 @@
   [ngStyle]="getStyles()"
 >
   <TextField
+    #textField
     [formControlName]="field?.name"
-    [hint]="field?.placeholder"
-    [type]="field?.attrs?.type || 'text'"
+    [hint]="field?.name"
+    [text]="date ? field?.name + ' ' + date : ''"
+    (tap)="pickDate()"
+    editable="false"
   ></TextField>
 </StackLayout>

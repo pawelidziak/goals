@@ -4,9 +4,10 @@
   [formGroup]="group"
   [ngStyle]="getStyles()"
 >
-  <TextField
+  <TextView
     [formControlName]="field?.name"
     [hint]="field?.placeholder"
-    [type]="field?.attrs?.type || 'text'"
-  ></TextField>
+    [lineHiehgt]="field?.attrs?.rows || 5"
+    height="auto"
+  ></TextView>
 </StackLayout>

@@ -1,0 +1,19 @@
+<StackLayout
+  margin="5 0"
+  verticalAlignment="center"
+  [formGroup]="group"
+  [ngStyle]="getStyles()"
+>
+  <DropDown
+    backroundColor="red"
+    itemsTextAlignment="center"
+    itemsPadding="8"
+    selectedIndex="1"
+    [items]="field?.attrs?.selectOptions"
+    [hint]="field?.name"
+    [formControlName]="field?.name"
+    (selectedIndexChanged)="onchange($event)"
+    (opened)="onopen()"
+    (closed)="onclose()"
+  ></DropDown>
+</StackLayout>
