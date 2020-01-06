@@ -6,12 +6,48 @@
   ></NavigationButton>
 </ActionBar>
 
-<!-- <Button text="new-goal works!" class="btn btn-primary"></Button> -->
-<!-- <StackLayout> -->
-  <app-dynamic-form
-    (updateForm)="updateForm($event)"
-    [data$]="data$"
-    [structure$]="structure$"
+<StackLayout padding="10">
+  <label
+    horizontalAlignment="center"
+    fontSize="100"
+    [text]="'mdi-stars' | fonticon"
+    class="mdi"
+    color="#3F51B5"
+  ></label>
+
+  <RadDataForm
+    tkExampleTitle
+    tkToggleNavButton
+    [source]="goal"
+    (propertyValidated)="dfPropertyValidated($event)"
+    (propertyCommitted)="onPropertyCommitted($event)"
   >
-  </app-dynamic-form>
-<!-- </StackLayout> -->
+    <!-- TITLE  -->
+    <TKEntityProperty tkDataFormProperty name="title">
+      <TKNonEmptyValidator
+        tkEntityPropertyValidators
+        errorMessage="Title can't be empty."
+      ></TKNonEmptyValidator>
+    </TKEntityProperty>
+
+    <!-- PRIORITY -->
+    <TKEntityProperty
+      tkDataFormProperty
+      name="priority"
+      [valuesProvider]="priorityProvider"
+    >
+      <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+    </TKEntityProperty>
+
+    <!-- DEADLINE -->
+    <TKEntityProperty tkDataFormProperty name="deadline">
+      <TKPropertyEditor
+        tkEntityPropertyEditor
+        type="DatePicker"
+      ></TKPropertyEditor>
+      <GoalDeadlineValidator tkEntityPropertyValidators></GoalDeadlineValidator>
+    </TKEntityProperty>
+  </RadDataForm>
+
+  <button [text]="Save" (tap)="onSave()"></button>
+</StackLayout>

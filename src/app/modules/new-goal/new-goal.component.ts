@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
-import { Field } from '@shared/components/ngrx-forms';
-import { NgrxFormsFacade } from '@shared/components/ngrx-forms';
+import { Field, NgrxFormsFacade } from '@shared/components/ngrx-forms';
 import { structure } from './consts/fields';
+import { Goal, EmptyGoal } from './models';
 
 @Component({
   selector: 'app-new-goal',
@@ -11,6 +11,16 @@ import { structure } from './consts/fields';
   styleUrls: ['./new-goal.component.scss']
 })
 export class NewGoalComponent implements OnInit {
+  // mobile
+  private _goal: Goal;
+  priorityProvider = [
+    { key: 'a', label: 'A' },
+    { key: 'b', label: 'B' },
+    { key: 'c', label: 'C' },
+    { key: 'd', label: 'D' }
+  ];
+
+  // web
   structure$: Observable<Field[]>;
   data$: Observable<any>;
 
@@ -23,6 +33,11 @@ export class NewGoalComponent implements OnInit {
     this.ngrxFormsFacade.setStructure(structure);
     this.data$ = this.ngrxFormsFacade.data$;
     this.structure$ = this.ngrxFormsFacade.structure$;
+    this._goal = new EmptyGoal();
+  }
+
+  get goal(): Goal {
+    return this._goal;
   }
 
   updateForm(changes: any) {
@@ -31,5 +46,21 @@ export class NewGoalComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  dfPropertyValidated(args) {
+    const propertyName = args.propertyName;
+    const validatedValue = args.entityProperty.valueCandidate;
+    const validationResult = args.entityProperty.isValid;
+
+    console.log(propertyName, validatedValue, validationResult);
+    // updateText(propertyName, validatedValue, validationResult);
+  }
+  onPropertyCommitted(data) {
+    console.log('onPropertyCommitted', data.object.editedObject);
+  }
+
+  onSave() {
+    console.log(this.goal);
   }
 }
