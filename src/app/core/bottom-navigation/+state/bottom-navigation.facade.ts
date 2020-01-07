@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as fromNottomNavigation from './bottom-navigation.reducer';
+import * as fromBottomNavigation from './bottom-navigation.reducer';
 import * as BottomNavigationSelectors from './bottom-navigation.selectors';
 import * as BottomNavigationActions from './bottom-navigation.actions';
 
@@ -8,7 +8,7 @@ import * as BottomNavigationActions from './bottom-navigation.actions';
 export class BottomNavigationFacade {
   show$ = this.store.select(BottomNavigationSelectors.getShow);
 
-  constructor(private store: Store<fromNottomNavigation.BottomNavigationState>) {}
+  constructor(private store: Store<fromBottomNavigation.BottomNavigationState>) {}
 
   showBottomNav() {
     this.store.dispatch(BottomNavigationActions.showBottomNav());
