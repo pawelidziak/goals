@@ -1,4 +1,9 @@
-<GridLayout columns="*, *, *" row="1" class="bottom-navigation">
+<GridLayout
+  *ngIf="showNav$ | async"
+  columns="*, *, *"
+  row="1"
+  class="bottom-navigation"
+>
   <StackLayout
     ripple
     *ngFor="let tab of tabs; let i=index"
