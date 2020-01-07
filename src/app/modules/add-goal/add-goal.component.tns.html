@@ -1,0 +1,27 @@
+<StackLayout
+  padding="0 10 10"
+  [ngClass]="{'display-none': !(showComponent$ | async)}"
+>
+  <!-- Text Field -->
+  <TextField
+    #addTextField
+    hint="hint xd"
+    (returnPress)="onReturnPress($event)"
+  ></TextField>
+
+  <!-- Action Row -->
+  <FlexboxLayout justifyContent="space-between">
+    <!-- Drop downs -->
+    <app-goal-dd
+      [items]="ddItems.priority.items"
+      [icon]="ddItems.priority.icon"
+    ></app-goal-dd>
+    <app-goal-dd
+      [items]="ddItems.deadline.items"
+      [icon]="ddItems.deadline.icon"
+    ></app-goal-dd>
+
+    <!-- Send icon -->
+    <label [text]="'mdi-send' | fonticon" class="mdi"></label>
+  </FlexboxLayout>
+</StackLayout>

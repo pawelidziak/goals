@@ -1,0 +1,19 @@
+<FlexboxLayout alignItems="center" ripple (tap)="openDd()" paddingRight="5">
+  <StackLayout width="1">
+    <DropDown
+      #dropDown
+      itemsTextAlignment="center"
+      itemsPadding="8"
+      [items]="items"
+      [(ngModel)]="selectedIndex"
+      (selectedIndexChanged)="onSelectedIndexChanged($event)"
+    ></DropDown>
+  </StackLayout>
+
+  <label
+    [text]="icon | fonticon"
+    class="mdi"
+    horizontalAlignment="center"
+  ></label>
+  <label [text]="items[selectedIndex]" horizontalAlignment="center"></label>
+</FlexboxLayout>

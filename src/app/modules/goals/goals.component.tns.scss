@@ -2,5 +2,14 @@
 .float-btn-container {
   margin-top: 90%;
   margin-left: 83%;
-  z-index: 100;
+  z-index: 11;
+}
+
+.display-none {
+  visibility: collapsed;
+}
+
+.overview {
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 11;
 }
