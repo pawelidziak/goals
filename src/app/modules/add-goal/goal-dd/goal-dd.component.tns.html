@@ -1,19 +1,22 @@
-<FlexboxLayout alignItems="center" ripple (tap)="openDd()" paddingRight="5">
-  <StackLayout width="1">
-    <DropDown
-      #dropDown
-      itemsTextAlignment="center"
-      itemsPadding="8"
-      [items]="items"
-      [(ngModel)]="selectedIndex"
-      (selectedIndexChanged)="onSelectedIndexChanged($event)"
-    ></DropDown>
-  </StackLayout>
+<GridLayout ripple marginRight="8" rows="*" columns="auto" (tap)="openDd()">
+  <DropDown
+    #dropDown
+    class="drop-down"
+    itemsTextAlignment="center"
+    itemsPadding="10"
+    [items]="items"
+    [(ngModel)]="selectedIndex"
+    (selectedIndexChanged)="onSelectedIndexChanged($event)"
+  ></DropDown>
 
-  <label
-    [text]="icon | fonticon"
-    class="mdi"
-    horizontalAlignment="center"
-  ></label>
-  <label [text]="items[selectedIndex]" horizontalAlignment="center"></label>
-</FlexboxLayout>
+  <FlexboxLayout alignItems="center" padding="5" paddingLeft="0">
+    <Label
+      [text]="icon | fonticon"
+      class="mdi"
+      [color]="currentIconColor"
+    ></Label>
+    <Label [text]="items[selectedIndex]"></Label>
+  </FlexboxLayout>
+
+  <StackLayout [background]="currentIconColor" class="dd-overlay"></StackLayout>
+</GridLayout>
