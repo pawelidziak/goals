@@ -21,17 +21,18 @@ import { AddGoalFacade } from './+state/add-goal.facade';
 })
 export class AddGoalComponent implements OnInit, AfterViewInit {
   @ViewChild('addTextField', { static: false }) addTextField: ElementRef;
-  @Output() stopAdding: EventEmitter<any> = new EventEmitter();
   showComponent$: Observable<boolean> = this.addGoalFacade.show$;
-  newGoal = '';
+  newGoalTitle = '';
 
   ddItems = {
     priority: {
       icon: 'mdi-priority-high',
-      items: ['A - Hight', 'B - Medium', 'C - Low', 'D - None']
+      iconColors: ['#F44336', '#FF9800', '#2196F3', '#9E9E9E'],
+      items: ['A - High', 'B - Medium', 'C - Low', 'D - None']
     },
     deadline: {
-      icon: 'mdi-bookmark',
+      icon: 'mdi-date-range',
+      iconColors: ['#F44336', '#FF9800', '#2196F3', '#9E9E9E'],
       items: ['Today', 'Tomorrow', 'Long-term', 'Todo']
     }
   };
@@ -54,10 +55,18 @@ export class AddGoalComponent implements OnInit, AfterViewInit {
     });
   }
 
-  onReturnPress(e: any) {
-    this.stopAdding.emit(true);
-    this.newGoal = '';
+  closeAdding() {
+    this.newGoalTitle = '';
     this.addGoalFacade.hideAddGoal();
     this.bottomNavFacade.showBottomNav();
+  }
+
+  onSend() {
+    if (!this.newGoalTitle) {
+      return;
+    }
+
+    console.log('SEND');
+    this.closeAdding();
   }
 }

@@ -1,3 +1,4 @@
+import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { GoalDdComponent } from './goal-dd/goal-dd.component';
 import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
 import { StoreModule } from '@ngrx/store';
@@ -13,6 +14,7 @@ import * as fromAddGoal from './+state/add-goal.reducer';
 @NgModule({
   imports: [
     NativeScriptCommonModule,
+    NativeScriptFormsModule,
     NgRippleModule,
     DropDownModule,
     TNSFontIconModule,
