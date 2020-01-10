@@ -4,8 +4,8 @@ import * as AddGoalActions from './add-goal.actions';
 
 export const ADDGOAL_FEATURE_KEY = 'addGoal';
 
-export interface BottomNavigationState {
-  readonly ngrxForms: AddGoal;
+export interface AddGoalState {
+  readonly addGoal: AddGoal;
 }
 
 export const initialState: AddGoal = {
@@ -13,7 +13,7 @@ export const initialState: AddGoal = {
   tfFocused: false,
 };
 
-const ngrxFormsReducer = createReducer(
+const addGoalReducer = createReducer(
   initialState,
   on(AddGoalActions.showAddGoal, state => ({
     ...state,
@@ -36,5 +36,5 @@ const ngrxFormsReducer = createReducer(
 );
 
 export function reducer(state: AddGoal | undefined, action: Action) {
-  return ngrxFormsReducer(state, action);
+  return addGoalReducer(state, action);
 }

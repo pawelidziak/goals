@@ -9,7 +9,7 @@ export class AddGoalFacade {
   show$ = this.store.select(AddGoalSelectors.getShow);
   tfFocused$ = this.store.select(AddGoalSelectors.getTfFocused);
 
-  constructor(private store: Store<fromAddGoal.BottomNavigationState>) {}
+  constructor(private store: Store<fromAddGoal.AddGoalState>) {}
 
   showAddGoal() {
     this.store.dispatch(AddGoalActions.showAddGoal());
