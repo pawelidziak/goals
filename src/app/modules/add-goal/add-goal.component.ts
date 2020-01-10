@@ -32,7 +32,7 @@ export class AddGoalComponent implements OnInit, AfterViewInit {
     },
     deadline: {
       icon: 'mdi-date-range',
-      iconColors: ['#F44336', '#FF9800', '#2196F3', '#9E9E9E'],
+      iconColors: ['#3F51B5', '#009688', '#673AB7', '#795548'],
       items: ['Today', 'Tomorrow', 'Long-term', 'Todo']
     }
   };

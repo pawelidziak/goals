@@ -1,6 +1,7 @@
 <GridLayout rows="*, auto">
   <!-- Tab View -->
   <TabView row="0">
+    <!-- TODAY -->
     <page-router-outlet
       *tabItem="{title: 'Today'}"
       name="playerTab"
@@ -8,8 +9,25 @@
     >
     </page-router-outlet>
 
+    <!-- TOMORROW -->
     <page-router-outlet
-      *tabItem="{title: 'Long-term'}"
+      *tabItem="{title: 'tmrw.'}"
+      name="teamTab"
+      actionBarVisibility="never"
+    >
+    </page-router-outlet>
+    
+    <!-- LONG-TERM -->
+    <page-router-outlet
+      *tabItem="{title: 'Long.'}"
+      name="teamTab"
+      actionBarVisibility="never"
+    >
+    </page-router-outlet>
+    
+    <!-- TODOS -->
+    <page-router-outlet
+      *tabItem="{title: 'Todo'}"
       name="teamTab"
       actionBarVisibility="never"
     >

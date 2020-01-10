@@ -11,7 +11,7 @@
   ></TextField>
 
   <!-- Action Row -->
-  <FlexboxLayout justifyContent="space-between">
+  <FlexboxLayout justifyContent="space-between" alignItems="center" paddingTop="2">
     <!-- Drop downs -->
     <FlexboxLayout>
       <!-- Priority -->
@@ -20,7 +20,6 @@
         [icon]="ddItems.priority.icon"
         [iconColors]="ddItems.priority.iconColors"
       ></app-goal-dd>
-
       <!-- Deadline -->
       <app-goal-dd
         [items]="ddItems.deadline.items"
