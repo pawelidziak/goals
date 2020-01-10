@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { AddGoalFacade } from './+state/add-goal.facade';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { AddGoalComponent } from './add-goal.component';
+import { AddGoalComponent } from './components/add-goal.component';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NgRippleModule } from 'nativescript-ng-ripple';
 import { DropDownModule } from 'nativescript-drop-down/angular';

@@ -11,7 +11,7 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { TextField } from 'tns-core-modules/ui/text-field';
-import { AddGoalFacade } from './+state/add-goal.facade';
+import { AddGoalFacade } from '../+state/add-goal.facade';
 
 @Component({
   selector: 'app-add-goal',
