@@ -18,4 +18,8 @@ export class AddGoalFacade {
   hideAddGoal() {
     this.store.dispatch(AddGoalActions.hideAddGoal());
   }
+
+  selectDeadline(deadlineId: string | number) {
+    this.store.dispatch(AddGoalActions.selectDeadline({ id: deadlineId }));
+  }
 }

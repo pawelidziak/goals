@@ -1,4 +1,4 @@
-import { AddGoal } from './add-goal.models';
+import { AddGoal, Deadline } from './add-goal.models';
 import { createReducer, on, Action } from '@ngrx/store';
 import * as AddGoalActions from './add-goal.actions';
 
@@ -8,9 +8,18 @@ export interface AddGoalState {
   readonly addGoal: AddGoal;
 }
 
+export const initialDeadlines: Deadline[] = [
+  { id: '1', name: 'Today' },
+  { id: '2', name: 'Tomorrow' },
+  { id: '3', name: 'Long-term' },
+  { id: '4', name: 'Todo' }
+];
+
 export const initialState: AddGoal = {
   show: false,
   tfFocused: false,
+  deadlines: initialDeadlines,
+  selectedDeadlineId: '1'
 };
 
 const addGoalReducer = createReducer(
