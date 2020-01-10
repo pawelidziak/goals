@@ -1,3 +1,4 @@
+import { StoreModule } from '@ngrx/store';
 import { AddGoalModule } from './../add-goal/add-goal.module';
 import { APP_ROUTES } from '@core/routes';
 import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
@@ -7,11 +8,13 @@ import { GoalsComponent } from './goals.component';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
+import * as fromGoals from './+state/goals.reducer';
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
     NativeScriptRouterModule,
+    StoreModule.forFeature(fromGoals.GOALS_FEATURE_KEY, fromGoals.reducer),
     NativeScriptRouterModule.forChild([
       { path: '', redirectTo: APP_ROUTES.GOALS },
       {
