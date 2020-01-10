@@ -1,0 +1,21 @@
+<GridLayout ripple marginRight="8" rows="*" columns="auto" (tap)="openDd()">
+  <DropDown
+    #dropDown
+    class="drop-down"
+    itemsTextAlignment="center"
+    itemsPadding="10"
+    [items]="items"
+    [(ngModel)]="selectedIndex"
+    (selectedIndexChanged)="onSelectedIndexChanged($event)"
+  ></DropDown>
+
+  <FlexboxLayout alignItems="center" padding="5" paddingLeft="2">
+    <label
+      [text]="icon | fonticon"
+      class="mdi"
+      [color]="currentIconColor"
+    ></label>
+    <label [text]="items[selectedIndex]"></label>
+  </FlexboxLayout>
+  <StackLayout [background]="currentIconColor" class="dd-overlay"></StackLayout>
+</GridLayout>
