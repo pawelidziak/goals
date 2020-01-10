@@ -1,5 +1,7 @@
 <GridLayout rows="*, auto">
+  <!-- Tab View -->
   <TabView row="0">
+    <!-- TODAY -->
     <page-router-outlet
       *tabItem="{title: 'Today'}"
       name="playerTab"
@@ -7,15 +9,50 @@
     >
     </page-router-outlet>
 
+    <!-- TOMORROW -->
     <page-router-outlet
-      *tabItem="{title: 'Long-term'}"
+      *tabItem="{title: 'tmrw.'}"
+      name="teamTab"
+      actionBarVisibility="never"
+    >
+    </page-router-outlet>
+    
+    <!-- LONG-TERM -->
+    <page-router-outlet
+      *tabItem="{title: 'Long.'}"
+      name="teamTab"
+      actionBarVisibility="never"
+    >
+    </page-router-outlet>
+    
+    <!-- TODOS -->
+    <page-router-outlet
+      *tabItem="{title: 'Todo'}"
       name="teamTab"
       actionBarVisibility="never"
     >
     </page-router-outlet>
   </TabView>
-  <AbsoluteLayout row="0" class="float-btn-container ">
-    <app-float-btn [size]="58" (fabTap)="onTap($event)">
+
+  <!-- Overview -->
+  <StackLayout
+    *ngIf="showAddGoalComponent$ | async"
+    class="overview"
+    (tap)="hideAddGoalComponent()"
+  ></StackLayout>
+
+  <!-- Add Goal Component -->
+  <StackLayout row="1">
+    <app-add-goal></app-add-goal>
+  </StackLayout>
+
+  <!-- Add Fab -->
+  <AbsoluteLayout
+    row="0"
+    *ngIf="!(showAddGoalComponent$ | async)"
+    class="float-btn-container"
+  >
+    <app-float-btn [size]="58" (fabTap)="showAddGoalComponent()">
       <label [text]="'mdi-add' | fonticon" class="mdi"></label>
     </app-float-btn>
   </AbsoluteLayout>

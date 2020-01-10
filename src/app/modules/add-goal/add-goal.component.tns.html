@@ -1,0 +1,39 @@
+<StackLayout
+  padding="0 10 10"
+  [ngClass]="{'display-none': !(showComponent$ | async)}"
+>
+  <!-- Text Field -->
+  <TextField
+    #addTextField
+    hint="What would you like to do?"
+    [(ngModel)]="newGoalTitle"
+    (returnPress)="closeAdding()"
+  ></TextField>
+
+  <!-- Action Row -->
+  <FlexboxLayout justifyContent="space-between" alignItems="center" paddingTop="2">
+    <!-- Drop downs -->
+    <FlexboxLayout>
+      <!-- Priority -->
+      <app-goal-dd
+        [items]="ddItems.priority.items"
+        [icon]="ddItems.priority.icon"
+        [iconColors]="ddItems.priority.iconColors"
+      ></app-goal-dd>
+      <!-- Deadline -->
+      <app-goal-dd
+        [items]="ddItems.deadline.items"
+        [icon]="ddItems.deadline.icon"
+        [iconColors]="ddItems.deadline.iconColors"
+      ></app-goal-dd>
+    </FlexboxLayout>
+
+    <!-- Send icon -->
+    <Label
+      [color]="newGoalTitle ? '#2196F3' : '#9E9E9E'"
+      (tap)="onSend()"
+      [text]="'mdi-send' | fonticon"
+      class="mdi"
+    ></Label>
+  </FlexboxLayout>
+</StackLayout>

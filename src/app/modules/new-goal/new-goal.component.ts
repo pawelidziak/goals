@@ -14,10 +14,10 @@ export class NewGoalComponent implements OnInit {
   // mobile
   private _goal: Goal;
   priorityProvider = [
-    { key: 'a', label: 'A' },
-    { key: 'b', label: 'B' },
-    { key: 'c', label: 'C' },
-    { key: 'd', label: 'D' }
+    { key: 'a', label: 'A - High' },
+    { key: 'b', label: 'B - Medium' },
+    { key: 'c', label: 'C - Low' },
+    { key: 'd', label: 'D - None' }
   ];
 
   // web

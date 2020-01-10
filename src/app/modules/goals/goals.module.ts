@@ -1,3 +1,4 @@
+import { AddGoalModule } from './../add-goal/add-goal.module';
 import { APP_ROUTES } from '@core/routes';
 import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
@@ -22,7 +23,9 @@ import { NativeScriptCommonModule } from 'nativescript-angular/common';
             outlet: 'playerTab',
             component: NSEmptyOutletComponent,
             loadChildren: () =>
-              import('@modules/player/players.module').then(m => m.PlayersModule)
+              import('@modules/player/players.module').then(
+                m => m.PlayersModule
+              )
           },
           {
             path: APP_ROUTES.TEAMS,
@@ -35,7 +38,8 @@ import { NativeScriptCommonModule } from 'nativescript-angular/common';
       }
     ]),
     TNSFontIconModule,
-    FloatBtnModule
+    FloatBtnModule,
+    AddGoalModule
   ],
   declarations: [GoalsComponent],
   providers: [],
