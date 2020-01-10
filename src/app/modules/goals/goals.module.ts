@@ -9,11 +9,13 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import * as fromGoals from './+state/goals.reducer';
+import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
     NativeScriptRouterModule,
+    NativeScriptFormsModule,
     StoreModule.forFeature(fromGoals.GOALS_FEATURE_KEY, fromGoals.reducer),
     NativeScriptRouterModule.forChild([
       { path: '', redirectTo: APP_ROUTES.GOALS },

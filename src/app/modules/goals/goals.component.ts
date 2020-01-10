@@ -52,4 +52,7 @@ export class GoalsComponent implements OnInit {
     this.bottomNavFacade.showBottomNav();
     this.addGoalFacade.hideAddGoal();
   }
+
+  onTabChanged(tabIndex: number) {
+  }
 }

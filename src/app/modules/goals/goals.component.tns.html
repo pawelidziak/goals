@@ -1,6 +1,11 @@
 <GridLayout rows="*, auto">
   <!-- Tab View -->
-  <TabView row="0">
+  <!-- Unfortunately we can't use 'name' as input so we need to hardcode out tabs -->
+  <TabView
+    row="0"
+    #tabView
+    (selectedIndexChanged)="onTabChanged(tabView.selectedIndex)"
+  >
     <!-- TODAY -->
     <page-router-outlet
       *tabItem="{title: 'Today'}"
@@ -11,23 +16,7 @@
 
     <!-- TOMORROW -->
     <page-router-outlet
-      *tabItem="{title: 'tmrw.'}"
-      name="teamTab"
-      actionBarVisibility="never"
-    >
-    </page-router-outlet>
-    
-    <!-- LONG-TERM -->
-    <page-router-outlet
-      *tabItem="{title: 'Long.'}"
-      name="teamTab"
-      actionBarVisibility="never"
-    >
-    </page-router-outlet>
-    
-    <!-- TODOS -->
-    <page-router-outlet
-      *tabItem="{title: 'Todo'}"
+      *tabItem="{title: 'Trw.'}"
       name="teamTab"
       actionBarVisibility="never"
     >
