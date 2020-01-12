@@ -34,7 +34,6 @@ export class RepeatsComponent extends GoalDropdownsBase implements OnInit {
         (prorities: Repeat[]) => (this.repeats = prorities)
       )
     );
-    this.addGoalFacade.goal$.subscribe(res => console.log(res))
   }
 
   onItemChanged = (index: number) =>
