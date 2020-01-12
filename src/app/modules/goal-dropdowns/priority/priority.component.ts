@@ -37,5 +37,5 @@ export class PriorityComponent extends GoalDropdownsBase implements OnInit {
   }
 
   onItemChanged = (index: number) =>
-    this.addGoalFacade.selecPriority(this.priorities[index]);
+    this.addGoalFacade.selectPriority(this.priorities[index]);
 }
