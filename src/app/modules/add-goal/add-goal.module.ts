@@ -1,5 +1,4 @@
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
-import { GoalDdComponent } from './goal-dd/goal-dd.component';
 import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
 import { StoreModule } from '@ngrx/store';
 import { AddGoalFacade } from './+state/add-goal.facade';
@@ -26,7 +25,7 @@ import { GoalDropdownsModule } from '@modules/goal-dropdowns/goal-dropdowns.modu
     ),
     GoalDropdownsModule
   ],
-  declarations: [AddGoalComponent, GoalDdComponent],
+  declarations: [AddGoalComponent],
   exports: [AddGoalComponent],
   providers: [AddGoalFacade],
   schemas: [NO_ERRORS_SCHEMA]
