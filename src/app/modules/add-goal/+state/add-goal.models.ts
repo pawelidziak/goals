@@ -3,9 +3,24 @@ export interface Deadline {
   name: string;
 }
 
+export interface Priority {
+  id: string | number;
+  name: string;
+}
+
+export interface Goal {
+  id: string | number;
+  name: string;
+  desc: string;
+  priority: Priority;
+  deadline: Deadline;
+}
+
 export interface AddGoal {
   show: boolean;
   tfFocused: boolean;
-  deadlines: Deadline[];
-  selectedDeadlineId: string | number; 
+  selectedDeadlineId: string | number;
+  deadlines: Deadline[],
+  priorities: Priority[],
+  goal: Goal;
 }
