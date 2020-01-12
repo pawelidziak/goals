@@ -1,4 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Repeat } from '../../add-goal/+state/add-goal.models';
+import { GoalDropdownsBase } from '../goal-dropdowns.base';
+import { AddGoalFacade } from '../../add-goal/+state/add-goal.facade';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-repeats',
@@ -6,18 +11,32 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./repeats.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RepeatsComponent implements OnInit {
-  repeats = {
-    icon: 'mdi-autorenew',
-    iconColors: ['#F44336', '#FF9800', '#2196F3', '#9E9E9E'],
-    items: ['None', 'Daily', 'Weekly', 'Nonstandard']
-  };
+export class RepeatsComponent extends GoalDropdownsBase implements OnInit {
+  icon = 'mdi-autorenew';
+  iconColors = ['#AFB42B', '#00BCD4', '#673AB7', '#607D8B'];
 
-  constructor() {}
+  repeats: Repeat[];
+  items$: Observable<string[]> = this.addGoalFacade.repeats$.pipe(
+    map(repeats => repeats.map(repeat => repeat.name))
+  );
 
-  ngOnInit(): void {}
-
-  onItemChanged(index: number) {
-    console.log('onItemChanged', index);
+  constructor(private addGoalFacade: AddGoalFacade) {
+    super();
   }
+
+  ngOnInit(): void {
+    this.getRepeats();
+  }
+
+  getRepeats() {
+    this.unsubscribes$.add(
+      this.addGoalFacade.repeats$.subscribe(
+        (prorities: Repeat[]) => (this.repeats = prorities)
+      )
+    );
+    this.addGoalFacade.goal$.subscribe(res => console.log(res))
+  }
+
+  onItemChanged = (index: number) =>
+    this.addGoalFacade.selectRepeat(this.repeats[index]);
 }
