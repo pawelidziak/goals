@@ -1,5 +1,4 @@
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
-import { GoalDdComponent } from './goal-dd/goal-dd.component';
 import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
 import { StoreModule } from '@ngrx/store';
 import { AddGoalFacade } from './+state/add-goal.facade';
@@ -10,6 +9,7 @@ import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NgRippleModule } from 'nativescript-ng-ripple';
 import { DropDownModule } from 'nativescript-drop-down/angular';
 import * as fromAddGoal from './+state/add-goal.reducer';
+import { GoalDropdownsModule } from '@modules/goal-dropdowns/goal-dropdowns.module';
 
 @NgModule({
   imports: [
@@ -19,9 +19,13 @@ import * as fromAddGoal from './+state/add-goal.reducer';
     DropDownModule,
     TNSFontIconModule,
     FloatBtnModule,
-    StoreModule.forFeature(fromAddGoal.ADDGOAL_FEATURE_KEY, fromAddGoal.reducer)
+    StoreModule.forFeature(
+      fromAddGoal.ADDGOAL_FEATURE_KEY,
+      fromAddGoal.reducer
+    ),
+    GoalDropdownsModule
   ],
-  declarations: [AddGoalComponent, GoalDdComponent],
+  declarations: [AddGoalComponent],
   exports: [AddGoalComponent],
   providers: [AddGoalFacade],
   schemas: [NO_ERRORS_SCHEMA]

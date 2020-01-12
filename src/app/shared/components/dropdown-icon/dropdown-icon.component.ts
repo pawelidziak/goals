@@ -2,23 +2,26 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
+  Input,
   ViewChild,
   ElementRef,
-  Input
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { DropDown } from 'nativescript-drop-down';
-import { SelectedIndexChangedEventData } from 'nativescript-drop-down';
+import { SelectedIndexChangedEventData } from 'tns-core-modules/ui/tab-view/tab-view';
 
 @Component({
-  selector: 'app-goal-dd',
-  templateUrl: './goal-dd.component.html',
-  styleUrls: ['./goal-dd.component.scss'],
+  selector: 'app-dropdown-icon',
+  templateUrl: './dropdown-icon.component.html',
+  styleUrls: ['./dropdown-icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GoalDdComponent implements OnInit {
+export class DropDownIconComponent implements OnInit {
   @Input() items: any[];
   @Input() icon: string;
   @Input() iconColors: string[];
+  @Output() itemChanged: EventEmitter<number> = new EventEmitter();
   @ViewChild('dropDown', { static: false }) dropDown: ElementRef;
   selectedIndex = 0;
   currentIconColor = '';
@@ -36,6 +39,7 @@ export class GoalDdComponent implements OnInit {
 
   onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
     this.pickIconColor(args.newIndex);
+    this.itemChanged.emit(args.newIndex);
   }
 
   private pickIconColor(index: number) {

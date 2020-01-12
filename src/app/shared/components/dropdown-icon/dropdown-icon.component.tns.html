@@ -1,4 +1,11 @@
-<GridLayout ripple marginRight="8" rows="*" columns="auto" (tap)="openDd()">
+<GridLayout
+  ripple
+  marginRight="8"
+  borderRadius="5"
+  rows="*"
+  columns="auto"
+  (tap)="openDd()"
+>
   <DropDown
     #dropDown
     class="drop-down"
@@ -10,12 +17,12 @@
   ></DropDown>
 
   <FlexboxLayout alignItems="center" padding="5" paddingLeft="2">
-    <Label
+    <label
       [text]="icon | fonticon"
       class="mdi"
       [color]="currentIconColor"
-    ></Label>
-    <Label [text]="items[selectedIndex]"></Label>
+    ></label>
+    <label [text]="items[selectedIndex]" fontSize="10"></label>
   </FlexboxLayout>
   <StackLayout [background]="currentIconColor" class="dd-overlay"></StackLayout>
 </GridLayout>

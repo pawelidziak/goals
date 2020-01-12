@@ -16,9 +16,24 @@ export const getTfFocused = createSelector(
   (state: AddGoal) => state.tfFocused
 );
 
+export const getGoal = createSelector(
+  getAddGoalState,
+  (state: AddGoal) => state.goal
+);
+
 export const getDeadlines = createSelector(
   getAddGoalState,
   (state: AddGoal) => state.deadlines
+);
+
+export const getPriorities = createSelector(
+  getAddGoalState,
+  (state: AddGoal) => state.priorities
+);
+
+export const getRepeats = createSelector(
+  getAddGoalState,
+  (state: AddGoal) => state.repeats
 );
 
 const getSelectedDeadlineId = createSelector(
