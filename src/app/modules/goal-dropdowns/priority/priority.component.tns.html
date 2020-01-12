@@ -1,6 +1,6 @@
 <app-dropdown-icon
-  [items]="priority.items"
-  [icon]="priority.icon"
-  [iconColors]="priority.iconColors"
+  [items]="(items$ | async)"
+  [icon]="icon"
+  [iconColors]="iconColors"
   (itemChanged)="onItemChanged($event)"
 ></app-dropdown-icon>
