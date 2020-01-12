@@ -1,4 +1,4 @@
-import { AddGoal, Deadline, Priority } from './add-goal.models';
+import { AddGoal, Deadline, Priority, Repeat } from './add-goal.models';
 import { createReducer, on, Action } from '@ngrx/store';
 import * as AddGoalActions from './add-goal.actions';
 
@@ -22,18 +22,27 @@ export const initialDeadlines: Deadline[] = [
   { id: '4', name: 'Todo' }
 ];
 
+export const initialRepeats: Repeat[] = [
+  { id: '1', name: 'None' },
+  { id: '2', name: 'Daily' },
+  { id: '3', name: 'Weekly' },
+  { id: '4', name: 'Other' }
+];
+
 export const initialState: AddGoal = {
   show: false,
   tfFocused: false,
   selectedDeadlineId: '1',
   priorities: initialPriorities,
   deadlines: initialDeadlines,
+  repeats: initialRepeats,
   goal: {
     id: '',
     name: '',
     desc: '',
     deadline: initialDeadlines[0],
-    priority: initialPriorities[0]
+    priority: initialPriorities[0],
+    repeat: initialRepeats[0]
   }
 };
 
@@ -64,6 +73,10 @@ const addGoalReducer = createReducer(
   on(AddGoalActions.selectDeadline, (state, { deadline }) => ({
     ...state,
     goal: { ...state.goal, deadline: deadline }
+  })),
+  on(AddGoalActions.selectRepeat, (state, { repeat }) => ({
+    ...state,
+    goal: { ...state.goal, repeat: repeat }
   }))
 );
 

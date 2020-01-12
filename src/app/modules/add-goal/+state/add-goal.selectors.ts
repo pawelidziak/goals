@@ -31,6 +31,11 @@ export const getPriorities = createSelector(
   (state: AddGoal) => state.priorities
 );
 
+export const getRepeats = createSelector(
+  getAddGoalState,
+  (state: AddGoal) => state.repeats
+);
+
 const getSelectedDeadlineId = createSelector(
   getAddGoalState,
   (state: AddGoal) => state.selectedDeadlineId
