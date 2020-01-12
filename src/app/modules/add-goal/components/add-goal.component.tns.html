@@ -11,30 +11,23 @@
   ></TextField>
 
   <!-- Action Row -->
-  <FlexboxLayout justifyContent="space-between" alignItems="center" paddingTop="2">
+  <FlexboxLayout
+    justifyContent="space-between"
+    alignItems="center"
+    paddingTop="2"
+  >
     <!-- Drop downs -->
     <FlexboxLayout>
-      <!-- Priority -->
       <app-priority></app-priority>
-      <!-- <app-goal-dd
-        [items]="ddItems.priority.items"
-        [icon]="ddItems.priority.icon"
-        [iconColors]="ddItems.priority.iconColors"
-      ></app-goal-dd> -->
-      <!-- Deadline -->
-      <app-goal-dd
-        [items]="ddItems.deadline.items"
-        [icon]="ddItems.deadline.icon"
-        [iconColors]="ddItems.deadline.iconColors"
-      ></app-goal-dd>
+      <app-deadlines></app-deadlines>
     </FlexboxLayout>
 
     <!-- Send icon -->
-    <Label
+    <label
       [color]="newGoalTitle ? '#2196F3' : '#9E9E9E'"
       (tap)="onSend()"
       [text]="'mdi-send' | fonticon"
       class="mdi"
-    ></Label>
+    ></label>
   </FlexboxLayout>
 </StackLayout>

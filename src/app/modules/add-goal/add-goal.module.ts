@@ -11,6 +11,7 @@ import { NgRippleModule } from 'nativescript-ng-ripple';
 import { DropDownModule } from 'nativescript-drop-down/angular';
 import * as fromAddGoal from './+state/add-goal.reducer';
 import { PriorityModule } from '../priority/priority.module.tns';
+import { DeadlinesModule } from '../deadlines/deadlines.module.tns';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { PriorityModule } from '../priority/priority.module.tns';
     TNSFontIconModule,
     FloatBtnModule,
     StoreModule.forFeature(fromAddGoal.ADDGOAL_FEATURE_KEY, fromAddGoal.reducer),
-    PriorityModule
+    PriorityModule,
+    DeadlinesModule
   ],
   declarations: [AddGoalComponent, GoalDdComponent],
   exports: [AddGoalComponent],
