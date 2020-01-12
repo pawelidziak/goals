@@ -12,6 +12,7 @@ import { DropDownModule } from 'nativescript-drop-down/angular';
 import * as fromAddGoal from './+state/add-goal.reducer';
 import { PriorityModule } from '../priority/priority.module.tns';
 import { DeadlinesModule } from '../deadlines/deadlines.module.tns';
+import { RepeatsModule } from '../repeats/repeats.module.tns';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { DeadlinesModule } from '../deadlines/deadlines.module.tns';
     FloatBtnModule,
     StoreModule.forFeature(fromAddGoal.ADDGOAL_FEATURE_KEY, fromAddGoal.reducer),
     PriorityModule,
-    DeadlinesModule
+    DeadlinesModule,
+    RepeatsModule
   ],
   declarations: [AddGoalComponent, GoalDdComponent],
   exports: [AddGoalComponent],
