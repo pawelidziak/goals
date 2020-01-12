@@ -16,4 +16,8 @@ export class RepeatsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onItemChanged(index: number) {
+    console.log('onItemChanged', index);
+  }
 }

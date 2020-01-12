@@ -12,8 +12,12 @@ export class DeadlinesComponent implements OnInit {
     iconColors: ['#3F51B5', '#009688', '#673AB7', '#795548'],
     items: ['Today', 'Tomorrow', 'Long-term', 'Todo']
   };
-  
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  onItemChanged(index: number) {
+    console.log('onItemChanged', index);
+  }
 }
