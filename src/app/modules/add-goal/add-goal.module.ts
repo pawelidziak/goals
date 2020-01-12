@@ -10,9 +10,7 @@ import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NgRippleModule } from 'nativescript-ng-ripple';
 import { DropDownModule } from 'nativescript-drop-down/angular';
 import * as fromAddGoal from './+state/add-goal.reducer';
-import { PriorityModule } from '../priority/priority.module.tns';
-import { DeadlinesModule } from '../deadlines/deadlines.module.tns';
-import { RepeatsModule } from '../repeats/repeats.module.tns';
+import { GoalDropdownsModule } from '@modules/goal-dropdowns/goal-dropdowns.module';
 
 @NgModule({
   imports: [
@@ -22,10 +20,11 @@ import { RepeatsModule } from '../repeats/repeats.module.tns';
     DropDownModule,
     TNSFontIconModule,
     FloatBtnModule,
-    StoreModule.forFeature(fromAddGoal.ADDGOAL_FEATURE_KEY, fromAddGoal.reducer),
-    PriorityModule,
-    DeadlinesModule,
-    RepeatsModule
+    StoreModule.forFeature(
+      fromAddGoal.ADDGOAL_FEATURE_KEY,
+      fromAddGoal.reducer
+    ),
+    GoalDropdownsModule
   ],
   declarations: [AddGoalComponent, GoalDdComponent],
   exports: [AddGoalComponent],
