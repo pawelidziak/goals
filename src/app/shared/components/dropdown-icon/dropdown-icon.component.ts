@@ -4,7 +4,9 @@ import {
   ChangeDetectionStrategy,
   Input,
   ViewChild,
-  ElementRef
+  ElementRef,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { DropDown } from 'nativescript-drop-down';
 import { SelectedIndexChangedEventData } from 'tns-core-modules/ui/tab-view/tab-view';
@@ -19,6 +21,7 @@ export class DropDownIconComponent implements OnInit {
   @Input() items: any[];
   @Input() icon: string;
   @Input() iconColors: string[];
+  @Output() itemChanged: EventEmitter<number> = new EventEmitter();
   @ViewChild('dropDown', { static: false }) dropDown: ElementRef;
   selectedIndex = 0;
   currentIconColor = '';
@@ -36,6 +39,7 @@ export class DropDownIconComponent implements OnInit {
 
   onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
     this.pickIconColor(args.newIndex);
+    this.itemChanged.emit(args.newIndex);
   }
 
   private pickIconColor(index: number) {
