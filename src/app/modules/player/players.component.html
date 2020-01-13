@@ -1,4 +1,4 @@
-<GridLayout rows="*, auto">
+<!-- <GridLayout rows="*, auto">
   <ListView row="0" [items]="items" class="list-group">
     <ng-template let-item="item">
       <Label
@@ -10,9 +10,21 @@
       ></Label>
     </ng-template>
   </ListView>
-  <!-- <AbsoluteLayout row="1">
-    <app-float-btn [text]="'+'" [size]="58"></app-float-btn>
-  </AbsoluteLayout> -->
+</GridLayout> -->
+
+
+<GridLayout rows="*, auto">
+  <ListView row="0" [items]="goals$ | async" class="list-group">
+    <ng-template let-item="item">
+      <Label
+        ripple
+        rippleColor="#00ff00"
+        [nsRouterLink]="['../player', item.id]"
+        [text]="item.name"
+        class="list-group-item"
+      ></Label>
+    </ng-template>
+  </ListView>
 </GridLayout>
 
 <!-- <AbsoluteLayout>
