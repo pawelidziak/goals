@@ -36,6 +36,7 @@
     "@ngrx/entity": "^8.6.0",
     "@ngrx/store": "^8.6.0",
     "@ngrx/store-devtools": "^8.6.0",
+    "@nstudio/nativescript-checkbox": "^1.0.0",
     "core-js": "^2.6.9",
     "hammerjs": "^2.0.8",
     "nativescript-angular": "~8.20.0",
