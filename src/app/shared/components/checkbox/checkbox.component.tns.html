@@ -2,4 +2,6 @@
   #checkbox
   [text]="text ? text : ''"
   [checked]="checkboxValue"
+  [fillColor]="fillColor"
+  (checkedChange)="checkedChange(checkbox.checked)"
 ></CheckBox>
