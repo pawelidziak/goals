@@ -1,21 +1,80 @@
-<ListView [items]="movies" (itemTap)="onItemTap($event)">
-  <ng-template let-item="item">
-    <GridLayout columns="auto, *, auto">
-      <StackLayout col="0" class="mr-10" height="36" width="36">
-        <label [text]="getBadgeIcon(item.category)"></label>
-      </StackLayout>
+<GridLayout>
+  <RadListView
+    #myListView
+    [items]="goals$ | async"
+    selectionBehavior="None"
+    (itemSwipeProgressEnded)="onSwipeCellFinished($event)"
+    (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
+    (itemSwipeProgressChanged)="onCellSwiping($event)"
+    swipeActions="true"
+  >
+    <ng-template tkListItemTemplate let-item="item">
+      <GridLayout
+        columns="auto, *"
+        ripple
+        (tap)="onLayoutTap($event)"
+        background="#fff"
+      >
+        <!-- CHECKBOX -->
+        <StackLayout col="0" verticalAlignment="center" padding="0 10">
+          <app-checkbox [(value)]="item.done"></app-checkbox>
+        </StackLayout>
 
-      <StackLayout col="1" verticalAlignment="center">
-        <label [text]="getCompany(item.id).name"></label>
-        <label [text]="item.category"></label>
-      </StackLayout>
+        <!-- ITEM -->
+        <StackLayout col="1" padding="10 0">
+          <label class="label-name" [text]="item.name"></label>
+          <label class="label-text" [text]="item.desc"></label>
+        </StackLayout>
 
-      <label col="2" horizontal="right">
-        <FormattedString>
-          <span [text]="item.done"></span>
-          <!-- <span [text]="'mdi-bluetooth' | fonticon" class="mdi icon"></span> -->
-        </FormattedString>
-      </label>
+        <!-- PRIORITY -->
+        <!-- <StackLayout
+          col="2"
+          orientation="horizontal"
+          verticalAlignment="center"
+          padding="0 10"
+        >
+          <FlexboxLayout
+            ripple
+            class="item__icon"
+            [color]="item.priority.color"
+          >
+            <label [text]="'mdi-priority-high' | fonticon" class="mdi"></label>
+          </FlexboxLayout>
+          <FlexboxLayout ripple class="item__icon">
+            <label [text]="'mdi-date-range' | fonticon" class="mdi"></label>
+          </FlexboxLayout>
+        </StackLayout> -->
+      </GridLayout>
+    </ng-template>
+
+    <GridLayout
+      *tkListItemSwipeTemplate
+      columns="auto, *, auto"
+      class="gridLayoutLayout"
+    >
+      <FlexboxLayout
+        id="mark-view"
+        col="0"
+        class="swipe-view"
+        alignItems="center"
+        background="#00C851"
+      >
+        <label [text]="'mdi-done' | fonticon" class="mdi"></label>
+        <label text="done" class="swipe-view__text"></label>
+      </FlexboxLayout>
+
+      <FlexboxLayout col="1" [background]="swipeRight.bgColor"></FlexboxLayout>
+
+      <FlexboxLayout
+        id="delete-view"
+        col="2"
+        class="swipe-view"
+        alignItems="center"
+        [background]="swipeRight.bgColor"
+      >
+        <label [text]="swipeRight.icon | fonticon" class="mdi"></label>
+        <label [text]="swipeRight.text" class="swipe-view__text"></label>
+      </FlexboxLayout>
     </GridLayout>
-  </ng-template>
-</ListView>
+  </RadListView>
+</GridLayout>

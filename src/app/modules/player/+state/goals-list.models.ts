@@ -5,4 +5,5 @@ export interface Goal {
     priority: any;
     deadline: any;
     repeat: any;
+    done: boolean;
   }
