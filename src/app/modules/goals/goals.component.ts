@@ -1,11 +1,11 @@
+import { GoalsFacade } from './+state/goals.facade';
 import { Observable } from 'rxjs';
 import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
-import { APP_ROUTES } from '@core/routes';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { AddGoalFacade } from '../add-goal/+state/add-goal.facade';
+import { Goal } from './+state';
 
 @Component({
   selector: 'app-goals',
@@ -14,45 +14,26 @@ import { AddGoalFacade } from '../add-goal/+state/add-goal.facade';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GoalsComponent implements OnInit {
-  showAddGoalComponent$: Observable<boolean> = this.addGoalFacade.show$;
+
+  dropDownItems = ['a', 'b'];
+  dropDownSelectedId = 0;
+
+  goals$: Observable<Goal[]>;
 
   constructor(
     private page: Page,
     private routerExtensions: RouterExtensions,
     private activeRoute: ActivatedRoute,
     private bottomNavFacade: BottomNavigationFacade,
-    private addGoalFacade: AddGoalFacade
+    private goalsFacade: GoalsFacade
   ) {}
 
   ngOnInit() {
-    this.page.actionBarHidden = true;
-    this.navigateToTabView();
+    this.goals$ = this.goalsFacade.allGoals$;
+    this.goals$.subscribe(res => console.log(res));
   }
 
-  private navigateToTabView() {
-    this.routerExtensions.navigate(
-      [
-        {
-          outlets: {
-            playerTab: [APP_ROUTES.PLAYERS],
-            teamTab: [APP_ROUTES.TEAMS]
-          }
-        }
-      ],
-      { relativeTo: this.activeRoute }
-    );
-  }
-
-  showAddGoalComponent() {
-    this.bottomNavFacade.hideBottomNav();
-    this.addGoalFacade.showAddGoal();
-  }
-
-  hideAddGoalComponent() {
-    this.bottomNavFacade.showBottomNav();
-    this.addGoalFacade.hideAddGoal();
-  }
-
-  onTabChanged(tabIndex: number) {
+  onDropDownSelect(e) {
+    // console.log(e);
   }
 }

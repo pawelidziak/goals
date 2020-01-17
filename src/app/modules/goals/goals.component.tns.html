@@ -1,48 +1,25 @@
-<GridLayout rows="*, auto">
-  <!-- Tab View -->
-  <!-- Unfortunately we can't use 'name' as input so we need to hardcode out tabs -->
-  <TabView
-    row="0"
-    #tabView
-    (selectedIndexChanged)="onTabChanged(tabView.selectedIndex)"
-  >
-    <!-- TODAY -->
-    <page-router-outlet
-      *tabItem="{title: 'Today'}"
-      name="playerTab"
-      actionBarVisibility="never"
-    >
-    </page-router-outlet>
-
-    <!-- TOMORROW -->
-    <page-router-outlet
-      *tabItem="{title: 'Trw.'}"
-      name="teamTab"
-      actionBarVisibility="never"
-    >
-    </page-router-outlet>
-  </TabView>
-
-  <!-- Overview -->
+<ActionBar title="Some title" automationText="ActionBar">
   <StackLayout
-    *ngIf="showAddGoalComponent$ | async"
-    class="overview"
-    (tap)="hideAddGoalComponent()"
-  ></StackLayout>
-
-  <!-- Add Goal Component -->
-  <StackLayout row="1">
-    <app-add-goal></app-add-goal>
-  </StackLayout>
-
-  <!-- Add Fab -->
-  <AbsoluteLayout
-    row="0"
-    *ngIf="!(showAddGoalComponent$ | async)"
-    class="float-btn-container"
+    orientation="horizontal"
+    ios:horizontalAlignment="center"
+    android:horizontalAlignment="left"
   >
-    <app-float-btn [size]="58" (fabTap)="showAddGoalComponent()">
-      <label [text]="'mdi-add' | fonticon" class="mdi"></label>
-    </app-float-btn>
-  </AbsoluteLayout>
-</GridLayout>
+    <label text="123"></label>
+    <stackLayout>
+      <DropDown
+        #dd
+        [items]="dropDownItems"
+        [(ngModel)]="selectedIndex"
+        (selectedIndexChanged)="onDropDownSelect($event)"
+        class="action-label text-bold"
+        row="1"
+        colSpan="2"
+      >
+      </DropDown>
+    </stackLayout>
+  </StackLayout>
+</ActionBar>
+
+<StackLayout>
+  <app-list-movies [goals]="goals$ | async"></app-list-movies>
+</StackLayout>

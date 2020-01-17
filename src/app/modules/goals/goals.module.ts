@@ -1,53 +1,46 @@
-import { StoreModule } from '@ngrx/store';
-import { AddGoalModule } from './../add-goal/add-goal.module';
-import { APP_ROUTES } from '@core/routes';
-import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
-import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
-import { NSEmptyOutletComponent } from 'nativescript-angular/router';
-import { GoalsComponent } from './goals.component';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import * as fromGoals from './+state/goals.reducer';
+import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+
+import { APP_ROUTES } from '@core/routes';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
+import { DropDownModule } from 'nativescript-drop-down/angular';
+import { ListGoalsModule } from '../list-goals/list-goals.module';
+import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
+
+import { GoalsFacade, GoalsEffects } from './+state';
+import * as fromGoals from './+state/goals.reducer';
+import { GoalsResolver, GoalsService } from './services';
+import { AddGoalModule } from './../add-goal/add-goal.module';
+import { GoalsComponent } from './goals.component';
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
     NativeScriptRouterModule,
     NativeScriptFormsModule,
-    StoreModule.forFeature(fromGoals.GOALS_FEATURE_KEY, fromGoals.reducer),
     NativeScriptRouterModule.forChild([
       { path: '', redirectTo: APP_ROUTES.GOALS },
       {
-        path: APP_ROUTES.GOALS,
+        path: `${APP_ROUTES.GOALS}`,
         component: GoalsComponent,
-        children: [
-          {
-            path: APP_ROUTES.PLAYERS,
-            outlet: 'playerTab',
-            component: NSEmptyOutletComponent,
-            loadChildren: () =>
-              import('@modules/player/players.module').then(
-                m => m.PlayersModule
-              )
-          },
-          {
-            path: APP_ROUTES.TEAMS,
-            outlet: 'teamTab',
-            component: NSEmptyOutletComponent,
-            loadChildren: () =>
-              import('@modules/team/teams.module').then(m => m.TeamsModule)
-          }
-        ]
+        resolve: { GoalsResolver }
       }
     ]),
+    StoreModule.forFeature(fromGoals.GOALS_FEATURE_KEY, fromGoals.reducer),
+    EffectsModule.forFeature([GoalsEffects]),
     TNSFontIconModule,
     FloatBtnModule,
-    AddGoalModule
+    AddGoalModule,
+    DropDownModule,
+    
+    ListGoalsModule,
   ],
   declarations: [GoalsComponent],
-  providers: [],
+  providers: [GoalsService, GoalsFacade, GoalsResolver, GoalsEffects],
   schemas: [NO_ERRORS_SCHEMA]
 })
 export class GoalsModule {}
