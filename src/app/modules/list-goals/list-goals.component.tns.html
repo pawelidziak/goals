@@ -1,7 +1,7 @@
 <GridLayout>
   <RadListView
     #myListView
-    [items]="goals$ | async"
+    [items]="goals"
     selectionBehavior="None"
     (itemSwipeProgressEnded)="onSwipeCellFinished($event)"
     (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
