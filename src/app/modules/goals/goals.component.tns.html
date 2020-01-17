@@ -4,22 +4,40 @@
     ios:horizontalAlignment="center"
     android:horizontalAlignment="left"
   >
-    <label text="123"></label>
-    <stackLayout>
-      <DropDown
-        #dd
-        [items]="dropDownItems"
-        [(ngModel)]="selectedIndex"
-        (selectedIndexChanged)="onDropDownSelect($event)"
-        class="action-label text-bold"
-        row="1"
-        colSpan="2"
-      >
-      </DropDown>
-    </stackLayout>
+    <app-dropdown-icon
+      [items]="dropDownItems"
+      [labelSize]="17"
+      [labelMargin]="25"
+      icon="mdi-dashboard"
+      (itemChanged)="onItemChanged($event)"
+    ></app-dropdown-icon>
   </StackLayout>
 </ActionBar>
 
-<StackLayout>
-  <app-list-movies [goals]="goals$ | async"></app-list-movies>
-</StackLayout>
+<GridLayout rows="*, auto">
+  <StackLayout row="0">
+    <app-list-movies [goals]="goals$ | async"></app-list-movies>
+  </StackLayout>
+
+  <!-- Overview -->
+  <StackLayout
+    *ngIf="showAddGoalComponent$ | async"
+    class="overview"
+    (tap)="hideAddGoalComponent()"
+  ></StackLayout>
+
+  <!-- Add Goal Component -->
+  <StackLayout row="1">
+    <app-add-goal></app-add-goal>
+  </StackLayout>
+
+  <AbsoluteLayout
+    row="0"
+    *ngIf="!(showAddGoalComponent$ | async)"
+    class="float-btn-container"
+  >
+    <app-float-btn [size]="58" (fabTap)="showAddGoalComponent()">
+      <label [text]="'mdi-add' | fonticon" class="mdi"></label>
+    </app-float-btn>
+  </AbsoluteLayout>
+</GridLayout>

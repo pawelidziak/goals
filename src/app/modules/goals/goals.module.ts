@@ -1,3 +1,4 @@
+import { DropDownIconModule } from './../../shared/components/dropdown-icon/dropdown-icon.module.tns';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
@@ -25,7 +26,7 @@ import { GoalsComponent } from './goals.component';
     NativeScriptRouterModule.forChild([
       { path: '', redirectTo: APP_ROUTES.GOALS },
       {
-        path: `${APP_ROUTES.GOALS}`,
+        path: APP_ROUTES.GOALS,
         component: GoalsComponent,
         resolve: { GoalsResolver }
       }
@@ -36,8 +37,8 @@ import { GoalsComponent } from './goals.component';
     FloatBtnModule,
     AddGoalModule,
     DropDownModule,
-    
-    ListGoalsModule,
+    DropDownIconModule,
+    ListGoalsModule
   ],
   declarations: [GoalsComponent],
   providers: [GoalsService, GoalsFacade, GoalsResolver, GoalsEffects],
