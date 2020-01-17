@@ -13,8 +13,8 @@ import { APP_ROUTES } from '@core/routes';
     NativeScriptRouterModule,
     NativeScriptRouterModule.forChild([
       { path: '', redirectTo: `${APP_ROUTES.PLAYERS}` },
-      { path: `${APP_ROUTES.PLAYERS}`, component: PlayerComponent },
-      { path: `${APP_ROUTES.PLAYER_DETAIL}`, component: PlayerDetailComponent }
+      { path: APP_ROUTES.PLAYERS, component: PlayerComponent },
+      { path: APP_ROUTES.PLAYER_DETAIL, component: PlayerDetailComponent }
     ]),
     NgRippleModule,
     FloatBtnModule
