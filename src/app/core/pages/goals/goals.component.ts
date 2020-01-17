@@ -1,4 +1,4 @@
-import { GoalsFacade } from './+state/goals.facade';
+import { GoalsFacade } from '@pages/goals/+state';
 import { Observable } from 'rxjs';
 import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
@@ -29,9 +29,6 @@ export class GoalsComponent implements OnInit {
   goals$: Observable<Goal[]>;
 
   constructor(
-    private page: Page,
-    private routerExtensions: RouterExtensions,
-    private activeRoute: ActivatedRoute,
     private bottomNavFacade: BottomNavigationFacade,
     private goalsFacade: GoalsFacade,
     private addGoalFacade: AddGoalFacade
