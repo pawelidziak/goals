@@ -14,7 +14,7 @@
 
 
 <GridLayout rows="*, auto">
-  <ListView row="0" [items]="goals$ | async" class="list-group">
+  <ListView row="0" [items]="items" class="list-group">
     <ng-template let-item="item">
       <Label
         ripple
