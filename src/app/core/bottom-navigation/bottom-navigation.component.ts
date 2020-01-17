@@ -18,7 +18,7 @@ export class BottomNavigationComponent implements OnInit {
   public tabs = [
     { label: 'Progress', path: APP_ROUTES.TEAMS, icon: 'mdi-trending-up' },
     { label: 'Goals', path: APP_ROUTES.GOALS, icon: 'mdi-stars' },
-    { label: 'Settings', path: APP_ROUTES.SETTINGS, icon: 'mdi-settings' }
+    { label: 'Settings', path: APP_ROUTES.PLAYERS, icon: 'mdi-settings' }
   ];
   private _activatedUrl: string;
 
@@ -48,5 +48,5 @@ export class BottomNavigationComponent implements OnInit {
   }
 
   isComponentSelected = (url: string): boolean =>
-    this._activatedUrl.split('/')[1] === url;
+    this._activatedUrl === url || this._activatedUrl.split('/')[1] === url;
 }
