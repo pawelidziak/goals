@@ -8,14 +8,14 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 import { DropDownModule } from 'nativescript-drop-down/angular';
-import { ListGoalsModule } from '../list-goals/list-goals.module';
+import { ListGoalsModule } from '@modules/list-goals/list-goals.module';
 import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
 import { DropDownIconModule } from '@shared/components/dropdown-icon/dropdown-icon.module.tns';
 
 import { GoalsFacade, GoalsEffects } from './+state';
 import * as fromGoals from './+state/goals.reducer';
 import { GoalsResolver, GoalsService } from './services';
-import { AddGoalModule } from './../add-goal/add-goal.module';
+import { AddGoalModule } from '@modules/add-goal/add-goal.module';
 import { GoalsComponent } from './goals.component';
 
 @NgModule({

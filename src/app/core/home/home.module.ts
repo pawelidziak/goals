@@ -1,10 +1,11 @@
-import { BottomNavigationModule } from '@core/bottom-navigation/bottom-navigation.module';
-import { GoalsModule } from '@modules/goals/goals.module';
-import { HomeComponent } from './home.component';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import { HomeRoutingModule } from './home-routing.module';
 
+import { BottomNavigationModule } from '@core/bottom-navigation/bottom-navigation.module';
+import { GoalsModule } from '@pages/goals/goals.module';
+
+import { HomeComponent } from './home.component';
+import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
   imports: [

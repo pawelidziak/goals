@@ -10,8 +10,9 @@
         "src/*"
       ],
       "@core/*": ["src/app/core/*"],
+      "@pages/*": ["src/app/core/pages/*"],
       "@modules/*": ["src/app/modules/*"],
-      "@shared/*": ["src/app/shared/*"],
+      "@shared/*": ["src/app/shared/*"]
     }
   },
   "files": [

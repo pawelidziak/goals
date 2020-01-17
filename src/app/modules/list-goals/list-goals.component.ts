@@ -10,7 +10,7 @@ import {
 
 import { Page, View } from 'tns-core-modules/ui/page';
 import { layout } from 'tns-core-modules/utils/utils';
-import { Goal } from '../goals/+state';
+import { Goal } from '@pages/goals/+state';
 
 @Component({
   selector: 'app-list-movies',

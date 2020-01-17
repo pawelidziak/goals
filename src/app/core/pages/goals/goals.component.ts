@@ -6,7 +6,7 @@ import { Page } from 'tns-core-modules/ui/page';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Goal } from './+state';
-import { AddGoalFacade } from '../add-goal/+state/add-goal.facade';
+import { AddGoalFacade } from '@modules/add-goal/+state/add-goal.facade';
 
 @Component({
   selector: 'app-goals',
