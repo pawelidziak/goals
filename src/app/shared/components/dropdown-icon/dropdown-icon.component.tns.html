@@ -22,7 +22,7 @@
       class="mdi"
       [color]="currentIconColor"
     ></label>
-    <label [text]="items[selectedIndex]" fontSize="10"></label>
+    <label [text]="items[selectedIndex]" [fontSize]="labelSize" [marginLeft]="labelMargin"></label>
   </FlexboxLayout>
   <StackLayout [background]="currentIconColor" class="dd-overlay"></StackLayout>
 </GridLayout>
