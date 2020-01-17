@@ -1,4 +1,4 @@
-import { Goal } from '../+state/goals.models';
+import { Goal } from '@modules/goals/+state';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs';

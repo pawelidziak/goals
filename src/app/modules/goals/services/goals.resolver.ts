@@ -1,12 +1,13 @@
-import { GoalsState } from '../+state/goals.reducer';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   Resolve,
   RouterStateSnapshot
 } from '@angular/router';
+
 import { Observable, of } from 'rxjs';
-import { GoalsFacade } from '../+state/goals.facade';
+
+import { GoalsFacade, GoalsState } from '@modules/goals/+state';
 
 @Injectable()
 export class GoalsResolver implements Resolve<GoalsState> {
