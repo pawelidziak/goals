@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 import { DropDownModule } from 'nativescript-drop-down/angular';
-import { ListGoalsModule } from '../list-goals/list-goals.module';
+import { ListGoalsModule } from './components/list-goals/list-goals.module';
 import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
 
 import { GoalsFacade, GoalsEffects } from './+state';
