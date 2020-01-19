@@ -13,7 +13,7 @@ import { layout } from 'tns-core-modules/utils/utils';
 import { Goal } from '@pages/goals/+state';
 
 @Component({
-  selector: 'app-list-movies',
+  selector: 'app-list-goals',
   templateUrl: './list-goals.component.html',
   styleUrls: ['./list-goals.component.scss']
 })

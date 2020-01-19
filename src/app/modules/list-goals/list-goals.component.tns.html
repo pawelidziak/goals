@@ -17,7 +17,10 @@
       >
         <!-- CHECKBOX -->
         <StackLayout col="0" verticalAlignment="center" padding="0 10">
-          <app-checkbox [(value)]="item.done"></app-checkbox>
+          <app-checkbox
+            [(value)]="item.done"
+            [fillColor]="item.priority.color"
+          ></app-checkbox>
         </StackLayout>
 
         <!-- ITEM -->

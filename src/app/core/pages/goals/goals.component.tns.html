@@ -1,4 +1,4 @@
-<ActionBar title="Some title" automationText="ActionBar">
+<ActionBar>
   <StackLayout
     orientation="horizontal"
     ios:horizontalAlignment="center"
@@ -16,7 +16,7 @@
 
 <GridLayout rows="*, auto">
   <StackLayout row="0">
-    <app-list-movies [goals]="goals$ | async"></app-list-movies>
+    <app-list-goals [goals]="goals$ | async"></app-list-goals>
   </StackLayout>
 
   <!-- Overview -->
