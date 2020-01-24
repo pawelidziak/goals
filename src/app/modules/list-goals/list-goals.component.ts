@@ -19,17 +19,14 @@ import { Goal } from '@pages/goals/+state';
 })
 export class ListGoalsComponent implements OnInit {
   @Input() goals: Goal[];
-  private lastX = 0;
 
-  swipeRightMethodText = '';
-
-  swipeRight = {
-    text: 'priority',
-    icon: '',
-    bgColor: '#FFC107',
-    lastX: 0,
-    method: null
-  };
+  // swipeRight = {
+  //   text: 'priority',
+  //   icon: '',
+  //   bgColor: '#FFC107',
+  //   lastX: 0,
+  //   method: null
+  // };
 
   constructor(
     private routerExtension: RouterExtensions,
@@ -42,6 +39,9 @@ export class ListGoalsComponent implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * Methods for radlistview
+   *
   public onCellSwiping(args: SwipeActionsEventData) {
     const swipeView = args.swipeView;
     // jesli przeciagne powyzej 1/4 to przestaw flage.
@@ -152,6 +152,8 @@ export class ListGoalsComponent implements OnInit {
   public onLayoutTap(args) {
     console.log('onLayoutTap');
   }
+
+*/
 
   /**
    * if there is possibility to click on swipes
