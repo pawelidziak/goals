@@ -9,13 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '@src/environments/environment';
 
-import firebase = require('nativescript-plugin-firebase');
-// import * as firebase1 from 'nativescript-plugin-firebase';
-
-firebase
-  .init()
-  .then(() => console.log('Firebase initialised!'))
-  .catch(() => console.error('Error!'));
 
 @NgModule({
   declarations: [AppComponent],
