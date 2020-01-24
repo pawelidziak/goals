@@ -21,6 +21,8 @@ export class DropDownIconComponent implements OnInit {
   @Input() items: any[];
   @Input() icon: string;
   @Input() iconColors: string[];
+  @Input() labelSize = 10;
+  @Input() labelMargin = 0;
   @Output() itemChanged: EventEmitter<number> = new EventEmitter();
   @ViewChild('dropDown', { static: false }) dropDown: ElementRef;
   selectedIndex = 0;

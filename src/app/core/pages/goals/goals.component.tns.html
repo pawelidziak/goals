@@ -1,0 +1,43 @@
+<ActionBar>
+  <StackLayout
+    orientation="horizontal"
+    ios:horizontalAlignment="center"
+    android:horizontalAlignment="left"
+  >
+    <app-dropdown-icon
+      [items]="dropDownItems"
+      [labelSize]="17"
+      [labelMargin]="25"
+      icon="mdi-dashboard"
+      (itemChanged)="onItemChanged($event)"
+    ></app-dropdown-icon>
+  </StackLayout>
+</ActionBar>
+
+<GridLayout rows="*, auto">
+  <StackLayout row="0">
+    <app-list-goals [goals]="goals$ | async"></app-list-goals>
+  </StackLayout>
+
+  <!-- Overview -->
+  <StackLayout
+    *ngIf="showAddGoalComponent$ | async"
+    class="overview"
+    (tap)="hideAddGoalComponent()"
+  ></StackLayout>
+
+  <!-- Add Goal Component -->
+  <StackLayout row="1">
+    <app-add-goal></app-add-goal>
+  </StackLayout>
+
+  <AbsoluteLayout
+    row="0"
+    *ngIf="!(showAddGoalComponent$ | async)"
+    class="float-btn-container"
+  >
+    <app-float-btn [size]="58" (fabTap)="showAddGoalComponent()">
+      <label [text]="'mdi-add' | fonticon" class="mdi"></label>
+    </app-float-btn>
+  </AbsoluteLayout>
+</GridLayout>

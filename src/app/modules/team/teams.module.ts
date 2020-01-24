@@ -10,9 +10,9 @@ import { APP_ROUTES } from '@core/routes';
     NativeScriptCommonModule,
     NativeScriptRouterModule,
     NativeScriptRouterModule.forChild([
-      { path: '', redirectTo: `${APP_ROUTES.TEAMS}` },
-      { path: `${APP_ROUTES.TEAMS}`, component: TeamsComponent },
-      { path: `${APP_ROUTES.TEAM_DETAIL}`, component: TeamDetailComponent }
+      { path: '', redirectTo: APP_ROUTES.TEAMS },
+      { path: APP_ROUTES.TEAMS, component: TeamsComponent },
+      { path: APP_ROUTES.TEAM_DETAIL, component: TeamDetailComponent }
     ])
   ],
   declarations: [TeamsComponent, TeamDetailComponent],

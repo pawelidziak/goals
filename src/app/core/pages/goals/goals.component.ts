@@ -1,11 +1,12 @@
+import { GoalsFacade } from '@pages/goals/+state';
 import { Observable } from 'rxjs';
 import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
-import { APP_ROUTES } from '@core/routes';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { AddGoalFacade } from '../add-goal/+state/add-goal.facade';
+import { Goal } from './+state';
+import { AddGoalFacade } from '@modules/add-goal/+state/add-goal.facade';
 
 @Component({
   selector: 'app-goals',
@@ -16,31 +17,30 @@ import { AddGoalFacade } from '../add-goal/+state/add-goal.facade';
 export class GoalsComponent implements OnInit {
   showAddGoalComponent$: Observable<boolean> = this.addGoalFacade.show$;
 
+  dropDown = [
+    { id: '1', name: 'Today' },
+    { id: '2', name: 'Tomorrow' },
+    { id: '3', name: 'Long-term' },
+    { id: '4', name: 'Todo' }
+  ];
+  dropDownItems = this.dropDown.map(item => item.name);
+  dropDownSelectedId = 0;
+
+  goals$: Observable<Goal[]>;
+
   constructor(
-    private page: Page,
-    private routerExtensions: RouterExtensions,
-    private activeRoute: ActivatedRoute,
     private bottomNavFacade: BottomNavigationFacade,
+    private goalsFacade: GoalsFacade,
     private addGoalFacade: AddGoalFacade
   ) {}
 
   ngOnInit() {
-    this.page.actionBarHidden = true;
-    this.navigateToTabView();
+    this.goals$ = this.goalsFacade.allGoals$;
+    // this.goals$.subscribe(res => console.log(res));
   }
 
-  private navigateToTabView() {
-    this.routerExtensions.navigate(
-      [
-        {
-          outlets: {
-            playerTab: [APP_ROUTES.PLAYERS],
-            teamTab: [APP_ROUTES.TEAMS]
-          }
-        }
-      ],
-      { relativeTo: this.activeRoute }
-    );
+  onDropDownSelect(e) {
+    // console.log(e);
   }
 
   showAddGoalComponent() {
@@ -53,6 +53,7 @@ export class GoalsComponent implements OnInit {
     this.addGoalFacade.hideAddGoal();
   }
 
-  onTabChanged(tabIndex: number) {
+  onItemChanged(e) {
+    console.log(e);
   }
 }

@@ -1,53 +1,47 @@
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 
-import { Observable } from 'rxjs';
 import {
   ListViewEventData,
   SwipeActionsEventData
 } from 'nativescript-ui-listview';
 
-import { GoalsListFacade } from './../player/+state/goals-list.facade';
-import { Goal } from '../player/+state/goals-list.models';
 import { Page, View } from 'tns-core-modules/ui/page';
 import { layout } from 'tns-core-modules/utils/utils';
+import { Goal } from '@pages/goals/+state';
 
 @Component({
-  selector: 'app-list-movies',
-  templateUrl: './list-movies.component.html',
-  styleUrls: ['./list-movies.component.scss']
+  selector: 'app-list-goals',
+  templateUrl: './list-goals.component.html',
+  styleUrls: ['./list-goals.component.scss']
 })
-export class ListMoviesComponent implements OnInit {
-  goals$: Observable<Goal[]>;
-  private lastX = 0;
-  private swipeLeft = false;
+export class ListGoalsComponent implements OnInit {
+  @Input() goals: Goal[];
 
-  swipeRightMethodText = '';
-
-  swipeRight = {
-    text: 'priority',
-    icon: '',
-    bgColor: '#FFC107',
-    lastX: 0,
-    method: null
-  };
+  // swipeRight = {
+  //   text: 'priority',
+  //   icon: '',
+  //   bgColor: '#FFC107',
+  //   lastX: 0,
+  //   method: null
+  // };
 
   constructor(
     private routerExtension: RouterExtensions,
     private activeRoute: ActivatedRoute,
     private router: Router,
-    private page: Page,
-    private facade: GoalsListFacade
+    private page: Page
   ) {
     // this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
-    this.goals$ = this.facade.allGoalsList$;
-  }
+  ngOnInit() {}
 
+  /**
+   * Methods for radlistview
+   *
   public onCellSwiping(args: SwipeActionsEventData) {
     const swipeView = args.swipeView;
     // jesli przeciagne powyzej 1/4 to przestaw flage.
@@ -116,7 +110,6 @@ export class ListMoviesComponent implements OnInit {
       //   layout.makeMeasureSpec(Math.abs(args.data.x), layout.EXACTLY),
       //   layout.makeMeasureSpec(mainView.getMeasuredHeight(), layout.EXACTLY)
       // );
-
       // View.layoutChild(
       //   <View>rightItem.parent,
       //   rightItem,
@@ -159,6 +152,8 @@ export class ListMoviesComponent implements OnInit {
   public onLayoutTap(args) {
     console.log('onLayoutTap');
   }
+
+*/
 
   /**
    * if there is possibility to click on swipes

@@ -13,7 +13,7 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('@modules/goals/goals.module').then(m => m.GoalsModule)
+          import('@pages/goals/goals.module').then(m => m.GoalsModule)
       },
       {
         path: '',
@@ -25,11 +25,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('@modules/player/players.module').then(m => m.PlayersModule)
       },
-      {
-        path: '',
-        loadChildren: () =>
-          import('@modules/list-movies/list-movies.module').then(m => m.ListMoviesModule)
-      },
+      // {
+      //   path: '',
+      //   loadChildren: () =>
+      //     import('@modules/list-goals/list-goals.module').then(m => m.ListGoalsModule)
+      // },
     ]
   }
 ];

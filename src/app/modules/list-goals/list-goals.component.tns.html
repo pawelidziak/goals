@@ -1,7 +1,34 @@
 <GridLayout>
+  <ListView #myListView [items]="goals">
+    <ng-template let-item="item">
+      <GridLayout
+        columns="auto, *"
+        ripple
+        (tap)="onLayoutTap($event)"
+        background="#fff"
+      >
+        <!-- CHECKBOX -->
+        <StackLayout col="0" verticalAlignment="center" padding="0 10">
+          <app-checkbox
+            [(value)]="item.done"
+            [fillColor]="item.priority.color"
+          ></app-checkbox>
+        </StackLayout>
+
+        <!-- ITEM -->
+        <StackLayout col="1" padding="10 0">
+          <label class="label-name" [text]="item.name"></label>
+          <label class="label-text" [text]="item.desc"></label>
+        </StackLayout>
+      </GridLayout>
+    </ng-template>
+  </ListView>
+</GridLayout>
+
+<!-- <GridLayout>
   <RadListView
     #myListView
-    [items]="goals$ | async"
+    [items]="goals"
     selectionBehavior="None"
     (itemSwipeProgressEnded)="onSwipeCellFinished($event)"
     (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
@@ -15,19 +42,24 @@
         (tap)="onLayoutTap($event)"
         background="#fff"
       >
-        <!-- CHECKBOX -->
+        CHECKBOX
         <StackLayout col="0" verticalAlignment="center" padding="0 10">
-          <app-checkbox [(value)]="item.done"></app-checkbox>
+          <app-checkbox
+            [(value)]="item.done"
+            [fillColor]="item.priority.color"
+          ></app-checkbox>
         </StackLayout>
 
-        <!-- ITEM -->
+        ITEM
         <StackLayout col="1" padding="10 0">
           <label class="label-name" [text]="item.name"></label>
           <label class="label-text" [text]="item.desc"></label>
         </StackLayout>
 
-        <!-- PRIORITY -->
-        <!-- <StackLayout
+        PRIORITY -->
+<!-- 
+          commented
+          <StackLayout
           col="2"
           orientation="horizontal"
           verticalAlignment="center"
@@ -44,6 +76,7 @@
             <label [text]="'mdi-date-range' | fonticon" class="mdi"></label>
           </FlexboxLayout>
         </StackLayout> -->
+<!-- 
       </GridLayout>
     </ng-template>
 
@@ -77,4 +110,4 @@
       </FlexboxLayout>
     </GridLayout>
   </RadListView>
-</GridLayout>
+</GridLayout> -->

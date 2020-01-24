@@ -1,16 +1,17 @@
-import { GoalsListState } from './+state/goals-list.reducer';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   Resolve,
   RouterStateSnapshot
 } from '@angular/router';
+
 import { Observable, of } from 'rxjs';
-import { GoalsListFacade } from './+state/goals-list.facade';
+
+import { GoalsFacade, GoalsState } from '@core/pages/goals/+state';
 
 @Injectable()
-export class GoalsListResolver implements Resolve<GoalsListState> {
-  constructor(private facade: GoalsListFacade) {}
+export class GoalsResolver implements Resolve<GoalsState> {
+  constructor(private facade: GoalsFacade) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
