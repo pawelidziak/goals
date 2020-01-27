@@ -1,7 +1,7 @@
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { NgModule } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import { PriorityComponent } from './priority.component';
+import { PrioritiesComponent } from './priorities.component';
 import { DropDownIconModule } from '@shared/components/dropdown-icon/dropdown-icon.module.tns';
 
 @NgModule({
@@ -10,9 +10,9 @@ import { DropDownIconModule } from '@shared/components/dropdown-icon/dropdown-ic
     NativeScriptFormsModule,
     DropDownIconModule
   ],
-  declarations: [PriorityComponent],
-  exports: [PriorityComponent],
+  declarations: [PrioritiesComponent],
+  exports: [PrioritiesComponent],
   providers: [],
   schemas: []
 })
-export class PriorityModule {}
+export class PrioritiesModule {}

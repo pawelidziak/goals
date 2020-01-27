@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-priority',
-  templateUrl: './priority.component.html',
-  styleUrls: ['./priority.component.scss'],
+  templateUrl: './priorities.component.html',
+  styleUrls: ['./priorities.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PriorityComponent extends GoalDropdownsBase implements OnInit {
-  icon = 'mdi-priority-high';
+export class PrioritiesComponent extends GoalDropdownsBase implements OnInit {
+  icon = 'mdi-priorities-high';
   iconColors = ['#F44336', '#FF9800', '#2196F3', '#9E9E9E'];
 
   priorities: Priority[];
