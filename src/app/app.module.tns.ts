@@ -15,6 +15,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
 // import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 
+// import firebase = require('nativescript-plugin-firebase');
+import * as firebase from 'nativescript-plugin-firebase';
+
+firebase
+  .init()
+  .then(() => console.log('>>>>>>>>> Firebase initialised!'))
+  .catch(() => console.error('>>>>>>>>>> Firebase Error!'));
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
