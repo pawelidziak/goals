@@ -1,3 +1,6 @@
+import { PrioritiesEffects } from './+state/priorities.effects';
+import { PrioritiesFacade } from './+state/priorities.facade';
+import { PrioritiesService } from './services/priorities.service';
 import { NgModule } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -22,7 +25,7 @@ import * as fromPriorities from './+state';
   ],
   declarations: [PrioritiesComponent],
   exports: [PrioritiesComponent],
-  providers: [],
+  providers: [PrioritiesService, PrioritiesFacade, PrioritiesEffects],
   schemas: []
 })
 export class PrioritiesModule {}
