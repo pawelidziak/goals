@@ -1,12 +1,33 @@
 import { Goal } from '@core/pages/goals/+state';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs';
+import { firestore as firebaseNamespace } from 'nativescript-plugin-firebase';
+import { firestore } from 'nativescript-plugin-firebase/app';
+
+const USE_MOCK_DATA = false;
 
 @Injectable()
 export class GoalsService {
+  constructor(private zone: NgZone) {}
+
   getAll(): Observable<Goal[]> {
-    return of(this.generateMockGoals(20));
+    return USE_MOCK_DATA ? of(this.generateMockGoals(20)) : this.getGoals();
+  }
+
+  getGoals(): Observable<Goal[]> {
+    return new Observable(subscriber => {
+      const colRef: firebaseNamespace.CollectionReference = firestore().collection('goals');
+      colRef.onSnapshot((snapshot: firebaseNamespace.QuerySnapshot) =>
+        this.zone.run(() => {
+          const goals = [];
+          snapshot.forEach(docSnap =>
+            goals.push({ id: docSnap.id, ...docSnap.data() })
+          );
+          subscriber.next(goals);
+        })
+      );
+    });
   }
 
   private generateMockGoals(quantity: number): Goal[] {
