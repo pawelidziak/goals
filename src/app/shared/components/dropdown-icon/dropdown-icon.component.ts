@@ -18,9 +18,21 @@ import { SelectedIndexChangedEventData } from 'tns-core-modules/ui/tab-view/tab-
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropDownIconComponent implements OnInit {
-  @Input() items: any[];
+  loaded: boolean;
+  itemsName: any[];
+  itemsColor: string[];
+
+  @Input()
+  set items(items: any[]) {
+    if (items.length > 0) {
+      this.itemsName = items.map(item => (item.name ? item.name : item));
+      this.itemsColor = items.map(item => (item.color ? item.color : item));
+      this.pickIconColor(0);
+      this.loaded = true;
+    }
+  }
+
   @Input() icon: string;
-  @Input() iconColors: string[];
   @Input() labelSize = 10;
   @Input() labelMargin = 0;
   @Output() itemChanged: EventEmitter<number> = new EventEmitter();
@@ -31,7 +43,7 @@ export class DropDownIconComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.pickIconColor(0);
+    this.loaded = false;
   }
 
   openDd() {
@@ -45,9 +57,9 @@ export class DropDownIconComponent implements OnInit {
   }
 
   private pickIconColor(index: number) {
-    if (!this.iconColors || this.iconColors.length === 0) {
+    if (!this.itemsColor || this.itemsColor.length === 0) {
       return;
     }
-    this.currentIconColor = this.iconColors[index];
+    this.currentIconColor = this.itemsColor[index];
   }
 }
