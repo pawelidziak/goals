@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { RepeatsFacade } from './+state/repeats.facade';
+import { RepeatsFacade } from './+state';
 
 @Component({
   selector: 'app-repeats',

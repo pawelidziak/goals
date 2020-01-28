@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Repeat } from './Repeats.models';
+import { Repeat } from './repeats.models';
 
 
 export const loadRepeats = createAction('[Repeat] Load Repeats');

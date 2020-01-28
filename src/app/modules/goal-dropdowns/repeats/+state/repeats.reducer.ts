@@ -20,7 +20,7 @@ export const initialState: RepeatsState = repeatsAdapter.getInitialState({
   loaded: false
 });
 
-const reteapsReducer = createReducer(
+const repeatsReducer = createReducer(
   initialState,
   on(RepeatsActions.loadRepeats, state => ({
     ...state,
@@ -38,5 +38,5 @@ const reteapsReducer = createReducer(
 );
 
 export function reducer(state: RepeatsState | undefined, action: Action) {
-  return reteapsReducer(state, action);
+  return repeatsReducer(state, action);
 }
