@@ -1,20 +1,29 @@
 import { Injectable, NgZone } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
+import { firestore as firebaseNamespace } from 'nativescript-plugin-firebase';
+import { firestore } from 'nativescript-plugin-firebase/app';
+import { Observable } from 'rxjs';
 
 import { Priority } from '../+state';
-
-const MOCK = [
-  { id: '1', name: 'Mock 1' },
-  { id: '2', name: 'Mock 2' },
-];
-
 
 @Injectable()
 export class PrioritiesService {
   constructor(private zone: NgZone) {}
 
   getPriorities(): Observable<Priority[]> {
-    return of(MOCK);
+    return new Observable(subscriber => {
+      const colRef: firebaseNamespace.CollectionReference = firestore().collection(
+        'priorities'
+      );
+      colRef.onSnapshot((snapshot: firebaseNamespace.QuerySnapshot) =>
+        this.zone.run(() => {
+          const priorities = [];
+          snapshot.forEach(docSnap =>
+            priorities.push({ id: docSnap.id, ...docSnap.data() })
+          );
+          subscriber.next(priorities);
+        })
+      );
+    });
   }
 }
