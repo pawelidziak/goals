@@ -19,7 +19,7 @@ export const initialState: PrioritiesState = prioritiesAdapter.getInitialState({
   loaded: false
 });
 
-const goalsReducer = createReducer(
+const prioritiesReducer = createReducer(
   initialState,
   on(PrioritiesActions.loadPriorities, state => ({
     ...state,
@@ -37,5 +37,5 @@ const goalsReducer = createReducer(
 );
 
 export function reducer(state: PrioritiesState | undefined, action: Action) {
-  return goalsReducer(state, action);
+  return prioritiesReducer(state, action);
 }

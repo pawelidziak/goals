@@ -1,7 +1,7 @@
-import { PrioritiesFacade } from './+state/priorities.facade';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Priority } from '../../add-goal/+state/add-goal.models';
-import { GoalDropdownsBase } from '../goal-dropdowns.base';
+
+import { PrioritiesFacade } from './+state/priorities.facade';
+
 
 @Component({
   selector: 'app-priority',
