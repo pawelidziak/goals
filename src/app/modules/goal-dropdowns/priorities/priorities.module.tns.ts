@@ -16,7 +16,7 @@ import { PrioritiesService } from './services/priorities.service';
     NativeScriptFormsModule,
     DropDownIconModule,
     StoreModule.forFeature(
-      fromPriorities.PRIORIES_FEATURE_KEY,
+      fromPriorities.PRIORITIES_FEATURE_KEY,
       fromPriorities.reducer
     ),
     EffectsModule.forFeature([fromPriorities.PrioritiesEffects])

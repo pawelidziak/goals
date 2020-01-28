@@ -3,7 +3,7 @@ import { createReducer, on, Action } from '@ngrx/store';
 import * as PrioritiesActions from './priorities.actions';
 import { Priority } from './priorities.models';
 
-export const PRIORIES_FEATURE_KEY = 'priorities';
+export const PRIORITIES_FEATURE_KEY = 'priorities';
 
 export interface PrioritiesState extends EntityState<Priority> {
   selectedId?: string | number;

@@ -1,12 +1,12 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
-  PRIORIES_FEATURE_KEY,
+  PRIORITIES_FEATURE_KEY,
   PrioritiesState,
   prioritiesAdapter
 } from './priorities.reducer';
 
 export const getPrioritiesState = createFeatureSelector<PrioritiesState>(
-  PRIORIES_FEATURE_KEY
+  PRIORITIES_FEATURE_KEY
 );
 
 const { selectAll, selectEntities } = prioritiesAdapter.getSelectors();
