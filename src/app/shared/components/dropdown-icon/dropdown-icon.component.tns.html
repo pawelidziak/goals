@@ -17,7 +17,8 @@
     (selectedIndexChanged)="onSelectedIndexChanged($event)"
   ></DropDown>
 
-  <FlexboxLayout alignItems="center" padding="5" paddingLeft="2">
+  <label [text]="itemsName[selectedIndex]" [fontSize]="labelSize" [marginLeft]="labelMargin"></label>
+  <!-- <FlexboxLayout alignItems="center" padding="5" paddingLeft="2">
     <label
       [text]="icon | fonticon"
       class="mdi"
@@ -25,5 +26,5 @@
     ></label>
     <label [text]="itemsName[selectedIndex]" [fontSize]="labelSize" [marginLeft]="labelMargin"></label>
   </FlexboxLayout>
-  <StackLayout [background]="currentIconColor" class="dd-overlay"></StackLayout>
+  <StackLayout [background]="currentIconColor" class="dd-overlay"></StackLayout> -->
 </GridLayout>

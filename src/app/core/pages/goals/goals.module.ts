@@ -7,10 +7,10 @@ import { APP_ROUTES } from '@core/routes';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
-import { DropDownModule } from 'nativescript-drop-down/angular';
 import { ListGoalsModule } from '@modules/list-goals/list-goals.module';
 import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
 import { DropDownIconModule } from '@shared/components/dropdown-icon/dropdown-icon.module.tns';
+import { GoalDropdownsModule } from '@modules/goal-dropdowns/goal-dropdowns.module';
 
 import { GoalsFacade, GoalsEffects } from './+state';
 import * as fromGoals from './+state/goals.reducer';
@@ -36,9 +36,9 @@ import { GoalsComponent } from './goals.component';
     TNSFontIconModule,
     FloatBtnModule,
     AddGoalModule,
-    DropDownModule,
     DropDownIconModule,
-    ListGoalsModule
+    ListGoalsModule,
+    GoalDropdownsModule
   ],
   declarations: [GoalsComponent],
   providers: [GoalsService, GoalsFacade, GoalsResolver, GoalsEffects],

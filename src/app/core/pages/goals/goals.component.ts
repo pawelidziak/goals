@@ -17,15 +17,19 @@ import { AddGoalFacade } from '@modules/add-goal/+state/add-goal.facade';
 export class GoalsComponent implements OnInit {
   showAddGoalComponent$: Observable<boolean> = this.addGoalFacade.show$;
 
-  dropDown = [
-    { id: '1', name: 'Today' },
-    { id: '2', name: 'Tomorrow' },
-    { id: '3', name: 'Long-term' },
-    { id: '4', name: 'Todo' }
+  // dropDownItems = [
+  //   { id: '1', name: 'Today', color: 'red' },
+  //   { id: '2', name: 'Tomorrow', color: 'red' },
+  //   { id: '3', name: 'Long-term', color: 'red' },
+  //   { id: '4', name: 'Todo', color: 'red' }
+  // ];
+  dropDownItems = [
+    {
+      id: 'wz4GeN0ltDdNmMZjlkV9',
+      color: '#3F51B5',
+      name: 'Today'
+    }
   ];
-  dropDownItems = this.dropDown.map(item => item.name);
-  dropDownSelectedId = 0;
-
   goals$: Observable<Goal[]>;
 
   constructor(

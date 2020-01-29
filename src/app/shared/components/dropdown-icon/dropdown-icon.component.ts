@@ -11,6 +11,9 @@ import {
 import { DropDown } from 'nativescript-drop-down';
 import { SelectedIndexChangedEventData } from 'tns-core-modules/ui/tab-view/tab-view';
 
+/**
+ * Items Input need to have name and color properties in each entity.
+ */
 @Component({
   selector: 'app-dropdown-icon',
   templateUrl: './dropdown-icon.component.html',
@@ -25,10 +28,11 @@ export class DropDownIconComponent implements OnInit {
   @Input()
   set items(items: any[]) {
     if (items.length > 0) {
-      this.itemsName = items.map(item => (item.name ? item.name : item));
-      this.itemsColor = items.map(item => (item.color ? item.color : item));
+      this.itemsName = items.map(item => (item.name ? item.name : ''));
+      this.itemsColor = items.map(item => (item.color ? item.color : ''));
       this.pickIconColor(0);
       this.loaded = true;
+      console.log('>>>>>>>>>>>>> LOLOLLO',  items);
     }
   }
 

@@ -4,13 +4,14 @@
     ios:horizontalAlignment="center"
     android:horizontalAlignment="left"
   >
-    <app-dropdown-icon
+    <StackLayout>
+      <!-- <app-deadlines></app-deadlines> -->
+      <app-dropdown-icon
       [items]="dropDownItems"
-      [labelSize]="17"
-      [labelMargin]="25"
-      icon="mdi-dashboard"
+      [icon]="'mdi-dashboard'"
       (itemChanged)="onItemChanged($event)"
     ></app-dropdown-icon>
+    </StackLayout>
   </StackLayout>
 </ActionBar>
 
