@@ -12,10 +12,10 @@ export class PrioritiesService {
 
   getPriorities(): Observable<Priority[]> {
     return new Observable(subscriber => {
-      const colRef: firebaseNamespace.CollectionReference = firestore().collection(
-        'priorities'
-      );
-      colRef.onSnapshot((snapshot: firebaseNamespace.QuerySnapshot) =>
+      const query: firebaseNamespace.Query = firestore()
+        .collection('priorities')
+        .orderBy('name', 'asc');
+      query.onSnapshot((snapshot: firebaseNamespace.QuerySnapshot) =>
         this.zone.run(() => {
           const priorities = [];
           snapshot.forEach(docSnap =>

@@ -12,15 +12,16 @@ export class RepeatsService {
 
   getRepeats(): Observable<Repeat[]> {
     return new Observable(subscriber => {
-      const colRef: firebaseNamespace.CollectionReference = firestore().collection(
-        'repeats'
-      );
-      colRef.onSnapshot((snapshot: firebaseNamespace.QuerySnapshot) =>
+      const query: firebaseNamespace.Query = firestore()
+        .collection('repeats')
+        .orderBy('order', 'asc');
+      query.onSnapshot((snapshot: firebaseNamespace.QuerySnapshot) =>
         this.zone.run(() => {
           const repeats = [];
           snapshot.forEach(docSnap =>
             repeats.push({ id: docSnap.id, ...docSnap.data() })
           );
+          repeats.forEach(repeat => delete repeat.order); // shouldn't be done by firebase function?
           subscriber.next(repeats);
         })
       );
