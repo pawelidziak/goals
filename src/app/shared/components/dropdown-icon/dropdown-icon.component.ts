@@ -11,6 +11,9 @@ import {
 import { DropDown } from 'nativescript-drop-down';
 import { SelectedIndexChangedEventData } from 'tns-core-modules/ui/tab-view/tab-view';
 
+/**
+ * Items Input need to have name and color properties in each entity.
+ */
 @Component({
   selector: 'app-dropdown-icon',
   templateUrl: './dropdown-icon.component.html',
@@ -18,9 +21,19 @@ import { SelectedIndexChangedEventData } from 'tns-core-modules/ui/tab-view/tab-
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropDownIconComponent implements OnInit {
-  @Input() items: any[];
+  itemsName: any[] = [];
+  itemsColor: string[] = [];
+
+  @Input()
+  set items(items: any[]) {
+    if (items.length > 0) {
+      this.itemsName = items.map(item => (item.name ? item.name : ''));
+      this.itemsColor = items.map(item => (item.color ? item.color : ''));
+      this.pickIconColor(0);
+    }
+  }
+
   @Input() icon: string;
-  @Input() iconColors: string[];
   @Input() labelSize = 10;
   @Input() labelMargin = 0;
   @Output() itemChanged: EventEmitter<number> = new EventEmitter();
@@ -30,9 +43,7 @@ export class DropDownIconComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.pickIconColor(0);
-  }
+  ngOnInit(): void {}
 
   openDd() {
     const el = <DropDown>this.dropDown.nativeElement;
@@ -45,9 +56,9 @@ export class DropDownIconComponent implements OnInit {
   }
 
   private pickIconColor(index: number) {
-    if (!this.iconColors || this.iconColors.length === 0) {
+    if (!this.itemsColor || this.itemsColor.length === 0) {
       return;
     }
-    this.currentIconColor = this.iconColors[index];
+    this.currentIconColor = this.itemsColor[index];
   }
 }

@@ -6,9 +6,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { DropDownIconModule } from '@shared/components/dropdown-icon/dropdown-icon.module.tns';
 
-import { RepeatsComponent } from './repeats.component';
-import * as fromRepeats from './+state';
-import { RepeatsService } from './services/repeats.service';
+import { PrioritiesComponent } from './priorities.component';
+import * as fromPriorities from './+state';
+import { PrioritiesService } from './services/priorities.service';
 
 @NgModule({
   imports: [
@@ -16,18 +16,18 @@ import { RepeatsService } from './services/repeats.service';
     NativeScriptFormsModule,
     DropDownIconModule,
     StoreModule.forFeature(
-      fromRepeats.REPEATS_FEATURE_KEY,
-      fromRepeats.reducer
+      fromPriorities.PRIORITIES_FEATURE_KEY,
+      fromPriorities.reducer
     ),
-    EffectsModule.forFeature([fromRepeats.RepeatsEffects])
+    EffectsModule.forFeature([fromPriorities.PrioritiesEffects])
   ],
-  declarations: [RepeatsComponent],
-  exports: [RepeatsComponent],
+  declarations: [PrioritiesComponent],
+  exports: [PrioritiesComponent],
   providers: [
-    RepeatsService,
-    fromRepeats.RepeatsFacade,
-    fromRepeats.RepeatsEffects
+    PrioritiesService,
+    fromPriorities.PrioritiesFacade,
+    fromPriorities.PrioritiesEffects
   ],
   schemas: []
 })
-export class RepeatsModule {}
+export class PrioritiesModule {}

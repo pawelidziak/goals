@@ -11,7 +11,7 @@
     class="drop-down"
     itemsTextAlignment="center"
     itemsPadding="10"
-    [items]="items"
+    [items]="itemsName"
     [(ngModel)]="selectedIndex"
     (selectedIndexChanged)="onSelectedIndexChanged($event)"
   ></DropDown>
@@ -22,7 +22,7 @@
       class="mdi"
       [color]="currentIconColor"
     ></label>
-    <label [text]="items[selectedIndex]" [fontSize]="labelSize" [marginLeft]="labelMargin"></label>
+    <label [text]="itemsName[selectedIndex]" [fontSize]="labelSize" [marginLeft]="labelMargin"></label>
   </FlexboxLayout>
   <StackLayout [background]="currentIconColor" class="dd-overlay"></StackLayout>
 </GridLayout>
