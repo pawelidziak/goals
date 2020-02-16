@@ -1,7 +1,7 @@
 export interface Goal {
-  id: string | number;
+  id?: string;
   name: string;
-  desc: string;
+  desc?: string;
   priority: any;
   deadline: any;
   repeat: any;

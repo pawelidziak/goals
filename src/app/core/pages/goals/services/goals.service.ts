@@ -1,9 +1,10 @@
-import { Goal } from '@core/pages/goals/+state';
 import { Injectable, NgZone } from '@angular/core';
-import { of } from 'rxjs';
-import { Observable } from 'rxjs';
+
 import { firestore as firebaseNamespace } from 'nativescript-plugin-firebase';
 import { firestore } from 'nativescript-plugin-firebase/app';
+import { of, Observable } from 'rxjs';
+
+import { Goal } from '@core/pages/goals/+state';
 
 const USE_MOCK_DATA = false;
 
@@ -28,6 +29,15 @@ export class GoalsService {
         })
       );
     });
+  }
+
+  addGoal(goal: Goal): Observable<string> {
+    return new Observable(subscriber => {
+      const colRef: firebaseNamespace.CollectionReference = firestore().collection('goals');
+      colRef
+        .add(goal)
+        .then(doc => this.zone.run(() => subscriber.next(doc.id)))
+    })
   }
 
   private generateMockGoals(quantity: number): Goal[] {

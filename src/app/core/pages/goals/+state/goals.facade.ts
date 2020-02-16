@@ -15,4 +15,8 @@ export class GoalsFacade {
   loadAll() {
     this.store.dispatch(GoalsActions.loadGoals());
   }
+
+  addGoal(name: string) {
+    this.store.dispatch(GoalsActions.addGoal({ name }))
+  }
 }

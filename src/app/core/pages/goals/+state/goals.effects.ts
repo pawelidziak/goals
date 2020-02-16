@@ -1,8 +1,21 @@
-import { GoalsService } from '../services/goals.service';
 import { Injectable } from '@angular/core';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { select, Store } from '@ngrx/store';
+import {
+  map,
+  mergeMap,
+  catchError,
+  concatMap,
+  withLatestFrom
+} from 'rxjs/operators';
+import { of } from 'rxjs';
+
+import { GoalsService } from '../services/goals.service';
 import * as GoalsActions from './goals.actions';
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import * as fromDeadlines from '@modules/goal-dropdowns/deadlines/+state';
+import * as fromPriorities from '@modules/goal-dropdowns/priorities/+state';
+import * as fromRepeats from '@modules/goal-dropdowns/repeats/+state';
 
 @Injectable()
 export class GoalsEffects {
@@ -18,5 +31,38 @@ export class GoalsEffects {
     )
   );
 
-  constructor(private actions$: Actions, private service: GoalsService) {}
+  addGoal$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(GoalsActions.addGoal),
+      concatMap(action =>
+        of(action).pipe(
+          withLatestFrom(
+            this.deadlinesStore.pipe(select(fromDeadlines.getSelected)),
+            this.prioritiesStore.pipe(select(fromPriorities.getSelected)),
+            this.repeatsStore.pipe(select(fromRepeats.getSelected))            )
+        )
+      ),
+      mergeMap(([action, deadline, priority, repeat]) =>
+        this.service.addGoal({
+          name: action.name,
+          deadline: deadline,              
+          priority: priority,
+          repeat: repeat,
+          done: false
+        })
+        .pipe(
+          map(id => GoalsActions.addGoalSuccess({ id })),
+          catchError(() => GoalsActions.addGoalFailure)
+        )
+      )
+    )
+  );
+
+  constructor(
+    private actions$: Actions,
+    private service: GoalsService,
+    private deadlinesStore: Store<fromDeadlines.DeadlinesState>,
+    private prioritiesStore: Store<fromPriorities.PrioritiesState>,
+    private repeatsStore: Store<fromRepeats.RepeatsState>
+  ) {}
 }
