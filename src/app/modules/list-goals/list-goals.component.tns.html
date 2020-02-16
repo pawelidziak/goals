@@ -16,9 +16,10 @@
         </StackLayout>
 
         <!-- ITEM -->
-        <StackLayout col="1" padding="10 0">
+        <StackLayout col="1" 
+          [ngClass]="{'padding-10': item.desc, 'padding-16': !item.desc}">
           <label class="label-name" [text]="item.name"></label>
-          <label class="label-text" [text]="item.desc"></label>
+          <label *ngIf="item.desc" class="label-text" [text]="item.desc"></label>
         </StackLayout>
       </GridLayout>
     </ng-template>
