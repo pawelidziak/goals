@@ -2,8 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { Goal } from './+state';
-import { GoalsFacade } from '@pages/goals/+state';
+import { Goal, GoalsFacade } from './+state';
 import { AddGoalFacade } from '@modules/add-goal/+state/add-goal.facade';
 import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
 
@@ -37,7 +36,7 @@ export class GoalsComponent implements OnInit {
     this.addGoalFacade.hideAddGoal();
   }
 
-  onItemChanged(e) {
-    console.log(e);
+  onGoalSend(goalTitle: string) {
+    console.log(goalTitle);
   }
 }

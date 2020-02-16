@@ -12,3 +12,18 @@ export const loadGoalsFailure = createAction(
   '[Goals] Load Goals Failure',
   props<{ error: any }>()
 );
+
+export const addGoal = createAction(
+  '[Goals] Add Goal',
+  props<{ goal: Goal }>()
+);
+
+export const addGoalSuccess = createAction(
+  '[Goals] Add Goal Success',
+  props<{ goal: Goal }>()
+);
+
+export const addGoalFailure = createAction(
+  '[Goals] Add Goal Failure',
+  props<{ error: any }>()
+);

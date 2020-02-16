@@ -7,7 +7,7 @@ import { Deadline } from './deadlines.models';
 export const DEADLINES_FEATURE_KEY = 'deadlines';
 
 export interface DeadlinesState extends EntityState<Deadline> {
-  selectedId?: string | number;
+  selectedId?: string;
   loaded: boolean;
   error?: string | null;
 }
@@ -34,6 +34,10 @@ const reteapsReducer = createReducer(
     ...state,
     error,
     loaded: true
+  })),
+  on(DeadlinesActions.selectDeadline, (state, { id }) => ({
+    ...state,
+    selectedId: id
   }))
 );
 

@@ -1,16 +1,17 @@
-import { Observable } from 'rxjs';
-import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
 import {
   Component,
   OnInit,
-  ChangeDetectionStrategy,
   Output,
-  EventEmitter,
+  ChangeDetectionStrategy,
   ViewChild,
   ElementRef,
-  AfterViewInit
+  AfterViewInit,
+  EventEmitter
 } from '@angular/core';
 import { TextField } from 'tns-core-modules/ui/text-field';
+import { Observable } from 'rxjs';
+
+import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
 import { AddGoalFacade } from '../+state/add-goal.facade';
 
 @Component({
@@ -21,6 +22,7 @@ import { AddGoalFacade } from '../+state/add-goal.facade';
 })
 export class AddGoalComponent implements OnInit, AfterViewInit {
   @ViewChild('addTextField', { static: false }) addTextField: ElementRef;
+  @Output() onGoalSend: EventEmitter<any> = new EventEmitter();
   showComponent$: Observable<boolean> = this.addGoalFacade.show$;
   newGoalTitle = '';
 
@@ -53,7 +55,7 @@ export class AddGoalComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    console.log('SEND');
+    this.onGoalSend.emit(this.newGoalTitle);
     this.closeAdding();
   }
 }

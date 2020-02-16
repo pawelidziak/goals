@@ -7,7 +7,7 @@ import { Repeat } from './repeats.models';
 export const REPEATS_FEATURE_KEY = 'repeats';
 
 export interface RepeatsState extends EntityState<Repeat> {
-  selectedId?: string | number;
+  selectedId?: string;
   loaded: boolean;
   error?: string | null;
 }
@@ -34,6 +34,10 @@ const repeatsReducer = createReducer(
     ...state,
     error,
     loaded: true
+  })),
+  on(RepeatsActions.selectRepeat, (state, { id }) => ({
+    ...state,
+    selectedId: id
   }))
 );
 

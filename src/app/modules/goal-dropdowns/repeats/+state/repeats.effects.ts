@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import { mergeMap, catchError } from 'rxjs/operators';
 
 import { RepeatsService } from '../services/repeats.service';
 import * as RepeatsActions from './repeats.actions';
@@ -13,9 +13,10 @@ export class RepeatsEffects {
       ofType(RepeatsActions.loadRepeats),
       mergeMap(() =>
         this.service.getRepeats().pipe(
-          map(repeats =>
-            RepeatsActions.loadRepeatsSuccess({ repeats: repeats })
-          ),
+          mergeMap(repeats => [
+            RepeatsActions.loadRepeatsSuccess({ repeats: repeats }),
+            RepeatsActions.selectRepeat({ id: repeats[0].id })
+          ]),
           catchError(() => RepeatsActions.loadRepeatsFailure)
         )
       )

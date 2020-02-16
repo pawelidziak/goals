@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { DeadlinesFacade } from './+state';
+import { Deadline, DeadlinesFacade } from './+state';
 
 @Component({
   selector: 'app-deadlines',
@@ -18,5 +18,7 @@ export class DeadlinesComponent implements OnInit {
     this.facade.loadAll(); // should be call at goals lvl?
   }
 
-  onItemChanged(index: number) {}
+  onItemChanged(deadline: Deadline) {
+    this.facade.selectDeadline(deadline.id);
+  }
 }

@@ -18,4 +18,7 @@ export class RepeatsFacade {
     this.store.dispatch(RepeatsActions.loadRepeats());
   }
 
+  selectRepeat(id: string) {
+    this.store.dispatch(RepeatsActions.selectRepeat({ id }));
+  }
 }

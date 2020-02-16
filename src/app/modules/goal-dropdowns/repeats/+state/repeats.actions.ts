@@ -14,3 +14,8 @@ export const loadRepeatsFailure = createAction(
   '[Repeat] Load Repeats Failure',
   props<{ error: any }>()
 );
+
+export const selectRepeat = createAction(
+  '[Repeat] Select Repeat',
+  props<{ id: string }>()
+);

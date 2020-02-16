@@ -1,5 +1,5 @@
 export interface Deadline {
-  id: string | number;
+  id: string;
   name: string;
   color: string;
 }

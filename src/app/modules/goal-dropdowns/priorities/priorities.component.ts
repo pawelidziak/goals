@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { PrioritiesFacade } from './+state/priorities.facade';
-
+import { Priority, PrioritiesFacade } from './+state';
 
 @Component({
   selector: 'app-priority',
@@ -19,5 +18,7 @@ export class PrioritiesComponent implements OnInit {
     this.facade.loadAll(); // should be call at goals lvl?
   }
 
-  onItemChanged(index: number) {}
+  onItemChanged(priority: Priority) {
+    this.facade.selectPriority(priority.id);
+  }
 }

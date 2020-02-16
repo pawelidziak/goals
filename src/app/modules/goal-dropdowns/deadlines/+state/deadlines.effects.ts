@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import { mergeMap, catchError } from 'rxjs/operators';
 
 import { DeadlinesService } from '../services/deadlines.service';
 import * as DeadlinesActions from './deadlines.actions';
@@ -13,14 +13,14 @@ export class DeadlinesEffects {
       ofType(DeadlinesActions.loadDeadlines),
       mergeMap(() =>
         this.service.getDeadlines().pipe(
-          map(deadlines =>
-            DeadlinesActions.loadDeadlinesSuccess({ deadlines: deadlines })
-          ),
+          mergeMap(deadlines => [
+            DeadlinesActions.loadDeadlinesSuccess({ deadlines: deadlines }),
+            DeadlinesActions.selectDeadline({ id: deadlines[0].id })
+          ]),
           catchError(() => DeadlinesActions.loadDeadlinesFailure)
         )
       )
     )
   );
-
   constructor(private actions$: Actions, private service: DeadlinesService) {}
 }

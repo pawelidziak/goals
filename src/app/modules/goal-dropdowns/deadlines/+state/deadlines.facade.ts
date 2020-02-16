@@ -18,4 +18,7 @@ export class DeadlinesFacade {
     this.store.dispatch(DeadlinesActions.loadDeadlines());
   }
 
+  selectDeadline(id: string) {
+    this.store.dispatch(DeadlinesActions.selectDeadline({ id }));
+  }
 }

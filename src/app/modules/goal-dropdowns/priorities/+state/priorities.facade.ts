@@ -18,4 +18,8 @@ export class PrioritiesFacade {
     this.store.dispatch(PrioritiesActions.loadPriorities());
   }
 
+  selectPriority(id: string) {
+    this.store.dispatch(PrioritiesActions.selectPriority({ id }));
+  }
+
 }

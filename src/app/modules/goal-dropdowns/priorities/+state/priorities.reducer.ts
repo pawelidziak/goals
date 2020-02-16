@@ -6,7 +6,7 @@ import { Priority } from './priorities.models';
 export const PRIORITIES_FEATURE_KEY = 'priorities';
 
 export interface PrioritiesState extends EntityState<Priority> {
-  selectedId?: string | number;
+  selectedId?: string;
   loaded: boolean;
   error?: string | null;
 }
@@ -33,6 +33,10 @@ const prioritiesReducer = createReducer(
     ...state,
     error,
     loaded: true
+  })),
+  on(PrioritiesActions.selectPriority, (state, { id }) => ({
+    ...state,
+    selectedId: id
   }))
 );
 

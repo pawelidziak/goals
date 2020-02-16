@@ -14,3 +14,8 @@ export const loadPrioritiesFailure = createAction(
   '[Priority] Load Priorities Failure',
   props<{ error: any }>()
 );
+
+export const selectPriority = createAction(
+  '[Priority] Select Priority',
+  props<{ id: string }>()
+);

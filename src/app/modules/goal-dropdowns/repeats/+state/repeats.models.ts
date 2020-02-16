@@ -1,5 +1,5 @@
 export interface Repeat {
-  id: string | number;
+  id: string;
   name: string;
   color: string;
 }

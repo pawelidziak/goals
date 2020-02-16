@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { RepeatsFacade } from './+state';
+import { Repeat, RepeatsFacade } from './+state';
 
 @Component({
   selector: 'app-repeats',
@@ -18,5 +18,7 @@ export class RepeatsComponent implements OnInit {
     this.facade.loadAll(); // should be call at goals lvl?
   }
 
-  onItemChanged(index: number) {}
+  onItemChanged(repeat: Repeat) {
+    this.facade.selectRepeat(repeat.id);
+  }
 }

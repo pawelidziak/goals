@@ -1,4 +1,4 @@
 export interface Priority {
-  id: string | number;
+  id: string;
   name: string;
 }
