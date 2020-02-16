@@ -39,6 +39,9 @@ export class ListGoalsComponent implements OnInit {
 
   ngOnInit() {}
 
+  public onLayoutTap(item) {
+    console.log('onLayoutTap', item);
+  }
   /**
    * Methods for radlistview
    *
