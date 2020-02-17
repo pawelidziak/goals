@@ -1,1 +1,65 @@
-<Button text="edit-goal works!" class="btn btn-primary"></Button>
+<ActionBar title="Edit goal" class="action-bar">
+  <NavigationButton
+    icon="res://ic_arrow_back_black_24dp"
+    (tap)="backTeams()"
+  ></NavigationButton>
+</ActionBar>
+
+<!-- <StackLayout>
+    <label [text]="(goal$ | async).id"></label>
+    <label [text]="(goal$ | async).name"></label>
+    <label [text]="(goal$ | async).desc"></label>
+    <label [text]="(goal$ | async).priority.name"></label>
+    <label [text]="(goal$ | async).deadline.name"></label>
+    <label [text]="(goal$ | async).repeat.name"></label>
+</StackLayout> -->
+
+<!-- <StackLayout padding="10">
+  <label
+    horizontalAlignment="center"
+    fontSize="100"
+    [text]="'mdi-stars' | fonticon"
+    class="mdi"
+    color="#3F51B5"
+  ></label>
+
+  <RadDataForm
+    tkExampleTitle
+    tkToggleNavButton
+    [source]="goal$ | async"
+    (propertyValidated)="dfPropertyValidated($event)"
+    (propertyCommitted)="onPropertyCommitted($event)"
+  >
+    <TKPropertyGroup tkDataFormGroups name="hidden" hidden="true">
+      <TKEntityProperty tkPropertyGroupProperties name="id"></TKEntityProperty>
+    </TKPropertyGroup>
+
+    <TKEntityProperty tkDataFormProperty name="name"></TKEntityProperty>
+
+    <TKEntityProperty
+      tkDataFormProperty
+      name="deadline"
+      [valuesProvider]="deadlinesProvider"
+    >
+      <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+    </TKEntityProperty>
+  </RadDataForm>
+
+  <button [text]="'Save'" (tap)="onSave()"></button>
+</StackLayout> -->
+
+<StackLayout padding="10">
+  <label
+    horizontalAlignment="center"
+    fontSize="100"
+    [text]="'mdi-stars' | fonticon"
+    class="mdi"
+    color="#3F51B5"
+  ></label>
+  <!-- Drop downs -->
+  <FlexboxLayout>
+    <app-priority></app-priority>
+    <app-repeats></app-repeats>
+  </FlexboxLayout>
+
+</StackLayout>
