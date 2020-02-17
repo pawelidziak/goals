@@ -33,6 +33,10 @@ const goalsReducer = createReducer(
     ...state,
     error,
     loaded: true
+  })),
+  on(GoalActions.selectGoal, (state, { id }) => ({
+    ...state,
+    selectedId: id
   }))
 );
 
