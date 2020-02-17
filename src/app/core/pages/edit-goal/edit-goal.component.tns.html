@@ -59,7 +59,8 @@
   <!-- Drop downs -->
   <FlexboxLayout>
     <app-priority [selectedItem]="(goal$ | async).priority"></app-priority>
-    <app-repeats></app-repeats>
+    <!-- <app-deadline [selectedItem]="(goal$ | async).deadline"></app-deadline> -->
+    <app-repeats [selectedItem]="(goal$ | async).repeat"></app-repeats>
   </FlexboxLayout>
 
 </StackLayout>

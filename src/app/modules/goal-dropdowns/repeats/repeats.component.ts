@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Repeat, RepeatsFacade } from './+state';
+import { GoalDropdownsBase } from './../goal-dropdowns.base';
 
 @Component({
   selector: 'app-repeats',
@@ -8,17 +9,11 @@ import { Repeat, RepeatsFacade } from './+state';
   styleUrls: ['./repeats.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RepeatsComponent implements OnInit {
+export class RepeatsComponent extends GoalDropdownsBase {
   icon = 'mdi-autorenew';
-  items$ = this.facade.repeats$;
 
-  constructor(private facade: RepeatsFacade) {}
-
-  ngOnInit(): void {
-    this.facade.loadAll(); // should be call at goals lvl?
+  constructor(private repeatsFacade: RepeatsFacade) {
+    super(repeatsFacade);
   }
 
-  onItemChanged(repeat: Repeat) {
-    this.facade.selectRepeat(repeat.id);
-  }
 }

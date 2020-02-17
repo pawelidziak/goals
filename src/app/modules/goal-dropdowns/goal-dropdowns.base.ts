@@ -12,6 +12,8 @@ export class GoalDropdownsBase implements OnInit {
   set selectedItem(item: itemType) {
     if (item) {
       this.selectedIndex$ = this.facade.getItemIndex(item);
+      console.log('>>> item', item)
+      console.log('>>> index', this.selectedIndex$)
     }
   }
 

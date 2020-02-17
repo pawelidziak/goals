@@ -1,10 +1,10 @@
-import { Priority } from './../../../add-goal/+state/add-goal.models';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   PRIORITIES_FEATURE_KEY,
   PrioritiesState,
   prioritiesAdapter
 } from './priorities.reducer';
+import { Priority } from './priorities.models';
 
 export const getPrioritiesState = createFeatureSelector<PrioritiesState>(
   PRIORITIES_FEATURE_KEY

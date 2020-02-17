@@ -29,9 +29,8 @@ export class EditGoalComponent implements OnInit {
     private goalsFacade: GoalsFacade,
     private deadlinesFacade: DeadlinesFacade
   ) {
-    this.deadlinesFacade.deadlines$.subscribe(res => {
+    this.deadlinesFacade.items$.subscribe(res => {
       this.deadlinesProvider.items = res;
-      console.log(this.deadlinesProvider)
     });
   }
 

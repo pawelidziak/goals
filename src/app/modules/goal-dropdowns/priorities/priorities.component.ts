@@ -1,7 +1,7 @@
-import { GoalDropdownsBase } from './../goal-dropdowns.base';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import {  PrioritiesFacade } from './+state';
+import { GoalDropdownsBase } from './../goal-dropdowns.base';
+import { PrioritiesFacade } from './+state';
 
 @Component({
   selector: 'app-priority',
@@ -15,5 +15,4 @@ export class PrioritiesComponent extends GoalDropdownsBase {
   constructor(private prioritiesFacade: PrioritiesFacade) {
     super(prioritiesFacade);
   }
-
 }

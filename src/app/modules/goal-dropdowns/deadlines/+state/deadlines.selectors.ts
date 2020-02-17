@@ -4,6 +4,7 @@ import {
   DeadlinesState,
   deadlinesAdapter
 } from './deadlines.reducer';
+import { Deadline } from './deadlines.models';
 
 export const getDeadlinesState = createFeatureSelector<DeadlinesState>(
   DEADLINES_FEATURE_KEY
@@ -40,4 +41,10 @@ export const getSelected = createSelector(
   getDeadlinesEntities,
   getSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
+);
+
+export const getDeadlineIndex = (deadline: Deadline) => createSelector(
+  getAllDeadlines,
+  (deadlines: Deadline[]) =>
+    deadlines.findIndex(item => item.id === deadline.id)
 );

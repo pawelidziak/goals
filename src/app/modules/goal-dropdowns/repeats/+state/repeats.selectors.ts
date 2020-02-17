@@ -4,6 +4,7 @@ import {
   RepeatsState,
   repeatsAdapter
 } from './repeats.reducer';
+import { Repeat } from './repeats.models';
 
 export const getRepeatsState = createFeatureSelector<RepeatsState>(
   REPEATS_FEATURE_KEY
@@ -40,4 +41,10 @@ export const getSelected = createSelector(
   getRepeatsEntities,
   getSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
+);
+
+export const getRepeatIndex = (repeat: Repeat) => createSelector(
+  getAllRepeats,
+  (repeats: Repeat[]) =>
+    repeats.findIndex(item => item.id === repeat.id)
 );
