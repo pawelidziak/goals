@@ -45,9 +45,6 @@ export const getSelected = createSelector(
 
 export const getPriorityIndex = (priority: Priority) => createSelector(
   getAllPriorities,
-  (priorities: Priority[]) => {
-    console.log('>>>>>>>>> priority', priority);
-    console.log('>>>>>>>>> priorities', priorities);
-    return priorities.findIndex(item => item.id === priority.id)
-  }
+  (priorities: Priority[]) =>
+    priorities.findIndex(item => item.id === priority.id)
 );

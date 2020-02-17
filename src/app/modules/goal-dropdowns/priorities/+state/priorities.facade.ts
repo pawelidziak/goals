@@ -1,3 +1,4 @@
+import { DropdownsFacade } from './../../dropdowns-facade';
 import { Priority } from './priorities.models';
 import { Injectable } from '@angular/core';
 
@@ -8,10 +9,10 @@ import * as PrioritiesActions from './priorities.actions';
 import { PrioritiesState } from './priorities.reducer';
 
 @Injectable()
-export class PrioritiesFacade {
+export class PrioritiesFacade implements DropdownsFacade {
   loaded$ = this.store.pipe(select(PrioritiesSelectors.getPrioritiesLoaded));
-  priorities$ = this.store.pipe(select(PrioritiesSelectors.getAllPriorities));
-  selectedPriority$ = this.store.pipe(select(PrioritiesSelectors.getSelected));
+  items$ = this.store.pipe(select(PrioritiesSelectors.getAllPriorities));
+  selectedItem$ = this.store.pipe(select(PrioritiesSelectors.getSelected));
 
   constructor(private store: Store<PrioritiesState>) {}
 
@@ -19,11 +20,11 @@ export class PrioritiesFacade {
     this.store.dispatch(PrioritiesActions.loadPriorities());
   }
 
-  selectPriority(id: string) {
+  selectItem(id: string) {
     this.store.dispatch(PrioritiesActions.selectPriority({ id }));
   }
 
-  getPriorityIndex(priority: Priority) {
+  getItemIndex(priority: Priority) {
     return this.store.pipe(select(PrioritiesSelectors.getPriorityIndex(priority)));
   }
 }
