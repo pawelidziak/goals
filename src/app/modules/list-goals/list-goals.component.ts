@@ -1,3 +1,4 @@
+import { APP_ROUTES } from '@core/routes';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
@@ -29,7 +30,7 @@ export class ListGoalsComponent implements OnInit {
   // };
 
   constructor(
-    private routerExtension: RouterExtensions,
+    private routerExtensions: RouterExtensions,
     private activeRoute: ActivatedRoute,
     private router: Router,
     private page: Page
@@ -41,6 +42,14 @@ export class ListGoalsComponent implements OnInit {
 
   public onLayoutTap(item) {
     console.log('onLayoutTap', item);
+    this.routerExtensions.navigate([APP_ROUTES.EDIT_GOAL.split('/')[0], item.id], {
+      animated: true,
+      transition: {
+        name: 'slide',
+        duration: 200,
+        curve: 'ease'
+      }
+    });
   }
   /**
    * Methods for radlistview

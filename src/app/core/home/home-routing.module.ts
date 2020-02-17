@@ -25,6 +25,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('@modules/player/players.module').then(m => m.PlayersModule)
       },
+      {
+        path: '',
+        loadChildren: () =>
+          import('@core/pages/edit-goal/edit-goal.module').then(m => m.EditGoalModule)
+      },
       // {
       //   path: '',
       //   loadChildren: () =>
