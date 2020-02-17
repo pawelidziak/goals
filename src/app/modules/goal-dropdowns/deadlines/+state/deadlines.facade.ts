@@ -10,7 +10,7 @@ import { DeadlinesState } from './deadlines.reducer';
 export class DeadlinesFacade {
   loaded$ = this.store.pipe(select(DeadlinesSelectors.getDeadlinesLoaded));
   deadlines$ = this.store.pipe(select(DeadlinesSelectors.getAllDeadlines));
-  selectedPriority$ = this.store.pipe(select(DeadlinesSelectors.getSelected));
+  selectedDeadline$ = this.store.pipe(select(DeadlinesSelectors.getSelected));
 
   constructor(private store: Store<DeadlinesState>) {}
 
