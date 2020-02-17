@@ -15,7 +15,7 @@ import { DeadlinesFacade } from '@modules/goal-dropdowns/deadlines/+state';
   styleUrls: ['./edit-goal.component.scss']
 })
 export class EditGoalComponent implements OnInit {
-  goal$: Observable<Goal>;
+  goal$: Observable<Goal> = this.goalsFacade.selectedGoal$;
   deadlinesProvider = {
     key: 'id',
     label: 'name',
@@ -42,7 +42,6 @@ export class EditGoalComponent implements OnInit {
     // });
 
     // this.goalsFacade.selectedGoal$.subscribe(res => console.log('edit', res))
-    this.goal$ = this.goalsFacade.selectedGoal$;
   }
 
   backTeams() {

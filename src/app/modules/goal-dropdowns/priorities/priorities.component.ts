@@ -1,4 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input
+} from '@angular/core';
 
 import { Priority, PrioritiesFacade } from './+state';
 
@@ -9,8 +15,15 @@ import { Priority, PrioritiesFacade } from './+state';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PrioritiesComponent implements OnInit {
+  @Input()
+  set selectedItem(item) {
+    if (item) {
+      this.selectedIndex = this.facade.getPriorityIndex(item);
+    }
+  }
   icon = 'mdi-priority-high';
-  items$ = this.facade.priorities$;
+  items = this.facade.priorities$;
+  selectedIndex: Observable<number> = of(0);
 
   constructor(private facade: PrioritiesFacade) {}
 

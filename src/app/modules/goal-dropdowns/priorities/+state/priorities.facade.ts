@@ -1,3 +1,4 @@
+import { Priority } from './priorities.models';
 import { Injectable } from '@angular/core';
 
 import { Store, select } from '@ngrx/store';
@@ -22,4 +23,7 @@ export class PrioritiesFacade {
     this.store.dispatch(PrioritiesActions.selectPriority({ id }));
   }
 
+  getPriorityIndex(priority: Priority) {
+    return this.store.pipe(select(PrioritiesSelectors.getPriorityIndex(priority)));
+  }
 }

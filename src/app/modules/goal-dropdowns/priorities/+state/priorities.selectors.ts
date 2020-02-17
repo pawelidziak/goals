@@ -1,3 +1,4 @@
+import { Priority } from './../../../add-goal/+state/add-goal.models';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   PRIORITIES_FEATURE_KEY,
@@ -40,4 +41,13 @@ export const getSelected = createSelector(
   getPrioritiesEntities,
   getSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
+);
+
+export const getPriorityIndex = (priority: Priority) => createSelector(
+  getAllPriorities,
+  (priorities: Priority[]) => {
+    console.log('>>>>>>>>> priority', priority);
+    console.log('>>>>>>>>> priorities', priorities);
+    return priorities.findIndex(item => item.id === priority.id)
+  }
 );

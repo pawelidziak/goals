@@ -58,7 +58,7 @@
   ></label>
   <!-- Drop downs -->
   <FlexboxLayout>
-    <app-priority></app-priority>
+    <app-priority [selectedItem]="(goal$ | async).priority"></app-priority>
     <app-repeats></app-repeats>
   </FlexboxLayout>
 

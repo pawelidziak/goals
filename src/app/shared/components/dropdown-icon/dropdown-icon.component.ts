@@ -31,16 +31,16 @@ export class DropDownIconComponent implements OnInit {
       this.itemsList = items;
       this.itemsName = items.map(item => (item.name ? item.name : ''));
       this.itemsColor = items.map(item => (item.color ? item.color : ''));
-      this.pickIconColor(0);
+      this.currentIconColor = this.itemsColor[this.selectedIndex];
     }
   }
 
   @Input() icon: string;
   @Input() labelSize = 10;
   @Input() labelMargin = 0;
+  @Input() selectedIndex = 0;
   @Output() itemChanged: EventEmitter<any> = new EventEmitter();
   @ViewChild('dropDown', { static: false }) dropDown: ElementRef;
-  selectedIndex = 0;
   currentIconColor = '';
 
   constructor() {}
