@@ -15,7 +15,7 @@ import { GoalDropdownsModule } from '@modules/goal-dropdowns/goal-dropdowns.modu
 import { GoalsFacade, GoalsEffects } from './+state';
 import * as fromGoals from './+state/goals.reducer';
 import { GoalsResolver, GoalsService } from './services';
-import { AddGoalModule } from '@modules/add-goal/add-goal.module';
+import { AddGoalModalModule } from '@src/app/modules/add-goal/add-goal-modal.module';
 import { GoalsComponent } from './goals.component';
 
 @NgModule({
@@ -35,7 +35,7 @@ import { GoalsComponent } from './goals.component';
     EffectsModule.forFeature([GoalsEffects]),
     TNSFontIconModule,
     FloatBtnModule,
-    AddGoalModule,
+    AddGoalModalModule,
     DropDownIconModule,
     ListGoalsModule,
     GoalDropdownsModule

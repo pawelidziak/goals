@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Goal, GoalsFacade } from './+state';
-import { AddGoalFacade } from '@modules/add-goal/+state/add-goal.facade';
+import { AddGoalModalFacade } from '@src/app/modules/add-goal/+state/add-goal-modal.facade';
 import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
 
 @Component({
@@ -13,13 +13,13 @@ import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-na
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GoalsComponent implements OnInit {
-  showAddGoalComponent$: Observable<boolean> = this.addGoalFacade.show$;
+  showAddGoalComponent$: Observable<boolean> = this.addGoalModalFacade.show$;
   goals$: Observable<Goal[]>;
 
   constructor(
     private bottomNavFacade: BottomNavigationFacade,
     private goalsFacade: GoalsFacade,
-    private addGoalFacade: AddGoalFacade
+    private addGoalModalFacade: AddGoalModalFacade
   ) {}
 
   ngOnInit() {
@@ -28,12 +28,12 @@ export class GoalsComponent implements OnInit {
 
   showAddGoalComponent() {
     this.bottomNavFacade.hideBottomNav();
-    this.addGoalFacade.showAddGoal();
+    this.addGoalModalFacade.showAddGoal();
   }
 
   hideAddGoalComponent() {
     this.bottomNavFacade.showBottomNav();
-    this.addGoalFacade.hideAddGoal();
+    this.addGoalModalFacade.hideAddGoal();
   }
 
   onGoalSend(name: string) {

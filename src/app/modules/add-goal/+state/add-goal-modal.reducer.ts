@@ -1,6 +1,6 @@
-import { AddGoal, Deadline, Priority, Repeat } from './add-goal.models';
+import { AddGoal, Deadline, Priority, Repeat } from './add-goal-modal.models';
 import { createReducer, on, Action } from '@ngrx/store';
-import * as AddGoalActions from './add-goal.actions';
+import * as AddGoalActions from './add-goal-modal.actions';
 
 export const ADDGOAL_FEATURE_KEY = 'addGoal';
 
@@ -48,12 +48,12 @@ export const initialState: AddGoal = {
 
 const addGoalReducer = createReducer(
   initialState,
-  on(AddGoalActions.showAddGoal, state => ({
+  on(AddGoalActions.showAddGoalModal, state => ({
     ...state,
     show: true,
     tfFocused: true
   })),
-  on(AddGoalActions.hideAddGoal, state => ({
+  on(AddGoalActions.hideAddGoalModal, state => ({
     ...state,
     show: false,
     tfFocused: false
