@@ -28,7 +28,7 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('@core/pages/edit-goal/edit-goal.module').then(m => m.EditGoalModule)
+          import('@core/pages/goals/components/edit-goal/edit-goal.module').then(m => m.EditGoalModule)
       },
       // {
       //   path: '',

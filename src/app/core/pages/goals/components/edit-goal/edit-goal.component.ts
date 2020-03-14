@@ -5,9 +5,8 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
 
-import { GoalsFacade } from './../goals/+state/goals.facade';
-import { Goal } from '../goals/+state';
 import { DeadlinesFacade } from '@modules/goal-dropdowns/deadlines/+state';
+import { GoalsFacade, Goal } from '../../+state';
 
 @Component({
   selector: 'app-edit-goal',
