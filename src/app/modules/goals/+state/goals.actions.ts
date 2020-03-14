@@ -1,6 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 import { Goal } from './goals.models';
 
+/**
+ * LOAD
+ */
 export const loadGoals = createAction('[Goals] Load Goals');
 
 export const loadGoalsSuccess = createAction(
@@ -13,6 +16,9 @@ export const loadGoalsFailure = createAction(
   props<{ error: any }>()
 );
 
+/**
+ * ADD
+ */
 export const addGoal = createAction(
   '[Goals] Add Goal',
   props<{ name: string }>()
@@ -28,6 +34,45 @@ export const addGoalFailure = createAction(
   props<{ error: any }>()
 );
 
+/**
+ * EDIT
+ */
+export const editGoal = createAction(
+  '[Goals] Edit Goal',
+  props<{ name: string }>()
+);
+
+export const editGoalSuccess = createAction(
+  '[Goals] Edit Goal Success',
+  props<{ id: string }>()
+);
+
+export const editGoalFailure = createAction(
+  '[Goals] Edit Goal Failure',
+  props<{ error: any }>()
+);
+
+/**
+ * DELETE
+ */
+export const deleteGoal = createAction(
+  '[Goals] Delete Goal',
+  props<{ name: string }>()
+);
+
+export const deleteGoalSuccess = createAction(
+  '[Goals] Delete Goal Success',
+  props<{ id: string }>()
+);
+
+export const deleteGoalFailure = createAction(
+  '[Goals] Delete Goal Failure',
+  props<{ error: any }>()
+);
+
+/**
+ * SELECT
+ */
 export const selectGoal = createAction(
   '[Goals] Select Goals',
   props<{ id: string }>()
