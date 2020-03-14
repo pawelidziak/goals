@@ -7,7 +7,7 @@ import { APP_ROUTES } from '@core/routes';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
-import { ListGoalsModule } from '@modules/list-goals/list-goals.module';
+import { ListGoalsModule } from './components/list-goals/list-goals.module';
 import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
 import { DropDownIconModule } from '@shared/components/dropdown-icon/dropdown-icon.module.tns';
 import { GoalDropdownsModule } from '@modules/goal-dropdowns/goal-dropdowns.module';
