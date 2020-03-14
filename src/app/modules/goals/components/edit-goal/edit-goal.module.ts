@@ -7,9 +7,9 @@ import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 
 import { APP_ROUTES } from '@core/routes';
-import { GoalsFacade } from '@core/goals/+state';
-import { EditGoalComponent } from './edit-goal.component';
+import { GoalsFacade } from '@modules/goals/+state';
 import { EditGoalResolver } from './edit-goal.resolver';
+import { EditGoalComponent } from './edit-goal.component';
 import { GoalDropdownsModule } from '@modules/goal-dropdowns/goal-dropdowns.module';
 
 @NgModule({

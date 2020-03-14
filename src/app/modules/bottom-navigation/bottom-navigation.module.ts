@@ -1,4 +1,4 @@
-import { BottomNavigationComponent } from '@core/bottom-navigation/bottom-navigation.component';
+import { BottomNavigationComponent } from '@modules/bottom-navigation/bottom-navigation.component';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';

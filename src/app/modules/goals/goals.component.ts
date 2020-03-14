@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Goal, GoalsFacade } from './+state';
 import { AddGoalModalFacade } from '@src/app/modules/add-goal-modal/+state/add-goal-modal.facade';
-import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
+import { BottomNavigationFacade } from '@modules/bottom-navigation/+state/bottom-navigation.facade';
 
 @Component({
   selector: 'app-goals',
