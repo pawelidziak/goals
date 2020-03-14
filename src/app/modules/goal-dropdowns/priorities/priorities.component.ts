@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { Priority, PrioritiesFacade } from './+state';
+import { GoalDropdownsBase } from './../goal-dropdowns.base';
+import { PrioritiesFacade } from './+state';
 
 @Component({
   selector: 'app-priority',
@@ -8,17 +9,10 @@ import { Priority, PrioritiesFacade } from './+state';
   styleUrls: ['./priorities.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PrioritiesComponent implements OnInit {
+export class PrioritiesComponent extends GoalDropdownsBase {
   icon = 'mdi-priority-high';
-  items$ = this.facade.priorities$;
 
-  constructor(private facade: PrioritiesFacade) {}
-
-  ngOnInit() {
-    this.facade.loadAll(); // should be call at goals lvl?
-  }
-
-  onItemChanged(priority: Priority) {
-    this.facade.selectPriority(priority.id);
+  constructor(private prioritiesFacade: PrioritiesFacade) {
+    super(prioritiesFacade);
   }
 }

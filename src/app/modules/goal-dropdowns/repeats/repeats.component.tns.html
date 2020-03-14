@@ -1,5 +1,6 @@
 <app-dropdown-icon
   [items]="(items$ | async)"
   [icon]="icon"
+  [selectedIndex]="(selectedIndex$ | async)"
   (itemChanged)="onItemChanged($event)"
 ></app-dropdown-icon>

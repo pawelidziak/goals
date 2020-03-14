@@ -4,7 +4,7 @@ import { firestore as firebaseNamespace } from 'nativescript-plugin-firebase';
 import { firestore } from 'nativescript-plugin-firebase/app';
 import { of, Observable } from 'rxjs';
 
-import { Goal } from '@core/pages/goals/+state';
+import { Goal } from '@core/goals/+state';
 
 const USE_MOCK_DATA = false;
 

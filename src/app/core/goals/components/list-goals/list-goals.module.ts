@@ -1,5 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
+import { NativeScriptRouterModule } from 'nativescript-angular/router';
 
 import { NativeScriptUIListViewModule } from 'nativescript-ui-listview/angular';
 import { NgRippleModule } from 'nativescript-ng-ripple';
@@ -11,6 +12,7 @@ import { ListGoalsComponent } from './list-goals.component';
 @NgModule({
   imports: [
     NativeScriptCommonModule,
+    NativeScriptRouterModule,
     NgRippleModule,
     NativeScriptUIListViewModule,
     CheckboxModule,

@@ -8,7 +8,7 @@ import * as GoalsActions from './goals.actions';
 export class GoalsFacade {
   loaded$ = this.store.pipe(select(GoalsSelectors.getGoalsLoaded));
   allGoals$ = this.store.pipe(select(GoalsSelectors.getAllGoals));
-  selectedGoals$ = this.store.pipe(select(GoalsSelectors.getSelected));
+  selectedGoal$ = this.store.pipe(select(GoalsSelectors.getSelected));
 
   constructor(private store: Store<fromGoals.GoalsState>) {}
 
@@ -17,6 +17,10 @@ export class GoalsFacade {
   }
 
   addGoal(name: string) {
-    this.store.dispatch(GoalsActions.addGoal({ name }))
+    this.store.dispatch(GoalsActions.addGoal({ name }));
+  }
+
+  selectGoal(id: string) {
+    this.store.dispatch(GoalsActions.selectGoal({ id }));
   }
 }

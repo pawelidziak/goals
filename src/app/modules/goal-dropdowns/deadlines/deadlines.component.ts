@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { Deadline, DeadlinesFacade } from './+state';
+import { GoalDropdownsBase } from './../goal-dropdowns.base';
+import { DeadlinesFacade } from './+state';
 
 @Component({
   selector: 'app-deadlines',
@@ -8,17 +9,10 @@ import { Deadline, DeadlinesFacade } from './+state';
   styleUrls: ['./deadlines.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DeadlinesComponent implements OnInit {
+export class DeadlinesComponent extends GoalDropdownsBase {
   icon = 'mdi-dashboard';
-  items$ = this.facade.deadlines$;
 
-  constructor(private facade: DeadlinesFacade) {}
-
-  ngOnInit(): void {
-    this.facade.loadAll(); // should be call at goals lvl?
-  }
-
-  onItemChanged(deadline: Deadline) {
-    this.facade.selectDeadline(deadline.id);
+  constructor(private deadlinesFacade: DeadlinesFacade) {
+    super(deadlinesFacade);
   }
 }

@@ -12,29 +12,29 @@ import { TextField } from 'tns-core-modules/ui/text-field';
 import { Observable } from 'rxjs';
 
 import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
-import { AddGoalFacade } from '../+state/add-goal.facade';
+import { AddGoalModalFacade } from './+state/add-goal-modal.facade';
 
 @Component({
-  selector: 'app-add-goal',
-  templateUrl: './add-goal.component.html',
-  styleUrls: ['./add-goal.component.scss'],
+  selector: 'app-add-goal-modal',
+  templateUrl: './add-goal-modal.component.html',
+  styleUrls: ['./add-goal-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AddGoalComponent implements OnInit, AfterViewInit {
+export class AddGoalModalComponent implements OnInit, AfterViewInit {
   @ViewChild('addTextField', { static: false }) addTextField: ElementRef;
   @Output() onGoalSend: EventEmitter<any> = new EventEmitter();
-  showComponent$: Observable<boolean> = this.addGoalFacade.show$;
+  showComponent$: Observable<boolean> = this.addGoalModalFacade.show$;
   newGoalTitle = '';
 
   constructor(
     private bottomNavFacade: BottomNavigationFacade,
-    private addGoalFacade: AddGoalFacade
+    private addGoalModalFacade: AddGoalModalFacade
   ) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    this.addGoalFacade.tfFocused$.subscribe(res => {
+    this.addGoalModalFacade.tfFocused$.subscribe(res => {
       const textField = <TextField>this.addTextField.nativeElement;
       if (res) {
         textField.focus();
@@ -46,7 +46,7 @@ export class AddGoalComponent implements OnInit, AfterViewInit {
 
   closeAdding() {
     this.newGoalTitle = '';
-    this.addGoalFacade.hideAddGoal();
+    this.addGoalModalFacade.hideAddGoal();
     this.bottomNavFacade.showBottomNav();
   }
 

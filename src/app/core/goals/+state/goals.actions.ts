@@ -27,3 +27,8 @@ export const addGoalFailure = createAction(
   '[Goals] Add Goal Failure',
   props<{ error: any }>()
 );
+
+export const selectGoal = createAction(
+  '[Goals] Select Goals',
+  props<{ id: string }>()
+);

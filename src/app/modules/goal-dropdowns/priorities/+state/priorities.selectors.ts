@@ -4,6 +4,7 @@ import {
   PrioritiesState,
   prioritiesAdapter
 } from './priorities.reducer';
+import { Priority } from './priorities.models';
 
 export const getPrioritiesState = createFeatureSelector<PrioritiesState>(
   PRIORITIES_FEATURE_KEY
@@ -40,4 +41,10 @@ export const getSelected = createSelector(
   getPrioritiesEntities,
   getSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
+);
+
+export const getPriorityIndex = (priority: Priority) => createSelector(
+  getAllPriorities,
+  (priorities: Priority[]) =>
+    priorities.findIndex(item => item.id === priority.id)
 );
