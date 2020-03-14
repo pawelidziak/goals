@@ -15,7 +15,7 @@ import { GoalDropdownsModule } from '@modules/goal-dropdowns/goal-dropdowns.modu
 import { GoalsFacade, GoalsEffects } from './+state';
 import * as fromGoals from './+state/goals.reducer';
 import { GoalsResolver, GoalsService } from './services';
-import { AddGoalModalModule } from '@src/app/modules/add-goal/add-goal-modal.module';
+import { AddGoalModalModule } from '@src/app/modules/add-goal-modal/add-goal-modal.module';
 import { GoalsComponent } from './goals.component';
 
 @NgModule({

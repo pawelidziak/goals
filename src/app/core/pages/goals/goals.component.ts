@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Goal, GoalsFacade } from './+state';
-import { AddGoalModalFacade } from '@src/app/modules/add-goal/+state/add-goal-modal.facade';
+import { AddGoalModalFacade } from '@src/app/modules/add-goal-modal/+state/add-goal-modal.facade';
 import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
 
 @Component({

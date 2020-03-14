@@ -12,7 +12,7 @@ import { TextField } from 'tns-core-modules/ui/text-field';
 import { Observable } from 'rxjs';
 
 import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-navigation.facade';
-import { AddGoalModalFacade } from '../+state/add-goal-modal.facade';
+import { AddGoalModalFacade } from './+state/add-goal-modal.facade';
 
 @Component({
   selector: 'app-add-goal',
