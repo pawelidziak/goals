@@ -1,5 +1,5 @@
 import { APP_ROUTES } from '@core/routes';
-import { HomeComponent } from '@core/home/home.component';
+import { HomeComponent } from '@modules/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
@@ -13,7 +13,7 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('@core/goals/goals.module').then(m => m.GoalsModule)
+          import('@modules/goals/goals.module').then(m => m.GoalsModule)
       },
       {
         path: '',
@@ -28,7 +28,7 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('@core/goals/components/edit-goal/edit-goal.module').then(m => m.EditGoalModule)
+          import('@modules/goals/components/edit-goal/edit-goal.module').then(m => m.EditGoalModule)
       },
       // {
       //   path: '',
