@@ -7,7 +7,7 @@ import {
 
 import { Observable, of } from 'rxjs';
 
-import { GoalsFacade, GoalsState } from '@core/pages/goals/+state';
+import { GoalsFacade, GoalsState } from '@core/goals/+state';
 
 @Injectable()
 export class GoalsResolver implements Resolve<GoalsState> {

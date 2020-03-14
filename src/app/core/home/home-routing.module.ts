@@ -13,7 +13,7 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('@pages/goals/goals.module').then(m => m.GoalsModule)
+          import('@core/goals/goals.module').then(m => m.GoalsModule)
       },
       {
         path: '',
@@ -28,7 +28,7 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('@core/pages/goals/components/edit-goal/edit-goal.module').then(m => m.EditGoalModule)
+          import('@core/goals/components/edit-goal/edit-goal.module').then(m => m.EditGoalModule)
       },
       // {
       //   path: '',
