@@ -12,11 +12,11 @@ import { FloatBtnModule } from '@shared/components/float-btn/float-btn.module';
 import { DropDownIconModule } from '@shared/components/dropdown-icon/dropdown-icon.module.tns';
 import { GoalDropdownsModule } from '@modules/goal-dropdowns/goal-dropdowns.module';
 
-import { GoalsFacade, GoalsEffects } from './+state';
-import * as fromGoals from './+state/goals.reducer';
-import { GoalsResolver, GoalsService } from './services';
-import { AddGoalModalModule } from '@src/app/modules/add-goal-modal/add-goal-modal.module';
 import { GoalsComponent } from './goals.component';
+import * as fromGoals from './+state/goals.reducer';
+import { GoalsFacade, GoalsEffects } from './+state';
+import { GoalsResolver, GoalsService } from './services';
+import { AddGoalModule } from './components/add-goal/add-goal.module';
 
 @NgModule({
   imports: [
@@ -35,7 +35,7 @@ import { GoalsComponent } from './goals.component';
     EffectsModule.forFeature([GoalsEffects]),
     TNSFontIconModule,
     FloatBtnModule,
-    AddGoalModalModule,
+    AddGoalModule,
     DropDownIconModule,
     ListGoalsModule,
     GoalDropdownsModule

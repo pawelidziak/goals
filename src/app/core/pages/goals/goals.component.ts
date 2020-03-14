@@ -36,8 +36,4 @@ export class GoalsComponent implements OnInit {
     this.addGoalModalFacade.hideAddGoal();
   }
 
-  onGoalSend(name: string) {
-    // console.log(name);
-    this.goalsFacade.addGoal(name);
-  }
 }

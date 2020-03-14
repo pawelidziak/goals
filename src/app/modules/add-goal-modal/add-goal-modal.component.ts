@@ -15,7 +15,7 @@ import { BottomNavigationFacade } from '@core/bottom-navigation/+state/bottom-na
 import { AddGoalModalFacade } from './+state/add-goal-modal.facade';
 
 @Component({
-  selector: 'app-add-goal',
+  selector: 'app-add-goal-modal',
   templateUrl: './add-goal-modal.component.html',
   styleUrls: ['./add-goal-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

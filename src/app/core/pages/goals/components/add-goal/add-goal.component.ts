@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { GoalsFacade } from '../../+state';
 
 @Component({
   selector: 'app-add-goal',
@@ -8,8 +9,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class AddGoalComponent implements OnInit {
 
-  constructor() {}
+  constructor(private goalsFacade: GoalsFacade) {}
   
   ngOnInit() {}
 
+  onGoalSend(name: string) {
+    this.goalsFacade.addGoal(name);
+  }
 }
