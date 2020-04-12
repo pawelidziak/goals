@@ -16,7 +16,7 @@ import { DeadlinesFacade } from '../goal-dropdowns/deadlines/+state';
 export class GoalsComponent implements OnInit {
   showAddGoalComponent$: Observable<boolean> = this.addGoalModalFacade.show$;
   goals$: Observable<Goal[]> = this.goalsFacade.filteredGoals$;
-  private deadline$ = this.deadlinesFacade.selectedItem$;
+  deadline$ = this.deadlinesFacade.selectedItem$;
 
   constructor(
     private bottomNavFacade: BottomNavigationFacade,

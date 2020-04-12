@@ -20,6 +20,7 @@ import { Goal } from '@modules/goals/+state';
 })
 export class ListGoalsComponent implements OnInit {
   @Input() goals: Goal[];
+  @Input() filter: any;
 
   // swipeRight = {
   //   text: 'priority',

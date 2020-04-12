@@ -1,5 +1,10 @@
 <GridLayout>
-  <ListView #myListView [items]="goals">
+ 
+  <StackLayout *ngIf="goals.length === 0 && filter">
+    <Label [text]="'No goals for ' + filter.name"></Label>
+  </StackLayout>
+ 
+  <ListView *ngIf="goals.length > 0" #myListView [items]="goals">
     <ng-template let-item="item">
       <GridLayout
         columns="auto, *"

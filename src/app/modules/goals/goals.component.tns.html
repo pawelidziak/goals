@@ -12,7 +12,7 @@
 
 <GridLayout rows="*, auto">
   <StackLayout row="0">
-    <app-list-goals [goals]="goals$ | async"></app-list-goals>
+    <app-list-goals [goals]="goals$ | async" [filter]="deadline$ | async"></app-list-goals>
   </StackLayout>
 
   <!-- Overview -->
