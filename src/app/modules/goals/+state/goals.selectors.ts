@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { GOALS_FEATURE_KEY, GoalsState, goalsAdapter } from './goals.reducer';
+import { Goal } from './goals.models';
 
 export const getGoalsState = createFeatureSelector<GoalsState>(
   GOALS_FEATURE_KEY
@@ -36,4 +37,17 @@ export const getSelected = createSelector(
   getGoalsEntities,
   getSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
+);
+
+export const getActiveFilter = createSelector(
+  getGoalsState,
+  (state: GoalsState) => state.activeFilter
+);
+
+export const getFilteredGoals = createSelector(
+  getAllGoals,
+  getActiveFilter,
+  (goals: Goal[], filter: any) => filter 
+    ? goals.filter((goal) => goal.deadline.name === filter.name)
+    : goals
 );

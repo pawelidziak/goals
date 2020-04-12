@@ -10,13 +10,14 @@ export interface GoalsState extends EntityState<Goal> {
   selectedId?: string | number;
   loaded: boolean;
   error?: string | null;
+  activeFilter: any;
 }
 export const goalsAdapter: EntityAdapter<Goal> = createEntityAdapter<Goal>();
 
 export const initialState: GoalsState = goalsAdapter.getInitialState({
   selectedId: null,
   loaded: false,
-  // goals: Array<Goal>()
+  activeFilter: null
 });
 
 const goalsReducer = createReducer(
@@ -37,6 +38,10 @@ const goalsReducer = createReducer(
   on(GoalActions.selectGoal, (state, { id }) => ({
     ...state,
     selectedId: id
+  })),
+  on(GoalActions.filterGoals, (state, { filter }) => ({
+    ...state,
+    activeFilter: filter
   }))
 );
 

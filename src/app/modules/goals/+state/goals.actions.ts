@@ -77,3 +77,11 @@ export const selectGoal = createAction(
   '[Goals] Select Goals',
   props<{ id: string }>()
 );
+
+/**
+ * FILTER
+ */
+export const filterGoals = createAction(
+  '[Goals] Filter Goals',
+  props<{ filter: any }>()
+);

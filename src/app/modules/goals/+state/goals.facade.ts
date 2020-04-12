@@ -9,6 +9,7 @@ export class GoalsFacade {
   loaded$ = this.store.pipe(select(GoalsSelectors.getGoalsLoaded));
   allGoals$ = this.store.pipe(select(GoalsSelectors.getAllGoals));
   selectedGoal$ = this.store.pipe(select(GoalsSelectors.getSelected));
+  filteredGoals$ = this.store.pipe(select(GoalsSelectors.getFilteredGoals));
 
   constructor(private store: Store<fromGoals.GoalsState>) {}
 
@@ -22,5 +23,9 @@ export class GoalsFacade {
 
   selectGoal(id: string) {
     this.store.dispatch(GoalsActions.selectGoal({ id }));
+  }
+
+  filterGoals(filter: any) {
+    this.store.dispatch(GoalsActions.filterGoals({ filter }));
   }
 }
