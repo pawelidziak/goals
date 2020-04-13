@@ -3,11 +3,14 @@ import { Store, select } from '@ngrx/store';
 import * as fromGoals from './goals.reducer';
 import * as GoalsSelectors from './goals.selectors';
 import * as GoalsActions from './goals.actions';
+import { Goal } from './goals.models';
 
 @Injectable()
 export class GoalsFacade {
   loaded$ = this.store.pipe(select(GoalsSelectors.getGoalsLoaded));
   allGoals$ = this.store.pipe(select(GoalsSelectors.getAllGoals));
+  doneGoals$ = this.store.pipe(select(GoalsSelectors.getDoneGoals));
+  undoneGoals$ = this.store.pipe(select(GoalsSelectors.getUndoneGoals));
   selectedGoal$ = this.store.pipe(select(GoalsSelectors.getSelected));
   filteredGoals$ = this.store.pipe(select(GoalsSelectors.getFilteredGoals));
 
@@ -27,5 +30,9 @@ export class GoalsFacade {
 
   filterGoals(filter: any) {
     this.store.dispatch(GoalsActions.filterGoals({ filter }));
+  }
+
+  editGoal(goal: Goal) {
+    this.store.dispatch(GoalsActions.editGoal({ goal }))
   }
 }

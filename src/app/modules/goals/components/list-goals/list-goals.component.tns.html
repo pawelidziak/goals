@@ -1,35 +1,40 @@
-<GridLayout>
- 
-  <StackLayout *ngIf="goals.length === 0 && filter">
-    <Label [text]="'No goals for ' + filter.name"></Label>
-  </StackLayout>
- 
-  <ListView *ngIf="goals.length > 0" #myListView [items]="goals">
-    <ng-template let-item="item">
-      <GridLayout
-        columns="auto, *"
-        ripple
-        (tap)="onLayoutTap(item)"
-        background="#fff"
-      >
-        <!-- CHECKBOX -->
-        <StackLayout col="0" verticalAlignment="center" padding="0 10">
-          <app-checkbox
-            [(value)]="item.done"
-            [fillColor]="item.priority.color"
-          ></app-checkbox>
-        </StackLayout>
+<!-- LIST -->
+<ListView #myListView [items]="goals">
+  <ng-template let-item="item">
+    <GridLayout
+      [ngClass]="{'goal__done': item.done}"
+      columns="auto, *"
+      ripple
+      (tap)="onLayoutTap(item)"
+      background="#fff"
+    >
+      <!-- CHECKBOX -->
+      <!-- proposal pass it by ng-content -->
+      <StackLayout col="0" verticalAlignment="center" padding="0 10">
+        <app-checkbox
+          [value]="item.done"
+          (changed)="itemChanged(item, $event)"
+          [fillColor]="item.priority.color"
+        ></app-checkbox>
+      </StackLayout>
 
-        <!-- ITEM -->
-        <StackLayout col="1" 
-          [ngClass]="{'padding-10': item.desc, 'padding-16': !item.desc}">
-          <label class="label-name" [text]="item.name"></label>
-          <label *ngIf="item.desc" class="label-text" [text]="item.desc"></label>
-        </StackLayout>
-      </GridLayout>
-    </ng-template>
-  </ListView>
-</GridLayout>
+      <!-- ITEM -->
+      <FlexboxLayout
+        col="1"
+        flexDirection="column"
+        justifyContent="center"
+        [ngClass]="{'padding-10': item.desc, 'padding-16': !item.desc}"
+      >
+        <label class="label-name" [text]="item.name"></label>
+        <label
+          *ngIf="item.desc && !item.done"
+          class="label-text"
+          [text]="item.desc"
+        ></label>
+      </FlexboxLayout>
+    </GridLayout>
+  </ng-template>
+</ListView>
 
 <!-- <GridLayout>
   <RadListView

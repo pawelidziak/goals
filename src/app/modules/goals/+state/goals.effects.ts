@@ -24,7 +24,7 @@ export class GoalsEffects {
       ofType(GoalsActions.loadGoals),
       mergeMap(() =>
         this.service.getAll().pipe(
-          map(goals => GoalsActions.loadGoalsSuccess({ goals: goals })),
+          map(goals => GoalsActions.loadGoalsSuccess({ goals: goals.sort((a, b) => +a.done - +b.done) })),
           catchError(() => GoalsActions.loadGoalsFailure)
         )
       )

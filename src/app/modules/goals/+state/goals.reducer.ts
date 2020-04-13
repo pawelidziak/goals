@@ -42,7 +42,13 @@ const goalsReducer = createReducer(
   on(GoalActions.filterGoals, (state, { filter }) => ({
     ...state,
     activeFilter: filter
-  }))
+  })),
+  on(GoalActions.editGoal, (state, { goal }) => 
+    goalsAdapter.updateOne({
+      id: goal.id,
+      changes: goal
+    }, state)
+  )
 );
 
 export function reducer(state: GoalsState | undefined, action: Action) {

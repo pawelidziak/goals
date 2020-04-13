@@ -1,7 +1,7 @@
 import { APP_ROUTES } from '@core/routes';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 
 import {
@@ -21,6 +21,7 @@ import { Goal } from '@modules/goals/+state';
 export class ListGoalsComponent implements OnInit {
   @Input() goals: Goal[];
   @Input() filter: any;
+  @Output() goalStateChange: EventEmitter<Goal> = new EventEmitter();
 
   // swipeRight = {
   //   text: 'priority',
@@ -40,6 +41,11 @@ export class ListGoalsComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  itemChanged(goal: Goal, e) {
+    goal.done = e;
+    this.goalStateChange.emit(goal);
+  }
 
   public onLayoutTap(item) {
     console.log('onLayoutTap', item);

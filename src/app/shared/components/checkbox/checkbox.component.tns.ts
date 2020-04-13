@@ -14,7 +14,7 @@ import {
 export class CheckboxComponent {
   checkboxValue: boolean;
 
-  @Output() counterChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() valueChange: EventEmitter<boolean> = new EventEmitter();
   @Output() changed: EventEmitter<boolean> = new EventEmitter();
 
   @Input() text: string;
@@ -28,7 +28,7 @@ export class CheckboxComponent {
 
   set value(value: boolean) {
     this.checkboxValue = value;
-    this.counterChange.emit(this.checkboxValue);
+    this.valueChange.emit(this.checkboxValue);
   }
 
   constructor() {}

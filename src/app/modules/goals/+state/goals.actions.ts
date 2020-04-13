@@ -39,7 +39,7 @@ export const addGoalFailure = createAction(
  */
 export const editGoal = createAction(
   '[Goals] Edit Goal',
-  props<{ name: string }>()
+  props<{ goal: Goal }>()
 );
 
 export const editGoalSuccess = createAction(

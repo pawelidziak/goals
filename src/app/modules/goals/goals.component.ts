@@ -11,12 +11,14 @@ import { DeadlinesFacade } from '../goal-dropdowns/deadlines/+state';
   selector: 'app-goals',
   templateUrl: './goals.component.html',
   styleUrls: ['./goals.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GoalsComponent implements OnInit {
   showAddGoalComponent$: Observable<boolean> = this.addGoalModalFacade.show$;
-  goals$: Observable<Goal[]> = this.goalsFacade.filteredGoals$;
+  doneGoals$: Observable<Goal[]> = this.goalsFacade.doneGoals$;
+  undoneGoals$: Observable<Goal[]> = this.goalsFacade.undoneGoals$;
   deadline$ = this.deadlinesFacade.selectedItem$;
+  goals$: Observable<Goal[]> = this.goalsFacade.filteredGoals$;
 
   constructor(
     private bottomNavFacade: BottomNavigationFacade,
@@ -26,7 +28,9 @@ export class GoalsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.deadline$.subscribe(deadline => this.goalsFacade.filterGoals(deadline));
+    this.deadline$.subscribe((deadline) =>
+      this.goalsFacade.filterGoals(deadline)
+    );
     // todo add unsubscribe or set filter in other place (resolver)
   }
 
@@ -40,4 +44,7 @@ export class GoalsComponent implements OnInit {
     this.addGoalModalFacade.hideAddGoal();
   }
 
+  onGoalStateChange(goal: Goal) {
+    this.goalsFacade.editGoal(goal);
+  }
 }

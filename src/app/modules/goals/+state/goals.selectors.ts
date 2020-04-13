@@ -48,6 +48,16 @@ export const getFilteredGoals = createSelector(
   getAllGoals,
   getActiveFilter,
   (goals: Goal[], filter: any) => filter 
-    ? goals.filter((goal) => goal.deadline.name === filter.name)
+    ? goals.filter((goal) => goal.deadline.name === filter.name).sort((a, b) => +a.done - +b.done)
     : goals
+);
+
+export const getDoneGoals = createSelector(
+  getFilteredGoals,
+  (goals: Goal[]) => goals.filter(goal => goal.done)
+);
+
+export const getUndoneGoals = createSelector(
+  getFilteredGoals,
+  (goals: Goal[]) => goals.filter(goal => !goal.done)
 );
