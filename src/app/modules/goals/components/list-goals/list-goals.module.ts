@@ -8,6 +8,7 @@ import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 
 import { CheckboxModule } from '@shared/components/checkbox/checkbox.module.tns';
 import { ListGoalsComponent } from './list-goals.component';
+import { TNSCheckBoxModule } from '@nstudio/nativescript-checkbox/angular';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { ListGoalsComponent } from './list-goals.component';
     NgRippleModule,
     NativeScriptUIListViewModule,
     CheckboxModule,
-    TNSFontIconModule
+    TNSFontIconModule,
+    TNSCheckBoxModule,
   ],
   providers: [],
   declarations: [ListGoalsComponent],

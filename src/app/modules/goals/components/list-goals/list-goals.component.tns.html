@@ -1,5 +1,43 @@
-<!-- LIST -->
-<ListView #myListView [items]="goals">
+<StackLayout
+  *ngFor="let item of goals"
+  orientation="horizontal"
+  [ngClass]="{'goal__done': item.done}"
+  columns="auto, *"
+  ripple
+  (tap)="onLayoutTap(item)"
+  background="#fff"
+>
+<!-- <mat-checkbox class="example-margin" [(ngModel)]="item.done">Checked</mat-checkbox> -->
+
+<label [text]="item.done"></label>
+  <CheckBox
+    #checkbox
+    [checked]="item.done"
+    [fillColor]="item.priority.color"
+    (checkedChange)="itemChanged(item, $event.value)"
+  ></CheckBox>
+
+  <!-- <app-checkbox
+    [checked]="item.done"
+    (checkedChange)="itemChanged(item.id, $event)"
+    [fillColor]="item.priority.color"
+  ></app-checkbox> -->
+
+  <FlexboxLayout
+    flexDirection="column"
+    justifyContent="center"
+    [ngClass]="{'padding-10': item.desc, 'padding-16': !item.desc}"
+  >
+    <label class="label-name" [text]="item.name"></label>
+    <label
+      *ngIf="item.desc && !item.done"
+      class="label-text"
+      [text]="item.desc"
+    ></label>
+  </FlexboxLayout>
+</StackLayout>
+
+<!-- <ListView #myListView [items]="goals">
   <ng-template let-item="item">
     <GridLayout
       [ngClass]="{'goal__done': item.done}"
@@ -8,8 +46,6 @@
       (tap)="onLayoutTap(item)"
       background="#fff"
     >
-      <!-- CHECKBOX -->
-      <!-- proposal pass it by ng-content -->
       <StackLayout col="0" verticalAlignment="center" padding="0 10">
         <app-checkbox
           [value]="item.done"
@@ -18,7 +54,6 @@
         ></app-checkbox>
       </StackLayout>
 
-      <!-- ITEM -->
       <FlexboxLayout
         col="1"
         flexDirection="column"
@@ -34,91 +69,4 @@
       </FlexboxLayout>
     </GridLayout>
   </ng-template>
-</ListView>
-
-<!-- <GridLayout>
-  <RadListView
-    #myListView
-    [items]="goals"
-    selectionBehavior="None"
-    (itemSwipeProgressEnded)="onSwipeCellFinished($event)"
-    (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
-    (itemSwipeProgressChanged)="onCellSwiping($event)"
-    swipeActions="true"
-  >
-    <ng-template tkListItemTemplate let-item="item">
-      <GridLayout
-        columns="auto, *"
-        ripple
-        (tap)="onLayoutTap($event)"
-        background="#fff"
-      >
-        CHECKBOX
-        <StackLayout col="0" verticalAlignment="center" padding="0 10">
-          <app-checkbox
-            [(value)]="item.done"
-            [fillColor]="item.priority.color"
-          ></app-checkbox>
-        </StackLayout>
-
-        ITEM
-        <StackLayout col="1" padding="10 0">
-          <label class="label-name" [text]="item.name"></label>
-          <label class="label-text" [text]="item.desc"></label>
-        </StackLayout>
-
-        PRIORITY -->
-<!-- 
-          commented
-          <StackLayout
-          col="2"
-          orientation="horizontal"
-          verticalAlignment="center"
-          padding="0 10"
-        >
-          <FlexboxLayout
-            ripple
-            class="item__icon"
-            [color]="item.priority.color"
-          >
-            <label [text]="'mdi-priority-high' | fonticon" class="mdi"></label>
-          </FlexboxLayout>
-          <FlexboxLayout ripple class="item__icon">
-            <label [text]="'mdi-date-range' | fonticon" class="mdi"></label>
-          </FlexboxLayout>
-        </StackLayout> -->
-<!-- 
-      </GridLayout>
-    </ng-template>
-
-    <GridLayout
-      *tkListItemSwipeTemplate
-      columns="auto, *, auto"
-      class="gridLayoutLayout"
-    >
-      <FlexboxLayout
-        id="mark-view"
-        col="0"
-        class="swipe-view"
-        alignItems="center"
-        background="#00C851"
-      >
-        <label [text]="'mdi-done' | fonticon" class="mdi"></label>
-        <label text="done" class="swipe-view__text"></label>
-      </FlexboxLayout>
-
-      <FlexboxLayout col="1" [background]="swipeRight.bgColor"></FlexboxLayout>
-
-      <FlexboxLayout
-        id="delete-view"
-        col="2"
-        class="swipe-view"
-        alignItems="center"
-        [background]="swipeRight.bgColor"
-      >
-        <label [text]="swipeRight.icon | fonticon" class="mdi"></label>
-        <label [text]="swipeRight.text" class="swipe-view__text"></label>
-      </FlexboxLayout>
-    </GridLayout>
-  </RadListView>
-</GridLayout> -->
+</ListView> -->

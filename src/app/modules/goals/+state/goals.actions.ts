@@ -85,3 +85,16 @@ export const filterGoals = createAction(
   '[Goals] Filter Goals',
   props<{ filter: any }>()
 );
+
+/**
+ * DONE / UNDONE
+ */
+export const doneGoal = createAction(
+  '[Goals] Done Goal',
+  props<{ id: string }>()
+);
+
+export const undoneGoal = createAction(
+  '[Goals] Undone Goal',
+  props<{ id: string }>()
+);

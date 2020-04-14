@@ -19,6 +19,7 @@ export class GoalsComponent implements OnInit {
   undoneGoals$: Observable<Goal[]> = this.goalsFacade.undoneGoals$;
   deadline$ = this.deadlinesFacade.selectedItem$;
   goals$: Observable<Goal[]> = this.goalsFacade.filteredGoals$;
+  goals: Goal[];
 
   constructor(
     private bottomNavFacade: BottomNavigationFacade,
@@ -31,6 +32,7 @@ export class GoalsComponent implements OnInit {
     this.deadline$.subscribe((deadline) =>
       this.goalsFacade.filterGoals(deadline)
     );
+    this.goalsFacade.filteredGoals$.subscribe(goals => this.goals = goals)
     // todo add unsubscribe or set filter in other place (resolver)
   }
 
@@ -46,5 +48,13 @@ export class GoalsComponent implements OnInit {
 
   onGoalStateChange(goal: Goal) {
     this.goalsFacade.editGoal(goal);
+  }
+
+  getUndoneGoals() {
+    return this.goals.filter(goal => !goal.done);
+  }
+  
+  getDoneGoals() {
+    return this.goals.filter(goal => goal.done);
   }
 }

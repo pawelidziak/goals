@@ -3,37 +3,27 @@ import {
   EventEmitter,
   Output,
   Input,
+  ViewChild,
   ElementRef,
-  ViewChild
 } from '@angular/core';
+
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+  styleUrls: ['./checkbox.component.scss'],
 })
 export class CheckboxComponent {
-  checkboxValue: boolean;
-
-  @Output() valueChange: EventEmitter<boolean> = new EventEmitter();
-  @Output() changed: EventEmitter<boolean> = new EventEmitter();
-
   @Input() text: string;
   @Input() fillColor = '#3F51B5';
+  @Input() checked: boolean;
+  @Output() checkedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @ViewChild('checkbox', { static: false }) checkbox: ElementRef;
 
-  @Input() get value(): boolean {
-    return this.checkboxValue;
-  }
-
-  set value(value: boolean) {
-    this.checkboxValue = value;
-    this.valueChange.emit(this.checkboxValue);
-  }
-
   constructor() {}
 
-  public checkedChange(val: boolean) {
-    this.changed.emit(val);
+  public onCheckedChange(val: boolean) {
+    this.checked = val;
+    this.checkedChange.emit(val);
   }
 }
