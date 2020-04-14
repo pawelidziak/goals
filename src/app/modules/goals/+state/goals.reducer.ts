@@ -49,22 +49,22 @@ const goalsReducer = createReducer(
       changes: goal
     }, state)
   ),
-  on(GoalActions.doneGoal, (state, { id }) => 
-    goalsAdapter.updateOne({
-      id: id,
-      changes: {
-        done: true
-      }
-    }, state)
-  ),
-  on(GoalActions.undoneGoal, (state, { id }) => 
-    goalsAdapter.updateOne({
-      id: id,
-      changes: {
-        done: false
-      }
-    }, state)
-  ),
+  // on(GoalActions.doneGoal, (state, { id }) => 
+  //   goalsAdapter.updateOne({
+  //     id: id,
+  //     changes: {
+  //       done: true
+  //     }
+  //   }, state)
+  // ),
+  // on(GoalActions.undoneGoal, (state, { id }) => 
+  //   goalsAdapter.updateOne({
+  //     id: id,
+  //     changes: {
+  //       done: false
+  //     }
+  //   }, state)
+  // ),
 );
 
 export function reducer(state: GoalsState | undefined, action: Action) {

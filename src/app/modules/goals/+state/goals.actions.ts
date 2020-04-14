@@ -94,7 +94,25 @@ export const doneGoal = createAction(
   props<{ id: string }>()
 );
 
+export const doneGoalSuccess = createAction(
+  '[Goals] Done Goal Success'
+);
+
+export const doneGoalFailure = createAction(
+  '[Goals] Done Goal Failure',
+  props<{ error: any }>()
+);
+
 export const undoneGoal = createAction(
   '[Goals] Undone Goal',
   props<{ id: string }>()
+);
+
+export const undoneGoalSuccess = createAction(
+  '[Goals] Undone Goal Success'
+);
+
+export const undoneGoalFailure = createAction(
+  '[Goals] Undone Goal Failure',
+  props<{ error: any }>()
 );

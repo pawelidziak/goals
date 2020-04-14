@@ -1,0 +1,18 @@
+<app-checkbox
+  [checked]="goal.done"
+  [fillColor]="goal.priority.color"
+  (checkedChanged)="onCheckedChanged($event)"
+></app-checkbox>
+
+<FlexboxLayout
+  flexDirection="column"
+  justifyContent="center"
+  [ngClass]="{'padding-10': goal.desc, 'padding-16': !goal.desc}"
+>
+  <label class="label-name" [text]="goal.name"></label>
+  <label
+    *ngIf="goal.desc && !goal.done"
+    class="label-text"
+    [text]="goal.desc"
+  ></label>
+</FlexboxLayout>

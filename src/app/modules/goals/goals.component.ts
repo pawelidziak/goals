@@ -47,7 +47,7 @@ export class GoalsComponent implements OnInit {
   }
 
   onGoalStateChange(goal: Goal) {
-    this.goalsFacade.editGoal(goal);
+    // this.goalsFacade.editGoal(goal);
   }
 
   getUndoneGoals() {

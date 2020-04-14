@@ -7,7 +7,7 @@ import {
   mergeMap,
   catchError,
   concatMap,
-  withLatestFrom
+  withLatestFrom,
 } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -24,7 +24,11 @@ export class GoalsEffects {
       ofType(GoalsActions.loadGoals),
       mergeMap(() =>
         this.service.getAll().pipe(
-          map(goals => GoalsActions.loadGoalsSuccess({ goals: goals.sort((a, b) => +a.done - +b.done) })),
+          map((goals) =>
+            GoalsActions.loadGoalsSuccess({
+              goals: goals.sort((a, b) => +a.done - +b.done),
+            })
+          ),
           catchError(() => GoalsActions.loadGoalsFailure)
         )
       )
@@ -34,25 +38,51 @@ export class GoalsEffects {
   addGoal$ = createEffect(() =>
     this.actions$.pipe(
       ofType(GoalsActions.addGoal),
-      concatMap(action =>
+      concatMap((action) =>
         of(action).pipe(
           withLatestFrom(
             this.deadlinesStore.pipe(select(fromDeadlines.getSelected)),
             this.prioritiesStore.pipe(select(fromPriorities.getSelected)),
-            this.repeatsStore.pipe(select(fromRepeats.getSelected))            )
+            this.repeatsStore.pipe(select(fromRepeats.getSelected))
+          )
         )
       ),
       mergeMap(([action, deadline, priority, repeat]) =>
-        this.service.addGoal({
-          name: action.name,
-          deadline: deadline,              
-          priority: priority,
-          repeat: repeat,
-          done: false
-        })
-        .pipe(
-          map(id => GoalsActions.addGoalSuccess({ id })),
-          catchError(() => GoalsActions.addGoalFailure)
+        this.service
+          .addGoal({
+            name: action.name,
+            deadline: deadline,
+            priority: priority,
+            repeat: repeat,
+            done: false,
+          })
+          .pipe(
+            map((id) => GoalsActions.addGoalSuccess({ id })),
+            catchError(() => GoalsActions.addGoalFailure)
+          )
+      )
+    )
+  );
+
+  doneGoal$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(GoalsActions.doneGoal),
+      mergeMap((action) =>
+        this.service.doneGoal(action.id).pipe(
+          map(() => GoalsActions.doneGoalSuccess()),
+          catchError(() => GoalsActions.doneGoalFailure)
+        )
+      )
+    )
+  );
+
+  undoneGoal$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(GoalsActions.undoneGoal),
+      mergeMap((action) =>
+        this.service.undoneGoal(action.id).pipe(
+          map(() => GoalsActions.undoneGoalSuccess()),
+          catchError(() => GoalsActions.undoneGoalFailure)
         )
       )
     )
