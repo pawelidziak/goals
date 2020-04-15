@@ -11,40 +11,23 @@
 </ActionBar>
 
 <GridLayout rows="*, auto">
+  <!--Lists -->
   <ScrollView row="0">
-    <StackLayout orientation="vertical">
-      <!-- ALL DONE -->
-      <StackLayout
-        *ngIf="(undoneGoals$ | async).length === 0"
-        class="no-goals__label"
-      >
-        <label
-          horizontalAlignment="center"
-          fontSize="70"
-          [text]="'mdi-favorite' | fonticon"
-          class="mdi"
-          color="#3F51B5"
-        ></label>
-        <label [text]="'No goals'"></label>
-      </StackLayout>
+    <StackLayout>
+      <!-- All done -->
+      <app-all-done *ngIf="(undoneGoals$ | async).length === 0"></app-all-done>
 
-      <!-- TODO LIST -->
-      <app-list-goals
-        [goals]="(undoneGoals$ | async)"
-        (goalStateChange)="onGoalStateChange($event)"
-      ></app-list-goals>
+      <!-- Todo list -->
+      <app-list-goals [goals]="(undoneGoals$ | async)"></app-list-goals>
 
-      <!-- DONE LIST -->
+      <!-- Done list -->
       <label
         *ngIf="(doneGoals$ | async).length > 0"
         [text]="'Done'"
         class="list__label"
       ></label>
 
-      <app-list-goals
-        [goals]="(doneGoals$ | async)"
-        (goalStateChange)="onGoalStateChange($event)"
-      ></app-list-goals>
+      <app-list-goals [goals]="(doneGoals$ | async)"></app-list-goals>
     </StackLayout>
   </ScrollView>
 
@@ -60,6 +43,7 @@
     <app-add-goal></app-add-goal>
   </StackLayout>
 
+  <!-- Add goal button container -->
   <AbsoluteLayout
     row="0"
     *ngIf="!(showAddGoalComponent$ | async)"

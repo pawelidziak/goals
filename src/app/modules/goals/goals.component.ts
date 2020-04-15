@@ -18,8 +18,6 @@ export class GoalsComponent implements OnInit {
   doneGoals$: Observable<Goal[]> = this.goalsFacade.doneGoals$;
   undoneGoals$: Observable<Goal[]> = this.goalsFacade.undoneGoals$;
   deadline$ = this.deadlinesFacade.selectedItem$;
-  goals$: Observable<Goal[]> = this.goalsFacade.filteredGoals$;
-  goals: Goal[];
 
   constructor(
     private bottomNavFacade: BottomNavigationFacade,
@@ -29,11 +27,10 @@ export class GoalsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // todo add unsubscribe or set filter in other place (resolver)
     this.deadline$.subscribe((deadline) =>
       this.goalsFacade.filterGoals(deadline)
     );
-    this.goalsFacade.filteredGoals$.subscribe(goals => this.goals = goals)
-    // todo add unsubscribe or set filter in other place (resolver)
   }
 
   showAddGoalComponent() {
@@ -44,17 +41,5 @@ export class GoalsComponent implements OnInit {
   hideAddGoalComponent() {
     this.bottomNavFacade.showBottomNav();
     this.addGoalModalFacade.hideAddGoal();
-  }
-
-  onGoalStateChange(goal: Goal) {
-    // this.goalsFacade.editGoal(goal);
-  }
-
-  getUndoneGoals() {
-    return this.goals.filter(goal => !goal.done);
-  }
-  
-  getDoneGoals() {
-    return this.goals.filter(goal => goal.done);
   }
 }
