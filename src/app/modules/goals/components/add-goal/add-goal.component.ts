@@ -12,7 +12,7 @@ export class AddGoalComponent implements OnInit {
 
   ngOnInit() {}
 
-  onGoalSend(name: string) {
+  onSaveGoal(name: string) {
     this.goalsFacade.addGoal(name);
   }
 }
