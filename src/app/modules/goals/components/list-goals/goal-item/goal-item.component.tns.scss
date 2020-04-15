@@ -1,0 +1,66 @@
+/* Add mobile styles for the component here.  */
+.list-item {
+  padding: 10;
+  // border-bottom-color: rgba(0,0,0,.12);
+  // border-bottom-width: 1;
+}
+
+.padding-10 {
+  padding: 10 0;
+}
+
+.padding-16 {
+  padding: 16 0;
+}
+
+.label-name {
+  font-size: 15;
+}
+
+.label-text {
+  font-size: 12;
+}
+
+.label-priority {
+  padding: 2 4 2 0;
+  border-radius: 5;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.label-icon__tag {
+  font-size: 12;
+  z-index: 11;
+  margin-right: -5;
+}
+
+////////
+.swipe-view {
+  padding: 0 15;
+  color: #fafafa;
+  text-transform: uppercase;
+}
+
+.swipe-view__text {
+  text-transform: uppercase;
+  padding: 5;
+  font-weight: bold;
+}
+
+.item__icon {
+  padding: 5;
+  border-radius: 50%;
+}
+
+/**
+ * DONE GOAL
+ */
+.goal__done {
+  opacity: 0.5;
+  FlexboxLayout {
+    padding: 3 0;
+  }
+  label {
+    text-decoration: line-through;
+    font-size: 12;
+  }
+}

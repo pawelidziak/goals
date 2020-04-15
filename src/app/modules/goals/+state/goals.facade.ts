@@ -33,6 +33,18 @@ export class GoalsFacade {
   }
 
   editGoal(goal: Goal) {
-    this.store.dispatch(GoalsActions.editGoal({ goal }))
+    this.store.dispatch(GoalsActions.editGoal({ goal }));
+  }
+
+  doneUndoneGoal(id: string, isGoalDone: boolean) {
+    isGoalDone ? this.doneGoal(id) : this.undoneGoal(id);
+  }
+
+  private doneGoal(id: string) {
+    this.store.dispatch(GoalsActions.doneGoal({ id }));
+  }
+
+  private undoneGoal(id: string) {
+    this.store.dispatch(GoalsActions.undoneGoal({ id }));
   }
 }

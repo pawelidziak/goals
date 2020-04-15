@@ -37,7 +37,36 @@ export class GoalsService {
       colRef
         .add(goal)
         .then(doc => this.zone.run(() => subscriber.next(doc.id)))
-    })
+    });
+  }
+
+  // THINK - use set to whole EDIT action (do not separate do done/undone, just edit)
+  doneGoal(goalId: string) {
+    return new Observable((subscriber) => {
+      const colRef: firebaseNamespace.CollectionReference = firestore().collection(
+        'goals'
+      );
+      colRef
+        .doc(goalId)
+        .update({
+          done: true
+        })
+        .then(() => this.zone.run(() => subscriber.next()));
+    });
+  }
+
+  undoneGoal(goalId: string) {
+    return new Observable((subscriber) => {
+      const colRef: firebaseNamespace.CollectionReference = firestore().collection(
+        'goals'
+      );
+      colRef
+        .doc(goalId)
+        .update({
+          done: false
+        })
+        .then(() => this.zone.run(() => subscriber.next()));
+    });
   }
 
   private generateMockGoals(quantity: number): Goal[] {

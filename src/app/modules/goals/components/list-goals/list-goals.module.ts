@@ -5,9 +5,11 @@ import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NativeScriptUIListViewModule } from 'nativescript-ui-listview/angular';
 import { NgRippleModule } from 'nativescript-ng-ripple';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
+import { TNSCheckBoxModule } from '@nstudio/nativescript-checkbox/angular';
 
-import { CheckboxModule } from '@shared/components/checkbox/checkbox.module.tns';
 import { ListGoalsComponent } from './list-goals.component';
+import { GoalItemModule } from './goal-item/goal-item.module';
+import { CheckboxModule } from '@shared/components/checkbox/checkbox.module.tns';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { ListGoalsComponent } from './list-goals.component';
     NgRippleModule,
     NativeScriptUIListViewModule,
     CheckboxModule,
-    TNSFontIconModule
+    TNSFontIconModule,
+    TNSCheckBoxModule,
+    GoalItemModule,
   ],
   providers: [],
   declarations: [ListGoalsComponent],

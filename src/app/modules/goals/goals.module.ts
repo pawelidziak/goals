@@ -17,6 +17,7 @@ import * as fromGoals from './+state/goals.reducer';
 import { GoalsFacade, GoalsEffects } from './+state';
 import { GoalsResolver, GoalsService } from './services';
 import { AddGoalModule } from './components/add-goal/add-goal.module';
+import { AllDoneModule } from './components/all-done/all-done.module';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { AddGoalModule } from './components/add-goal/add-goal.module';
     AddGoalModule,
     DropDownIconModule,
     ListGoalsModule,
-    GoalDropdownsModule
+    GoalDropdownsModule,
+    AllDoneModule
   ],
   declarations: [GoalsComponent],
   providers: [GoalsService, GoalsFacade, GoalsResolver, GoalsEffects],

@@ -10,43 +10,26 @@
   </StackLayout>
 </ActionBar>
 
-<!-- TODO UZYC REPETATERA W SCROLL VIEW, lub jakos tak by wszystko bylo w jednym scrollu -->
- 
 <GridLayout rows="*, auto">
-  <StackLayout row="0" flexDirection="column"  orientation="vertical">
-    
-    <!-- ALL DONE -->
-    <StackLayout
-      class="no-goals__label"
-    >
+  <!--Lists -->
+  <ScrollView row="0">
+    <StackLayout>
+      <!-- All done -->
+      <app-all-done *ngIf="(undoneGoals$ | async).length === 0"></app-all-done>
+
+      <!-- Todo list -->
+      <app-list-goals [goals]="(undoneGoals$ | async)"></app-list-goals>
+
+      <!-- Done list -->
       <label
-        horizontalAlignment="center"
-        fontSize="70"
-        [text]="'mdi-favorite' | fonticon"
-        class="mdi"
-        color="#3F51B5"
+        *ngIf="(doneGoals$ | async).length > 0"
+        [text]="'Done'"
+        class="list__label"
       ></label>
-      <label [text]="'No goals'"></label>
+
+      <app-list-goals [goals]="(doneGoals$ | async)"></app-list-goals>
     </StackLayout>
-
-    <!-- TODO LIST -->
-    <app-list-goals
-      [goals]="goals$ | async"
-      (goalStateChange)="onGoalStateChange($event)"
-    ></app-list-goals>
-
-    <!-- DONE LIST -->
-    <label
-      *ngIf="(doneGoals$ | async).length > 0"
-      [text]="'Done'"
-      class="list__label"
-    ></label>
-
-    <app-list-goals
-      [goals]="doneGoals$ | async"
-      (goalStateChange)="onGoalStateChange($event)"
-    ></app-list-goals>
-  </StackLayout>
+  </ScrollView>
 
   <!-- Overview -->
   <StackLayout
@@ -60,6 +43,7 @@
     <app-add-goal></app-add-goal>
   </StackLayout>
 
+  <!-- Add goal button container -->
   <AbsoluteLayout
     row="0"
     *ngIf="!(showAddGoalComponent$ | async)"

@@ -1,7 +1,7 @@
 <CheckBox
   #checkbox
   [text]="text ? text : ''"
-  [checked]="checkboxValue"
+  [(ngModel)]="checked"
   [fillColor]="fillColor"
-  (checkedChange)="checkedChange(checkbox.checked)"
+  (checkedChange)="onCheckedChange(checkbox.checked)"
 ></CheckBox>

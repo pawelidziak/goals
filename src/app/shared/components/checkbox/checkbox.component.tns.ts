@@ -1,39 +1,23 @@
-import {
-  Component,
-  EventEmitter,
-  Output,
-  Input,
-  ElementRef,
-  ViewChild
-} from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
+
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+  styleUrls: ['./checkbox.component.scss'],
 })
 export class CheckboxComponent {
-  checkboxValue: boolean;
-
-  @Output() valueChange: EventEmitter<boolean> = new EventEmitter();
-  @Output() changed: EventEmitter<boolean> = new EventEmitter();
-
   @Input() text: string;
   @Input() fillColor = '#3F51B5';
-
-  @ViewChild('checkbox', { static: false }) checkbox: ElementRef;
-
-  @Input() get value(): boolean {
-    return this.checkboxValue;
-  }
-
-  set value(value: boolean) {
-    this.checkboxValue = value;
-    this.valueChange.emit(this.checkboxValue);
-  }
+  @Input() checked: boolean;
+  @Output() checkedChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {}
 
-  public checkedChange(val: boolean) {
-    this.changed.emit(val);
+  public onCheckedChange(val: boolean) {
+    // no idea why CheckBox plugin returns 'null'
+    if (val === null || this.checked === val) {
+      return;
+    }
+    this.checkedChanged.emit(val);
   }
 }

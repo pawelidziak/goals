@@ -5,12 +5,11 @@ import { GoalsFacade } from '../../+state';
   selector: 'app-add-goal',
   templateUrl: './add-goal.component.html',
   styleUrls: ['./add-goal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddGoalComponent implements OnInit {
-
   constructor(private goalsFacade: GoalsFacade) {}
-  
+
   ngOnInit() {}
 
   onGoalSend(name: string) {
