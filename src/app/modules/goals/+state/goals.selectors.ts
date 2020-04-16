@@ -65,4 +65,5 @@ export const getUndoneGoals = createSelector(
 export const getGoalById = createSelector(
   getAllGoals,
   (goals: Goal[], id) => goals.find(goal => goal.id === id)
-)
+);
+
