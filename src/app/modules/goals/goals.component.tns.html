@@ -39,8 +39,8 @@
   ></StackLayout>
 
   <!-- Add Goal Component -->
-  <StackLayout row="1">
-    <app-add-goal *ngIf="showAddGoalComponent$ | async"></app-add-goal>
+  <StackLayout row="1" [ngClass]="{'hide': !(showAddGoalComponent$ | async)}">
+    <app-add-goal *ngIf="(showAddGoalComponent$ | async)"></app-add-goal>
   </StackLayout>
 
   <!-- Add goal button container -->
