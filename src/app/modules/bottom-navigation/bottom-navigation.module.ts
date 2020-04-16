@@ -7,6 +7,7 @@ import { NgRippleModule } from 'nativescript-ng-ripple';
 import { StoreModule } from '@ngrx/store';
 import * as fromBottomNavigation from './+state/bottom-navigation.reducer';
 import { BottomNavigationFacade } from './+state/bottom-navigation.facade';
+import { LayoutModule } from './../layout/layout.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { BottomNavigationFacade } from './+state/bottom-navigation.facade';
     StoreModule.forFeature(
       fromBottomNavigation.BOTTOMNAVIGATION_FEATURE_KEY,
       fromBottomNavigation.reducer
-    )
+    ),
+    LayoutModule,
   ],
   declarations: [BottomNavigationComponent],
   exports: [BottomNavigationComponent],
