@@ -1,10 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { LayoutFacade } from '@modules/layout/+state/layout.facade';
 
 import { Goal, GoalsFacade } from './+state';
-import { AddGoalModalFacade } from '@src/app/modules/add-goal-modal/+state/add-goal-modal.facade';
-import { BottomNavigationFacade } from '@modules/bottom-navigation/+state/bottom-navigation.facade';
 import { DeadlinesFacade } from '../goal-dropdowns/deadlines/+state';
 
 @Component({
@@ -14,16 +13,15 @@ import { DeadlinesFacade } from '../goal-dropdowns/deadlines/+state';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GoalsComponent implements OnInit {
-  showAddGoalComponent$: Observable<boolean> = this.addGoalModalFacade.show$;
+  showAddGoalComponent$: Observable<boolean> = this.layoutFacade.isComponentShown('ADD_GOAL_MODAL');
   doneGoals$: Observable<Goal[]> = this.goalsFacade.doneGoals$;
   undoneGoals$: Observable<Goal[]> = this.goalsFacade.undoneGoals$;
   deadline$ = this.deadlinesFacade.selectedItem$;
 
   constructor(
-    private bottomNavFacade: BottomNavigationFacade,
     private goalsFacade: GoalsFacade,
-    private addGoalModalFacade: AddGoalModalFacade,
-    private deadlinesFacade: DeadlinesFacade
+    private deadlinesFacade: DeadlinesFacade,
+    private layoutFacade: LayoutFacade
   ) {}
 
   ngOnInit() {
@@ -34,12 +32,12 @@ export class GoalsComponent implements OnInit {
   }
 
   showAddGoalComponent() {
-    this.bottomNavFacade.hideBottomNav();
-    this.addGoalModalFacade.showAddGoal();
+    this.layoutFacade.hideComponent('BOTTOM_NAV');
+    this.layoutFacade.showComponent('ADD_GOAL_MODAL');
   }
 
   hideAddGoalComponent() {
-    this.bottomNavFacade.showBottomNav();
-    this.addGoalModalFacade.hideAddGoal();
+    this.layoutFacade.showComponent('BOTTOM_NAV');
+    this.layoutFacade.hideComponent('ADD_GOAL_MODAL');
   }
 }

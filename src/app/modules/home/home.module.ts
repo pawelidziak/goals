@@ -6,13 +6,15 @@ import { BottomNavigationModule } from '@modules/bottom-navigation/bottom-naviga
 
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { LayoutModule } from '@modules/layout/layout.module';
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
     HomeRoutingModule,
     GoalsModule,
-    BottomNavigationModule
+    BottomNavigationModule,
+    LayoutModule
   ],
   declarations: [HomeComponent],
   providers: [],

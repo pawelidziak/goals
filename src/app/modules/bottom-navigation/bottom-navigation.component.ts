@@ -1,10 +1,10 @@
-import { BottomNavigationFacade } from './+state/bottom-navigation.facade';
-import { APP_ROUTES } from '@core/routes';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
+
 import { filter } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+
+import { APP_ROUTES } from '@core/routes';
 
 @Component({
   selector: 'app-bottom-navigation',
@@ -13,7 +13,6 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BottomNavigationComponent implements OnInit {
-  public showNav$: Observable<boolean>;
 
   public tabs = [
     { label: 'Progress', path: APP_ROUTES.TEAMS, icon: 'mdi-trending-up' },
@@ -24,12 +23,10 @@ export class BottomNavigationComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private routerExtensions: RouterExtensions,
-    private bottomNavFacade: BottomNavigationFacade
+    private routerExtensions: RouterExtensions
   ) {}
 
   ngOnInit() {
-    this.showNav$ = this.bottomNavFacade.show$;
     this._activatedUrl = APP_ROUTES.GOALS;
     this.router.events
       .pipe(filter((event: any) => event instanceof NavigationEnd))
