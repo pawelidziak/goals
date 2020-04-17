@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 
 import { GoalDropdownsModule } from '@modules/goal-dropdowns/goal-dropdowns.module';
+import { LayoutModule } from '@modules/layout/layout.module';
 import { AddGoalModalFacade } from './+state/add-goal-modal.facade';
 import { AddGoalModalComponent } from './add-goal-modal.component';
 import * as fromAddGoal from './+state/add-goal-modal.reducer';
@@ -19,7 +20,8 @@ import * as fromAddGoal from './+state/add-goal-modal.reducer';
       fromAddGoal.reducer
     ),
     TNSFontIconModule,
-    GoalDropdownsModule
+    GoalDropdownsModule,
+    LayoutModule
   ],
   declarations: [AddGoalModalComponent],
   exports: [AddGoalModalComponent],

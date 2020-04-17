@@ -8,10 +8,10 @@ import {
   AfterViewInit,
   EventEmitter,
 } from '@angular/core';
+
 import { TextField } from 'tns-core-modules/ui/text-field';
 
-import { BottomNavigationFacade } from '@modules/bottom-navigation/+state/bottom-navigation.facade';
-import { AddGoalModalFacade } from './+state/add-goal-modal.facade';
+import { LayoutFacade } from '@modules/layout/+state/layout.facade';
 
 @Component({
   selector: 'app-add-goal-modal',
@@ -24,10 +24,7 @@ export class AddGoalModalComponent implements OnInit, AfterViewInit {
   @Output() saveGoal: EventEmitter<any> = new EventEmitter();
   newGoalTitle = '';
 
-  constructor(
-    private bottomNavFacade: BottomNavigationFacade,
-    private addGoalModalFacade: AddGoalModalFacade
-  ) {}
+  constructor(private layoutFacade: LayoutFacade) {}
 
   ngOnInit(): void {}
 
@@ -40,8 +37,8 @@ export class AddGoalModalComponent implements OnInit, AfterViewInit {
 
   closeAdding() {
     this.newGoalTitle = '';
-    this.addGoalModalFacade.hideAddGoal();
-    this.bottomNavFacade.showBottomNav();
+    this.layoutFacade.hideComponent('ADD_GOAL_MODAL');
+    this.layoutFacade.showComponent('BOTTOM_NAV');
   }
 
   onSend() {
