@@ -41,7 +41,9 @@
 
   <!-- Add Goal Component -->
   <StackLayout row="1" [ngClass]="{'hide': !(showAddGoalComponent$ | async)}">
-    <app-add-goal *ngIf="(showAddGoalComponent$ | async)"></app-add-goal>
+    <app-add-goal-modal *ngIf="(showAddGoalComponent$ | async)"
+                        (saveGoal)="onSaveGoal($event)"
+    ></app-add-goal-modal>
   </StackLayout>
 
   <!-- Add goal button container -->

@@ -40,4 +40,8 @@ export class GoalsComponent implements OnInit {
     this.layoutFacade.showComponent('BOTTOM_NAV');
     this.layoutFacade.hideComponent('ADD_GOAL_MODAL');
   }
+
+  onSaveGoal(name: string) {
+    this.goalsFacade.addGoal(name);
+  }
 }
