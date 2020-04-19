@@ -25,16 +25,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('@modules/player/players.module').then(m => m.PlayersModule)
       },
-      {
-        path: '',
-        loadChildren: () =>
-          import('@modules/goals/components/edit-goal/edit-goal.module').then(m => m.EditGoalModule)
-      },
-      // {
-      //   path: '',
-      //   loadChildren: () =>
-      //     import('@modules/list-goals/list-goals.module').then(m => m.ListGoalsModule)
-      // },
     ]
   }
 ];

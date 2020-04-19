@@ -16,7 +16,6 @@ import { GoalsComponent } from './goals.component';
 import * as fromGoals from './+state/goals.reducer';
 import { GoalsFacade, GoalsEffects } from './+state';
 import { GoalsResolver, GoalsService } from './services';
-import { AddGoalModule } from './components/add-goal/add-goal.module';
 import { AllDoneModule } from './components/all-done/all-done.module';
 import { LayoutModule } from './../layout/layout.module';
 
@@ -37,7 +36,6 @@ import { LayoutModule } from './../layout/layout.module';
     EffectsModule.forFeature([GoalsEffects]),
     TNSFontIconModule,
     FloatBtnModule,
-    AddGoalModule,
     DropDownIconModule,
     ListGoalsModule,
     GoalDropdownsModule,
