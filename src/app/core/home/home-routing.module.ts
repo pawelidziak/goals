@@ -1,5 +1,5 @@
 import { APP_ROUTES } from '@core/routes';
-import { HomeComponent } from '@modules/home/home.component';
+import { HomeComponent } from '@core/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
