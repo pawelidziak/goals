@@ -5,7 +5,6 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import * as fromLayout from './+state/layout.reducer';
-import { LayoutComponent } from './layout.component';
 import { LayoutEffects } from './+state/layout.effects';
 import { LayoutFacade } from './+state/layout.facade';
 
@@ -16,8 +15,8 @@ import { LayoutFacade } from './+state/layout.facade';
     StoreModule.forFeature(fromLayout.LAYOUT_FEATURE_KEY, fromLayout.reducer),
     EffectsModule.forFeature([LayoutEffects]),
   ],
+  declarations: [],
   providers: [LayoutEffects, LayoutFacade],
-  declarations: [LayoutComponent],
   schemas: [NO_ERRORS_SCHEMA],
 })
 export class LayoutModule {}
