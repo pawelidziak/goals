@@ -16,7 +16,7 @@ import { GoalsComponent } from './goals.component';
 import * as fromGoals from './+state/goals.reducer';
 import { GoalsFacade, GoalsEffects } from './+state';
 import { GoalsResolver, GoalsService } from './services';
-import { AllDoneModule } from './components/all-done/all-done.module';
+import { NoGoalsModule } from './components/no-goals/no-goals.module';
 import { LayoutModule } from './../layout/layout.module';
 
 @NgModule({
@@ -39,7 +39,7 @@ import { LayoutModule } from './../layout/layout.module';
     DropDownIconModule,
     ListGoalsModule,
     GoalDropdownsModule,
-    AllDoneModule,
+    NoGoalsModule,
     LayoutModule
   ],
   declarations: [GoalsComponent],
