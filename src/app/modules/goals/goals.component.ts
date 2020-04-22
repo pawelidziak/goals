@@ -17,6 +17,7 @@ export class GoalsComponent implements OnInit {
   doneGoals$: Observable<Goal[]> = this.goalsFacade.doneGoals$;
   undoneGoals$: Observable<Goal[]> = this.goalsFacade.undoneGoals$;
   deadline$ = this.deadlinesFacade.selectedItem$;
+  filteredMsg: string;
 
   constructor(
     private goalsFacade: GoalsFacade,
@@ -26,8 +27,12 @@ export class GoalsComponent implements OnInit {
 
   ngOnInit() {
     // todo add unsubscribe or set filter in other place (resolver)
-    this.deadline$.subscribe((deadline) =>
-      this.goalsFacade.filterGoals(deadline)
+    this.deadline$.subscribe((deadline) => {
+      if (deadline) {
+        this.goalsFacade.filterGoals(deadline);
+        this.filteredMsg = this.goalsFacade.getFilteredMessage(deadline);
+      }
+    }
     );
   }
 

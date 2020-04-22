@@ -4,7 +4,7 @@ import { NativeScriptCommonModule } from 'nativescript-angular/common';
 
 import { TNSFontIconModule } from 'nativescript-ng2-fonticon';
 
-import { AllDoneComponent } from '@modules/goals/components/all-done/all-done.component';
+import { NoGoalsComponent } from '@modules/goals/components/no-goals/no-goals.component';
 
 @NgModule({
   imports: [
@@ -12,8 +12,8 @@ import { AllDoneComponent } from '@modules/goals/components/all-done/all-done.co
     NativeScriptFormsModule,
     TNSFontIconModule
   ],
-  declarations: [AllDoneComponent],
+  declarations: [NoGoalsComponent],
   providers: [],
-  exports: [AllDoneComponent],
+  exports: [NoGoalsComponent],
 })
-export class AllDoneModule {}
+export class NoGoalsModule {}

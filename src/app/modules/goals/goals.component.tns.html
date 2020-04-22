@@ -15,8 +15,11 @@
   <ScrollView row="0">
     <StackLayout>
       <!-- All done -->
-      <!-- TODO refactor to no-goals and show appropriate msg when its long-term, today itp -->
-      <app-all-done *ngIf="(undoneGoals$ | async).length === 0"></app-all-done>
+      <app-no-goals
+        *ngIf="filteredMsg && (undoneGoals$ | async).length === 0"
+        [label]="filteredMsg.label"
+        [icon]="filteredMsg.icon"
+      ></app-no-goals>
 
       <!-- Todo list -->
       <app-list-goals [goals]="(undoneGoals$ | async)"></app-list-goals>
@@ -41,8 +44,9 @@
 
   <!-- Add Goal Component -->
   <StackLayout row="1" [ngClass]="{'hide': !(showAddGoalComponent$ | async)}">
-    <app-add-goal-modal *ngIf="(showAddGoalComponent$ | async)"
-                        (saveGoal)="onSaveGoal($event)"
+    <app-add-goal-modal
+      *ngIf="(showAddGoalComponent$ | async)"
+      (saveGoal)="onSaveGoal($event)"
     ></app-add-goal-modal>
   </StackLayout>
 

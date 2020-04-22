@@ -5,6 +5,26 @@ import * as GoalsSelectors from './goals.selectors';
 import * as GoalsActions from './goals.actions';
 import { Goal } from './goals.models';
 
+// PROPOSAL save in in database
+const FILTERED_MESSEGES = {
+  tomorrow: {
+    label: 'No goals for tomorrow, add some!',
+    icon: 'mdi-done-all',
+  },
+  'long-term': {
+    label: 'No long-term goals, add some!',
+    icon: 'mdi-star',
+  },
+  todo: {
+    label: 'There is nothing here, add some!',
+    icon: 'mdi-playlist-add-check',
+  },
+  today: {
+    label: 'Nothing for today, maybe add something?',
+    icon: 'mdi-favorite',
+  },
+};
+
 @Injectable()
 export class GoalsFacade {
   loaded$ = this.store.pipe(select(GoalsSelectors.getGoalsLoaded));
@@ -47,4 +67,7 @@ export class GoalsFacade {
   private undoneGoal(id: string) {
     this.store.dispatch(GoalsActions.undoneGoal({ id }));
   }
+
+  getFilteredMessage = (filter: any) =>
+    FILTERED_MESSEGES[filter.name.toLowerCase()]
 }

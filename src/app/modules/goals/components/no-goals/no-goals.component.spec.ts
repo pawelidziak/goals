@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AllDoneComponent } from '@src/app/modules/goals/components/all-done/all-done.component';
 
-describe('AllDoneComponent', () => {
+describe('NoGoalsComponent', () => {
   let component: AllDoneComponent;
   let fixture: ComponentFixture<AllDoneComponent>;
 
