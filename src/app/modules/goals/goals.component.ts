@@ -16,6 +16,7 @@ export class GoalsComponent implements OnInit {
   showAddGoalComponent$: Observable<boolean> = this.layoutFacade.isComponentShown('ADD_GOAL_MODAL');
   doneGoals$: Observable<Goal[]> = this.goalsFacade.doneGoals$;
   undoneGoals$: Observable<Goal[]> = this.goalsFacade.undoneGoals$;
+  outstandingGoals$: Observable<Goal[]> = this.goalsFacade.outstandingGoals$;
   deadline$ = this.deadlinesFacade.selectedItem$;
   filteredMsg: string;
 
@@ -32,8 +33,7 @@ export class GoalsComponent implements OnInit {
         this.goalsFacade.filterGoals(deadline);
         this.filteredMsg = this.goalsFacade.getFilteredMessage(deadline);
       }
-    }
-    );
+    });
   }
 
   showAddGoalComponent() {

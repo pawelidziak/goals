@@ -32,6 +32,16 @@
       ></label>
 
       <app-list-goals [goals]="(doneGoals$ | async)"></app-list-goals>
+
+      <!-- Outstanding list-->
+      <label
+        *ngIf="(outstandingGoals$ | async).length > 0"
+        [text]="'Outstanding'"
+        class="list__label"
+      ></label>
+
+      <app-list-goals [goals]="(outstandingGoals$ | async)"></app-list-goals>
+
     </StackLayout>
   </ScrollView>
 

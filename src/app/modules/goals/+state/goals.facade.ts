@@ -4,6 +4,7 @@ import * as fromGoals from './goals.reducer';
 import * as GoalsSelectors from './goals.selectors';
 import * as GoalsActions from './goals.actions';
 import { Goal } from './goals.models';
+import { Deadline } from '@modules/goal-dropdowns/deadlines/+state';
 
 // PROPOSAL save in in database
 const FILTERED_MESSEGES = {
@@ -31,6 +32,7 @@ export class GoalsFacade {
   allGoals$ = this.store.pipe(select(GoalsSelectors.getAllGoals));
   doneGoals$ = this.store.pipe(select(GoalsSelectors.getDoneGoals));
   undoneGoals$ = this.store.pipe(select(GoalsSelectors.getUndoneGoals));
+  outstandingGoals$ = this.store.pipe(select(GoalsSelectors.getOutstandingGoals));
   selectedGoal$ = this.store.pipe(select(GoalsSelectors.getSelected));
   filteredGoals$ = this.store.pipe(select(GoalsSelectors.getFilteredGoals));
 
@@ -48,7 +50,7 @@ export class GoalsFacade {
     this.store.dispatch(GoalsActions.selectGoal({ id }));
   }
 
-  filterGoals(filter: any) {
+  filterGoals(filter: Deadline) {
     this.store.dispatch(GoalsActions.filterGoals({ filter }));
   }
 

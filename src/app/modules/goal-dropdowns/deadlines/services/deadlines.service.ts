@@ -17,13 +17,27 @@ export class DeadlinesService {
       );
       colRef.onSnapshot((snapshot: firebaseNamespace.QuerySnapshot) =>
         this.zone.run(() => {
-          const deadlines = [];
-          snapshot.forEach(docSnap =>
-            deadlines.push({ id: docSnap.id, ...docSnap.data() })
-          );
+          const deadlines: Deadline[] = [];
+          snapshot.forEach(docSnap => {
+            const deadline = { id: docSnap.id, ...docSnap.data() as Deadline};
+            deadline.timestamp = this.getTimestamp(deadline.name);
+            deadlines.push(deadline)
+          });
           subscriber.next(deadlines);
         })
       );
     });
   }
+  
+  // to refactor
+ getTimestamp(name: string): number {
+  switch(name.toLowerCase()) {
+    case 'today':
+      return new Date().setHours(0, 0, 0, 0);
+    case 'tomorrow':
+      return new Date(new Date().setDate(new Date().getDate() + 1)).setHours(0, 0, 0, 0)
+    default:
+      return new Date().setHours(0, 0, 0, 0);
+  }
+}
 }

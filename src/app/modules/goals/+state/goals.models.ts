@@ -3,7 +3,8 @@ export interface Goal {
   name: string;
   desc?: string;
   priority: any;
-  deadline: any;
+  // deadline: any;
   repeat: any;
   done: boolean;
+  deadlineTimestamp: number;
 }

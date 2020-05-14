@@ -76,10 +76,10 @@ export class GoalsService {
         id: `${i}`,
         name: `Name ${i}`,
         desc: `Desc ${i}`,
-        deadline: `Deadline ${i}`,
         repeat: `Repeat ${i}`,
         done: Math.random() >= 0.5,
-        priority: this.getRandomPriority(i)
+        priority: this.getRandomPriority(i),
+        deadlineTimestamp: 0
       });
     }
 

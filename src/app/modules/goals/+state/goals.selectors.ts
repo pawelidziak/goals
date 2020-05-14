@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { GOALS_FEATURE_KEY, GoalsState, goalsAdapter } from './goals.reducer';
 import { Goal } from './goals.models';
+import { Deadline } from '@modules/goal-dropdowns/deadlines/+state';
 
 export const getGoalsState = createFeatureSelector<GoalsState>(
   GOALS_FEATURE_KEY
@@ -47,8 +48,8 @@ export const getActiveFilter = createSelector(
 export const getFilteredGoals = createSelector(
   getAllGoals,
   getActiveFilter,
-  (goals: Goal[], filter: any) => filter
-    ? goals.filter((goal) => goal.deadline.name === filter.name).sort((a, b) => +a.done - +b.done)
+  (goals: Goal[], filter: Deadline) => filter
+    ? goals.filter((goal) => goal.deadlineTimestamp === filter.timestamp).sort((a, b) => +a.done - +b.done)
     : goals
 );
 
@@ -60,6 +61,14 @@ export const getDoneGoals = createSelector(
 export const getUndoneGoals = createSelector(
   getFilteredGoals,
   (goals: Goal[]) => goals.filter(goal => !goal.done)
+);
+
+export const getOutstandingGoals = createSelector(
+  getAllGoals,
+  getActiveFilter,
+  (goals: Goal[], filter: Deadline) => filter && filter.name.toLowerCase() === 'today'
+    ? goals.filter(goal => !goal.done).filter((goal) => goal.deadlineTimestamp < filter.timestamp)
+    : []
 );
 
 export const getGoalById = createSelector(

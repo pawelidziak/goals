@@ -53,7 +53,7 @@ export class GoalsEffects {
         this.service
           .addGoal({
             name: action.name,
-            deadline: deadline,
+            deadlineTimestamp: deadline.timestamp,
             priority: priority,
             repeat: repeat,
             done: false,
